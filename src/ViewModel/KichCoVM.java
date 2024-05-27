@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
 
 import java.util.UUID;
 
@@ -10,20 +10,20 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class KichCo {
+public class KichCoVM {
     private UUID id;
     private String MaKC;
     private String TenKC;
-    private int TrangThaiKC;
+    private int TrangThai;
 
-    public KichCo() {
+    public KichCoVM() {
     }
 
-    public KichCo(UUID id, String MaKC, String TenKC, int TrangThaiKC) {
+    public KichCoVM(UUID id, String MaKC, String TenKC, int TrangThai) {
         this.id = id;
         this.MaKC = MaKC;
         this.TenKC = TenKC;
-        this.TrangThaiKC = TrangThaiKC;
+        this.TrangThai = TrangThai;
     }
 
     public UUID getId() {
@@ -50,11 +50,16 @@ public class KichCo {
         this.TenKC = TenKC;
     }
 
-    public int getTrangThaiKC() {
-        return TrangThaiKC;
+    public int getTrangThai() {
+        return TrangThai;
     }
 
-    public void setTrangThaiKC(int TrangThaiKC) {
-        this.TrangThaiKC = TrangThaiKC;
+    public void setTrangThai(int TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+
+    @Override
+    public String toString() {
+        return TenKC;
     }
 }

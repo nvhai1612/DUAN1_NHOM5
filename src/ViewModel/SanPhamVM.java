@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
 
 import java.util.UUID;
 
@@ -10,16 +10,16 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class SanPham {
+public class SanPhamVM {
     private UUID id;
     private String MaSP;
     private String TenSP;
     private int TrangThaiSP;
 
-    public SanPham() {
+    public SanPhamVM() {
     }
 
-    public SanPham(UUID id, String MaSP, String TenSP, int TrangThaiSP) {
+    public SanPhamVM(UUID id, String MaSP, String TenSP, int TrangThaiSP) {
         this.id = id;
         this.MaSP = MaSP;
         this.TenSP = TenSP;
@@ -56,5 +56,10 @@ public class SanPham {
 
     public void setTrangThaiSP(int TrangThaiSP) {
         this.TrangThaiSP = TrangThaiSP;
+    }
+
+    @Override
+    public String toString() {
+        return TenSP;
     }
 }

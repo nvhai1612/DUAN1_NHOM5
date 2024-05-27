@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
 
 import java.util.UUID;
 
@@ -10,16 +10,16 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class SanPhamChiTiet {
+public class SPCTVM {
     private UUID id, IdSP, IdCL, IdKC, IdMS, IdTH;
     private String MaSPCT, MoTa, TenMS, TenCL, TenTH, TenKC, TenSP, NguoiTao;
     private int SoLuongTon, TrangThaiSPCT;
     private float DonGia;
 
-    public SanPhamChiTiet() {
+    public SPCTVM() {
     }
 
-    public SanPhamChiTiet(UUID id, UUID IdSP, UUID IdCL, UUID IdKC, UUID IdMS, UUID IdTH, String MaSPCT, String MoTa, String TenMS, String TenCL, String TenTH, String TenKC, String TenSP, String NguoiTao, int SoLuongTon, int TrangThaiSPCT, float DonGia) {
+    public SPCTVM(UUID id, UUID IdSP, UUID IdCL, UUID IdKC, UUID IdMS, UUID IdTH, String MaSPCT, String MoTa, String TenMS, String TenCL, String TenTH, String TenKC, String TenSP, String NguoiTao, int SoLuongTon, int TrangThaiSPCT, float DonGia) {
         this.id = id;
         this.IdSP = IdSP;
         this.IdCL = IdCL;
@@ -39,6 +39,20 @@ public class SanPhamChiTiet {
         this.DonGia = DonGia;
     }
 
+    public SPCTVM(UUID id, String MaSPCT, String TenMS, String TenCL, String TenTH, String TenKC, String TenSP, String NguoiTao, int SoLuongTon, int TrangThaiSPCT, float DonGia) {
+        this.id = id;
+        this.MaSPCT = MaSPCT;
+        this.TenMS = TenMS;
+        this.TenCL = TenCL;
+        this.TenTH = TenTH;
+        this.TenKC = TenKC;
+        this.TenSP = TenSP;
+        this.NguoiTao = NguoiTao;
+        this.SoLuongTon = SoLuongTon;
+        this.TrangThaiSPCT = TrangThaiSPCT;
+        this.DonGia = DonGia;
+    }
+    
     public UUID getId() {
         return id;
     }
@@ -177,6 +191,6 @@ public class SanPhamChiTiet {
 
     @Override
     public String toString() {
-        return "SanPhamChiTiet{" + "id=" + id + ", IdSP=" + IdSP + ", IdCL=" + IdCL + ", IdKC=" + IdKC + ", IdMS=" + IdMS + ", IdTH=" + IdTH + ", MaSPCT=" + MaSPCT + ", MoTa=" + MoTa + ", TenMS=" + TenMS + ", TenCL=" + TenCL + ", TenTH=" + TenTH + ", TenKC=" + TenKC + ", TenSP=" + TenSP + ", NguoiTao=" + NguoiTao + ", SoLuongTon=" + SoLuongTon + ", TrangThaiSPCT=" + TrangThaiSPCT + ", DonGia=" + DonGia + '}';
+        return "SPCTVM{" + "id=" + id + ", IdSP=" + IdSP + ", IdCL=" + IdCL + ", IdKC=" + IdKC + ", IdMS=" + IdMS + ", IdTH=" + IdTH + ", MaSPCT=" + MaSPCT + ", MoTa=" + MoTa + ", TenMS=" + TenMS + ", TenCL=" + TenCL + ", TenTH=" + TenTH + ", TenKC=" + TenKC + ", TenSP=" + TenSP + ", NguoiTao=" + NguoiTao + ", SoLuongTon=" + SoLuongTon + ", TrangThaiSPCT=" + TrangThaiSPCT + ", DonGia=" + DonGia + '}';
     }
 }

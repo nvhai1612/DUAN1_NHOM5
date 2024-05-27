@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
 
 import java.util.UUID;
 
@@ -10,20 +10,20 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class MauSac {
+public class MauSacVM {
     private UUID id;
     private String MaMS;
     private String TenMS;
-    private int TrangThaiMS;
+    private int TrangThai;
 
-    public MauSac() {
+    public MauSacVM() {
     }
 
-    public MauSac(UUID id, String MaMS, String TenMS, int TrangThaiMS) {
+    public MauSacVM(UUID id, String MaMS, String TenMS, int TrangThai) {
         this.id = id;
         this.MaMS = MaMS;
         this.TenMS = TenMS;
-        this.TrangThaiMS = TrangThaiMS;
+        this.TrangThai = TrangThai;
     }
 
     public UUID getId() {
@@ -50,11 +50,16 @@ public class MauSac {
         this.TenMS = TenMS;
     }
 
-    public int getTrangThaiMS() {
-        return TrangThaiMS;
+    public int getTrangThai() {
+        return TrangThai;
     }
 
-    public void setTrangThaiMS(int TrangThaiMS) {
-        this.TrangThaiMS = TrangThaiMS;
+    public void setTrangThai(int TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+
+    @Override
+    public String toString() {
+        return TenMS;
     }
 }

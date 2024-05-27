@@ -4,12 +4,47 @@
  */
 package Views;
 
+import Service.Impl.ChatLieuService;
+import Service.Impl.KichCoService;
+import Service.Impl.MauSacService;
+import Service.Impl.SanPhamService;
+import Service.Impl.ThuongHieuService;
+import java.awt.CardLayout;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
  */
 public class BanHangJFrame extends javax.swing.JFrame {
+    private SPCTService chiTietSanPhamService = new ChiTietSanPhamService();
+    private MauSacService mauSacService = new MauSacService();
+    private ChatLieuService chatLieuService = new ChatLieuService();
+    private KichCoService kichCoService = new KichCoService();
+    private ThuongHieuService nSXService = new ThuongHieuService();
+    private SanPhamService sanPhamService = new SanPhamService();
+    private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietService();
+    private HoaDonService hoaDonService = new HoaDonService();
+    private ArrayList<SanPhamChiTietVM> listCTSP = new ArrayList<>();
+    private DefaultTableModel model = new DefaultTableModel();
+    private ArrayList<HoaDonVM> listHDVM = new ArrayList<>();
+    private ChiTietSanPhamJFrame ctspjp = new ChiTietSanPhamJFrame();
 
+    CardLayout card;
+
+    private DefaultComboBoxModel dcbbmsp;
+    private DefaultComboBoxModel dcbbmcl;
+    private DefaultComboBoxModel dcbbmkc;
+    private DefaultComboBoxModel dcbbmms;
+    private DefaultComboBoxModel dcbbmnsx;
+    DefaultTableModel dtmsp = new DefaultTableModel();
+    DefaultTableModel dtmgh = new DefaultTableModel();
+    DefaultTableModel dtmhd = new DefaultTableModel();
+
+    HoaDonRepos hoaDonRes = new HoaDonRepos();
     /**
      * Creates new form BanHangJFrame
      */
@@ -18,9 +53,72 @@ public class BanHangJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 //        LoadTableHoaDon();
 //        ctspjp.LoadTable();
-
+//
 //        LoadTableSanPham();
 //        LoadTableGioHang();
+    }
+    
+    public BanHangJFrame(String MaNV) {
+        initComponents();
+        card = (CardLayout) pnlCards.getLayout();
+        card.show(pnlCards, "pnlBanHang");
+        setLocationRelativeTo(null);
+        LoadTableHoaDon();
+        ctspjp.LoadTable();
+        LoadTableSanPham();
+        LoadTableGioHang();
+        txtNguoiDung.setText(MaNV);
+    }
+
+    private void LoadTableSanPham() {
+        dtmsp = (DefaultTableModel) tblDanhSachSP.getModel();
+        dtmsp.setRowCount(0);
+
+        ArrayList<SanPhamChiTietVM> listCTSPVM = chiTietSanPhamService.getAll();
+
+        for (SanPhamChiTietVM ctspvm : listCTSPVM) {
+            dtmsp.addRow(new Object[]{
+                ctspvm.getMaSPCT(),
+                ctspvm.getTenSP(),
+                ctspvm.getTenCL(),
+                ctspvm.getTenKC(),
+                ctspvm.getTenMS(),
+                ctspvm.getTenTH(),
+                ctspvm.getSoLuongTon(),
+                ctspvm.getDonGia(),});
+        }
+    }
+
+    private void LoadTableGioHang() {
+        dtmgh = (DefaultTableModel) tblGioHang.getModel();
+        dtmgh.setRowCount(0);
+
+        ArrayList<SanPhamChiTietVM> listCTSPVM = listCTSP;
+
+        for (SanPhamChiTietVM ctspvm : listCTSPVM) {
+            dtmgh.addRow(new Object[]{
+                ctspvm.getMaSPCT(),
+                ctspvm.getTenSP(),
+                ctspvm.getSoLuongTon(),
+                ctspvm.getDonGia(),
+                ctspvm.getSoLuongTon() * ctspvm.getDonGia()
+            });
+        }
+    }
+
+    private void LoadTableHoaDon() {
+        dtmhd = (DefaultTableModel) tblHoaDon.getModel();
+        dtmhd.setRowCount(0);
+
+        ArrayList<HoaDonVM> listHDVM = hoaDonService.getAll().isEmpty() ? hoaDonService.getAllHoaDon() : hoaDonService.getAll();
+        for (HoaDonVM hdvm : listHDVM) {
+            dtmhd.addRow(new Object[]{
+                hdvm.getMaHD(),
+                hdvm.getTenNV(),
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(hdvm.getNgayTao()),
+                 hdvm.getTrangThai() == 1 ? "Chờ thanh toán" : "Đã thanh toán"
+            });
+        }
     }
 
     /**

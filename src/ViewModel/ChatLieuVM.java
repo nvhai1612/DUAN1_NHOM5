@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
 
 import java.util.UUID;
 
@@ -10,16 +10,16 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class ChatLieu {
+public class ChatLieuVM {
     private UUID id;
     private String MaCL;
     private String TenCL;
     private int TrangThaiCL;
 
-    public ChatLieu() {
+    public ChatLieuVM() {
     }
 
-    public ChatLieu(UUID id, String MaCL, String TenCL, int TrangThaiCL) {
+    public ChatLieuVM(UUID id, String MaCL, String TenCL, int TrangThaiCL) {
         this.id = id;
         this.MaCL = MaCL;
         this.TenCL = TenCL;
@@ -56,5 +56,10 @@ public class ChatLieu {
 
     public void setTrangThaiCL(int TrangThaiCL) {
         this.TrangThaiCL = TrangThaiCL;
+    }
+
+    @Override
+    public String toString() {
+        return TenCL;
     }
 }
