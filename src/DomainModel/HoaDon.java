@@ -14,7 +14,7 @@ import java.util.UUID;
 public class HoaDon {
     private UUID Id, IdTK, IdKH, IdPTTT;
     private String MaHD,TenTK,TenKH,TenPTTT;
-    private Date NgayTao;
+    private Date NgayTao,NgayThanhToan;
     private float TongTien;
     private int TrangThaiHD;
 
@@ -27,15 +27,16 @@ public class HoaDon {
          this.NgayTao = ngayTao;
     }
     
-    public HoaDon(String maHd, String TenTK, String tenKH, Date ngayTao, int TrangThaiHD) {
+    public HoaDon(String maHd, String TenTK, String tenKH, Date ngayTao, Date NgayThanhToan, int TrangThaiHD) {
         this.MaHD = maHd;
         this.TenTK = TenTK;
         this.TenKH = tenKH;
         this.NgayTao = ngayTao;
+        this.NgayThanhToan = NgayThanhToan;
         this.TrangThaiHD = TrangThaiHD;
     }
 
-    public HoaDon(UUID Id, UUID IdTK, UUID IdKH, UUID IdPTTT, String MaHD, String TenTK, String TenKH, String TenPTTT, Date NgayTao, float TongTien, int TrangThaiHD) {
+    public HoaDon(UUID Id, UUID IdTK, UUID IdKH, UUID IdPTTT, String MaHD, String TenTK, String TenKH, String TenPTTT, Date NgayTao, Date NgayThanhToan, float TongTien, int TrangThaiHD) {
         this.Id = Id;
         this.IdTK = IdTK;
         this.IdKH = IdKH;
@@ -45,6 +46,7 @@ public class HoaDon {
         this.TenKH = TenKH;
         this.TenPTTT = TenPTTT;
         this.NgayTao = NgayTao;
+        this.NgayThanhToan = NgayThanhToan;
         this.TongTien = TongTien;
         this.TrangThaiHD = TrangThaiHD;
     }
@@ -121,6 +123,14 @@ public class HoaDon {
         this.NgayTao = NgayTao;
     }
 
+    public Date getNgayThanhToan() {
+        return NgayThanhToan;
+    }
+
+    public void setNgayThanhToan(Date NgayThanhToan) {
+        this.NgayThanhToan = NgayThanhToan;
+    }
+
     public float getTongTien() {
         return TongTien;
     }
@@ -139,6 +149,8 @@ public class HoaDon {
 
     @Override
     public String toString() {
-        return "HoaDon{" + "Id=" + Id + ", IdTK=" + IdTK + ", IdKH=" + IdKH + ", IdPTTT=" + IdPTTT + ", MaHD=" + MaHD + ", TenTK=" + TenTK + ", TenKH=" + TenKH + ", TenPTTT=" + TenPTTT + ", NgayTao=" + NgayTao + ", TongTien=" + TongTien + ", TrangThaiHD=" + TrangThaiHD + '}';
+        return "HoaDon{" + "Id=" + Id + ", IdTK=" + IdTK + ", IdKH=" + IdKH + ", IdPTTT=" + IdPTTT + ", MaHD=" + MaHD + ", TenTK=" + TenTK + ", TenKH=" + TenKH + ", TenPTTT=" + TenPTTT + ", NgayTao=" + NgayTao + ", NgayThanhToan=" + NgayThanhToan + ", TongTien=" + TongTien + ", TrangThaiHD=" + TrangThaiHD + '}';
     }
+
+    
 }

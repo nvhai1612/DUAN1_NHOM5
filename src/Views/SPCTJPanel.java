@@ -43,6 +43,8 @@ public class SPCTJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SanPhamJFrame
      */
+    
+    private DefaultComboBoxModel dcbbtsp;
     private DefaultComboBoxModel dcbbmsp;
     private DefaultComboBoxModel dcbbmcl;
     private DefaultComboBoxModel dcbbmkc;
@@ -72,6 +74,12 @@ public class SPCTJPanel extends javax.swing.JPanel {
         dcbbmth = (DefaultComboBoxModel) cbbTH.getModel();
         dcbbmth.addAll(thuongHieuService.getAll());
         for (int i = 0; i < dcbbmth.getSize(); i++) {
+//            System.out.println(dcbbmnsx.getElementAt(i)instanceof ChucVuVM);
+        }
+        
+        dcbbtsp = (DefaultComboBoxModel) cbbTenSP.getModel();
+        dcbbtsp.addAll(sanPhamService.getAll());
+        for (int i = 0; i < dcbbtsp.getSize(); i++) {
 //            System.out.println(dcbbmnsx.getElementAt(i)instanceof ChucVuVM);
         }
         LoadTableSPCT();
@@ -124,6 +132,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -153,7 +162,6 @@ public class SPCTJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtMaCTSP = new javax.swing.JTextField();
-        txtTenSP = new javax.swing.JTextField();
         txtSoLuongTon = new javax.swing.JTextField();
         cbbChatLieu = new javax.swing.JComboBox<>();
         cbbKichCo = new javax.swing.JComboBox<>();
@@ -162,7 +170,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
         btnChatLieu = new javax.swing.JButton();
         btnKichCo = new javax.swing.JButton();
         btnMauSac = new javax.swing.JButton();
-        btnNSX = new javax.swing.JButton();
+        btnTH = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         txtDonGia = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -170,6 +178,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         rdohdspct = new javax.swing.JRadioButton();
         rdodungspct = new javax.swing.JRadioButton();
+        cbbTenSP = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSanPhamChiTiet = new javax.swing.JTable();
@@ -310,7 +319,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -345,6 +354,8 @@ public class SPCTJPanel extends javax.swing.JPanel {
         jLabel7.setText("Màu sắc");
 
         jLabel8.setText("Thương Hiệu");
+
+        txtMaCTSP.setEditable(false);
 
         txtSoLuongTon.setText("0");
         txtSoLuongTon.addActionListener(new java.awt.event.ActionListener() {
@@ -387,10 +398,10 @@ public class SPCTJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnNSX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
-        btnNSX.addActionListener(new java.awt.event.ActionListener() {
+        btnTH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
+        btnTH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNSXActionPerformed(evt);
+                btnTHActionPerformed(evt);
             }
         });
 
@@ -402,9 +413,13 @@ public class SPCTJPanel extends javax.swing.JPanel {
 
         jLabel16.setText("Trạng thái");
 
+        buttonGroup1.add(rdohdspct);
         rdohdspct.setText("Đang hoạt động");
 
+        buttonGroup1.add(rdodungspct);
         rdodungspct.setText("Dừng hoạt động");
+
+        cbbTenSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn sản phẩm..." }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -421,7 +436,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtMaCTSP, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                                .addComponent(txtTenSP)))
+                                .addComponent(cbbTenSP, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
@@ -453,11 +468,11 @@ public class SPCTJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnMauSac, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                            .addComponent(btnNSX, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTH, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnChatLieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnKichCo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,17 +489,17 @@ public class SPCTJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel7)
-                            .addComponent(cbbMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbbMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbbTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnMauSac)))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnNSX)
+                    .addComponent(btnTH)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
                         .addComponent(cbbTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -505,7 +520,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
                     .addComponent(rdodungspct)
                     .addComponent(jLabel12)
                     .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(222, 231, 227));
@@ -536,6 +551,11 @@ public class SPCTJPanel extends javax.swing.JPanel {
         });
 
         btnTim.setText("Tìm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -633,103 +653,42 @@ public class SPCTJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPActionPerformed
-        String MaSP = txtMaSP.getText();
-        String TenSP = txtTenSP1.getText();
-        int TrangThai = rdoHoatDong.isSelected() == true ? 1 : 0;
-
-        SanPham sp = new SanPham();
-        sp.setMaSP(MaSP);
-        sp.setTenSP(TenSP);
-        sp.setTrangThaiSP(TrangThai);
-
-        this.sanPhamService.add(sp);
-        Moi();
-        this.LoadTableSP();
-    }//GEN-LAST:event_btnThemSPActionPerformed
-
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         LamMoi();
-    }//GEN-LAST:event_btnLamMoiActionPerformed
+    }//GEN-LAST:event_btnMoiActionPerformed
 
-    private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String MaSPCT = txtMaCTSP.getText();
+        UUID TenSP = ((SanPhamVM) cbbTenSP.getSelectedItem()).getId();
+        String SoLuongTon = txtSoLuongTon.getText();
+        String NguoiTao = txtNguoiTao.getText();
+        int TrangThai = rdoHoatDong.isSelected()== true ? 1 : 0;
+        UUID TenCL = ((ChatLieuVM) cbbChatLieu.getSelectedItem()).getId();
+        UUID TenKC = ((KichCoVM) cbbKichCo.getSelectedItem()).getId();
+        UUID TenMS = ((MauSacVM) cbbMauSac.getSelectedItem()).getId();
+        UUID TenTH = ((ThuongHieuVM) cbbTH.getSelectedItem()).getId();
+        String DonGia = txtDonGia.getText();
 
-    }//GEN-LAST:event_tblSanPhamMouseClicked
+        SanPhamChiTiet spct = new SanPhamChiTiet();
+        spct.setMaSPCT(MaSPCT);
+        spct.setIdSP(TenSP);
+        spct.setSoLuongTon(Integer.valueOf(SoLuongTon));
+        spct.setNguoiTao(NguoiTao);
+        spct.setTrangThaiSPCT(TrangThai);
+        spct.setIdCL(TenCL);
+        spct.setIdKC(TenKC);
+        spct.setIdMS(TenMS);
+        spct.setIdTH(TenTH);
+        spct.setDonGia(Float.valueOf(DonGia));
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void txtSoLuongTonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongTonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSoLuongTonActionPerformed
-
-    private void cbbTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTHActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbbTHActionPerformed
-
-    private void btnChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuActionPerformed
-
-    }//GEN-LAST:event_btnChatLieuActionPerformed
-
-    private void btnKichCoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKichCoActionPerformed
-
-    }//GEN-LAST:event_btnKichCoActionPerformed
-
-    private void btnMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauSacActionPerformed
-
-    }//GEN-LAST:event_btnMauSacActionPerformed
-
-    private void btnNSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNSXActionPerformed
-
-    }//GEN-LAST:event_btnNSXActionPerformed
-
-    private void tblSanPhamChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamChiTietMouseClicked
-        int row = tblSanPhamChiTiet.getSelectedRow();
-        if (row == -1) {
-            return;
-        }
-
-        if (Optional.ofNullable(tblSanPhamChiTiet.getValueAt(row, 4)).isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Không được null");
-            return;
-        }
-
-        String MaCTSP = tblSanPhamChiTiet.getValueAt(row, 0).toString();
-        String TenSP = tblSanPhamChiTiet.getValueAt(row, 1).toString();
-        String SoLuongTon = tblSanPhamChiTiet.getValueAt(row, 2).toString();
-        String NguoiTao = tblSanPhamChiTiet.getValueAt(row, 3).toString();
-        String TrangThaiSPCT = tblSanPhamChiTiet.getValueAt(row, 4).toString();
-
-        String TenKC = tblSanPhamChiTiet.getValueAt(row, 5).toString();
-        String TenMS = tblSanPhamChiTiet.getValueAt(row, 6).toString();
-        String TenTH = tblSanPhamChiTiet.getValueAt(row, 7).toString();
-        String TenCL = tblSanPhamChiTiet.getValueAt(row, 8).toString();
-        String DonGia = tblSanPhamChiTiet.getValueAt(row, 9).toString();
-
-        txtMaCTSP.setText(MaCTSP);
-        txtTenSP.setText(TenSP);
-        txtSoLuongTon.setText(SoLuongTon);
-        txtNguoiTao.setText(NguoiTao);
-        if (TrangThaiSPCT.equalsIgnoreCase("Đang hoạt động")) {
-            this.rdohdspct.setSelected(true);
-        } else {
-            this.rdodungspct.setSelected(true);
-        }
-        dcbbmcl.setSelectedItem(chatLieuService.getAll().stream().filter(i -> i.getTenCL().equalsIgnoreCase(TenCL)).findFirst().get());
-        dcbbmkc.setSelectedItem(kichCoService.getAll().stream().filter(i -> i.getTenKC().equals(TenKC)).findFirst().get());
-        dcbbmms.setSelectedItem(mauSacService.getAll().stream().filter(i -> i.getTenMS().equals(TenMS)).findFirst().get());
-        dcbbmth.setSelectedItem(thuongHieuService.getAll().stream().filter(i -> i.getTenTH().equals(TenTH)).findFirst().get());
-        txtDonGia.setText(DonGia);
-    }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
-
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-
-    }//GEN-LAST:event_txtTimKiemKeyReleased
+        this.SPCTService.update(spct);
+        LamMoi();
+        this.LoadTableSPCT();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String MaSPCT = txtMaCTSP.getText();
-        UUID TenSP = spctrp.SelectSPByTen(txtTenSP.getText());
+        String MaSPCT = ((SanPhamVM) cbbTenSP.getSelectedItem()).getMaSP();
+        UUID TenSP = ((SanPhamVM) cbbTenSP.getSelectedItem()).getId();
         String SoLuongTon = txtSoLuongTon.getText();
         String NguoiTao = txtNguoiTao.getText();
         int TrangThai = rdoHoatDong.isSelected()== true ? 1 : 0;
@@ -756,29 +715,142 @@ public class SPCTJPanel extends javax.swing.JPanel {
         this.LoadTableSPCT();
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        ArrayList<SPCTVM> listSPCTVM = SPCTService.getAll();
+        String TimKiem = this.txtTimKiem.getText();
+        int index = -1;
+        for (SPCTVM nvvm : listSPCTVM) {
+            if (TimKiem.equalsIgnoreCase(nvvm.getMaSPCT())) {
+                index = listSPCTVM.indexOf(nvvm);
+            }
+        }
 
-    }//GEN-LAST:event_btnSuaActionPerformed
+        if(index==-1){
+            JOptionPane.showMessageDialog(this, "Không tìm thấy !");
+            return;
+        }
+        txtMaCTSP.setText(listSPCTVM.get(index).getMaSPCT());
+        cbbTenSP.setSelectedItem(listSPCTVM.get(index).getTenSP());
+        txtSoLuongTon.setText(String.valueOf(listSPCTVM.get(index).getSoLuongTon()));
+        txtNguoiTao.setText(listSPCTVM.get(index).getNguoiTao());
+        rdohdspct.setSelected(true);
+        cbbKichCo.setSelectedItem(listSPCTVM.get(index).getTenKC());
+        cbbMauSac.setSelectedItem(listSPCTVM.get(index).getTenMS());
+        cbbTH.setSelectedItem(listSPCTVM.get(index).getTenTH());
+        cbbChatLieu.setSelectedItem(listSPCTVM.get(index).getTenCL());
+        txtDonGia.setText(String.valueOf(listSPCTVM.get(index).getDonGia()));
+    }//GEN-LAST:event_btnTimActionPerformed
 
-    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void tblSanPhamChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamChiTietMouseClicked
+        int row = tblSanPhamChiTiet.getSelectedRow();
+        if (row == -1) {
+            return;
+        }
+
+        if (Optional.ofNullable(tblSanPhamChiTiet.getValueAt(row, 4)).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không được null");
+            return;
+        }
+
+        String MaCTSP = tblSanPhamChiTiet.getValueAt(row, 0).toString();
+        String TenSP = tblSanPhamChiTiet.getValueAt(row, 1).toString();
+        String SoLuongTon = tblSanPhamChiTiet.getValueAt(row, 2).toString();
+        String NguoiTao = tblSanPhamChiTiet.getValueAt(row, 3).toString();
+        String TrangThaiSPCT = tblSanPhamChiTiet.getValueAt(row, 4).toString();
+
+        String TenKC = tblSanPhamChiTiet.getValueAt(row, 5).toString();
+        String TenMS = tblSanPhamChiTiet.getValueAt(row, 6).toString();
+        String TenTH = tblSanPhamChiTiet.getValueAt(row, 7).toString();
+        String TenCL = tblSanPhamChiTiet.getValueAt(row, 8).toString();
+        String DonGia = tblSanPhamChiTiet.getValueAt(row, 9).toString();
+
+        txtMaCTSP.setText(MaCTSP);
+        dcbbtsp.setSelectedItem(sanPhamService.getAll().stream().filter(i -> i.getTenSP().equalsIgnoreCase(TenSP)).findFirst().get());
+        txtSoLuongTon.setText(SoLuongTon);
+        txtNguoiTao.setText(NguoiTao);
+        if (TrangThaiSPCT.equalsIgnoreCase("Đang hoạt động")) {
+            this.rdohdspct.setSelected(true);
+        } else {
+            this.rdodungspct.setSelected(true);
+        }
+        dcbbmcl.setSelectedItem(chatLieuService.getAll().stream().filter(i -> i.getTenCL().equalsIgnoreCase(TenCL)).findFirst().get());
+        dcbbmkc.setSelectedItem(kichCoService.getAll().stream().filter(i -> i.getTenKC().equals(TenKC)).findFirst().get());
+        dcbbmms.setSelectedItem(mauSacService.getAll().stream().filter(i -> i.getTenMS().equals(TenMS)).findFirst().get());
+        dcbbmth.setSelectedItem(thuongHieuService.getAll().stream().filter(i -> i.getTenTH().equals(TenTH)).findFirst().get());
+        txtDonGia.setText(DonGia);
+    }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
+
+    private void btnTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTHActionPerformed
+
+    }//GEN-LAST:event_btnTHActionPerformed
+
+    private void btnMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauSacActionPerformed
+
+    }//GEN-LAST:event_btnMauSacActionPerformed
+
+    private void btnKichCoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKichCoActionPerformed
+        
+    }//GEN-LAST:event_btnKichCoActionPerformed
+
+    private void btnChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuActionPerformed
+        
+    }//GEN-LAST:event_btnChatLieuActionPerformed
+
+    private void cbbTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbTHActionPerformed
+
+    private void txtSoLuongTonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoLuongTonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSoLuongTonActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
+
+    }//GEN-LAST:event_tblSanPhamMouseClicked
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         LamMoi();
-    }//GEN-LAST:event_btnMoiActionPerformed
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnThemSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSPActionPerformed
+        String MaSP = txtMaSP.getText();
+        String TenSP = txtTenSP1.getText();
+        int TrangThai = rdoHoatDong.isSelected() == true ? 1 : 0;
+
+        SanPham sp = new SanPham();
+        sp.setMaSP(MaSP);
+        sp.setTenSP(TenSP);
+        sp.setTrangThaiSP(TrangThai);
+
+        this.sanPhamService.add(sp);
+        Moi();
+        this.LoadTableSP();
+    }//GEN-LAST:event_btnThemSPActionPerformed
     public void LamMoi() {
         txtMaCTSP.setText("");
-        txtTenSP.setText("");
+        cbbTenSP.setSelectedIndex(0);
         txtSoLuongTon.setText("0");
         cbbChatLieu.setSelectedIndex(0);
         cbbKichCo.setSelectedIndex(0);
         cbbMauSac.setSelectedIndex(0);
         txtNguoiTao.setText("0");
         cbbTH.setSelectedIndex(0);
+        rdohdspct.setSelected(true);
         txtDonGia.setText("0");
     }
     
     public void Moi(){
         txtMaSP.setText("");
         txtTenSP1.setText("");
-        rdohdspct.setSelected(true);
+        rdoHoatDong.setSelected(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -787,16 +859,18 @@ public class SPCTJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnMauSac;
     private javax.swing.JButton btnMoi;
-    private javax.swing.JButton btnNSX;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnSuaSP;
+    private javax.swing.JButton btnTH;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemSP;
     private javax.swing.JButton btnTim;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbbChatLieu;
     private javax.swing.JComboBox<String> cbbKichCo;
     private javax.swing.JComboBox<String> cbbMauSac;
     private javax.swing.JComboBox<String> cbbTH;
+    private javax.swing.JComboBox<String> cbbTenSP;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -834,7 +908,6 @@ public class SPCTJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaSP;
     private javax.swing.JTextField txtNguoiTao;
     private javax.swing.JTextField txtSoLuongTon;
-    private javax.swing.JTextField txtTenSP;
     private javax.swing.JTextField txtTenSP1;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables

@@ -4,6 +4,7 @@
  */
 package Repository.Impl;
 
+import DomainModel.HoaDon;
 import DomainModel.SanPham;
 import DomainModel.SanPhamChiTiet;
 import Repository.ISPCTRepos;
@@ -86,7 +87,28 @@ public class SPCTRepos implements ISPCTRepos {
 
     @Override
     public Boolean update(SanPhamChiTiet spct) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+int check;
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement(
+                "UPDATE SANPHAMCHITIET SET IDSP = ?,SOLUONGTON = ?,IDCL = ?,IDKC = ?, IDMS = ?,IDTH = ?,DONGIA = ?, TRANGTHAISPCT = ?, NGUOITAO = ? WHERE MASPCT = ?")) {
+
+            ps.setObject(1, spct.getIdSP());
+            ps.setObject(2, spct.getSoLuongTon());
+            ps.setObject(3, spct.getIdCL());
+            ps.setObject(4, spct.getIdKC());
+            ps.setObject(5, spct.getIdMS());
+            ps.setObject(6, spct.getIdTH());
+            ps.setObject(7, spct.getDonGia());
+            ps.setObject(8, spct.getTrangThaiSPCT());
+            ps.setObject(9, spct.getNguoiTao());
+            ps.setObject(10, spct.getMaSPCT());
+
+            check = ps.executeUpdate();
+            return check > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;    
     }
 
     @Override
@@ -97,7 +119,7 @@ public class SPCTRepos implements ISPCTRepos {
     @Override
     public ArrayList<SanPhamChiTiet> search() {
         ArrayList<SanPhamChiTiet> listCTSP = new ArrayList<>();
-        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT MACTSP,TENSP,SOLUONGTON,IDCL,IDKC,IDMS,IDNSX,DONGIA FROM CHITIETSANPHAM JOIN SANPHAM ON CHITIETSANPHAM.IDSP = SANPHAM.ID JOIN CHATLIEU ON CHITIETSANPHAM.IDCL = CHATLIEU.ID JOIN KICHCO ON CHITIETSANPHAM.IDKC = KICHCO.ID JOIN NSX ON CHITIETSANPHAM.IDNSX = NSX.ID JOIN MAUSAC ON CHITIETSANPHAM.IDMS = MAUSAC.ID WHERE MASP = ?");) {
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT MACTSP,IDSP,SOLUONGTON,IDCL,IDKC,IDMS,IDNSX,DONGIA FROM CHITIETSANPHAM JOIN SANPHAM ON CHITIETSANPHAM.IDSP = SANPHAM.ID JOIN CHATLIEU ON CHITIETSANPHAM.IDCL = CHATLIEU.ID JOIN KICHCO ON CHITIETSANPHAM.IDKC = KICHCO.ID JOIN NSX ON CHITIETSANPHAM.IDNSX = NSX.ID JOIN MAUSAC ON CHITIETSANPHAM.IDMS = MAUSAC.ID WHERE MASP = ?");) {
             ps.executeUpdate();
 
             SanPhamChiTiet spct = new SanPhamChiTiet();
@@ -128,7 +150,7 @@ public SanPhamChiTiet searchbyMaSp(String ma) {
         try (Connection con = connection.getConnection();
                 PreparedStatement ps = 
                         con.prepareStatement
-        ("SELECT MACTSP,TENSP,SOLUONGTON,IDCL,IDKC,IDMS,IDNSX,DONGIA,SANPHAMCHITIET.id FROM SANPHAMCHITIET JOIN SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID JOIN CHATLIEU ON SANPHAMCHITIET.IDCL = CHATLIEU.ID JOIN KICHCO ON SANPHAMCHITIET.IDKC = KICHCO.ID JOIN THUONGHIEU ON SANPHAMCHITIET.IDTH = TH.ID JOIN MAUSAC ON SANPHAMCHITIET.IDMS = MAUSAC.ID WHERE MASPCT = ?");) {
+        ("SELECT MASPCT,IDSP,SOLUONGTON,IDCL,IDKC,IDMS,IDTH,DONGIA,SANPHAMCHITIET.id FROM SANPHAMCHITIET JOIN SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID JOIN CHATLIEU ON SANPHAMCHITIET.IDCL = CHATLIEU.ID JOIN KICHCO ON SANPHAMCHITIET.IDKC = KICHCO.ID JOIN THUONGHIEU ON SANPHAMCHITIET.IDTH = THUONGHIEU.ID JOIN MAUSAC ON SANPHAMCHITIET.IDMS = MAUSAC.ID WHERE MASPCT = ?");) {
                        ps.setObject(1, ma);
 
 //            ps.executeUpdate();
@@ -174,7 +196,7 @@ public SanPhamChiTiet searchbyMaSp(String ma) {
 //    }   
     public UUID SelectSPByTen(String TenSP) {
 
-        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT ID FROM SANPHAM WHERE TENSP = ?")) {
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT ID FROM SANPHAM WHERE MASP = ?")) {
             ps.setObject(1, TenSP);
             ResultSet rs = ps.executeQuery();
 
@@ -263,4 +285,5 @@ public SanPhamChiTiet searchbyMaSp(String ma) {
 
         return null;
     }
+    
 }

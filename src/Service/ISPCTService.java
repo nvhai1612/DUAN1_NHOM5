@@ -17,6 +17,5 @@ public interface ISPCTService {
     ArrayList<SanPhamChiTiet>getAllDoMain();
     void add(SanPhamChiTiet ctsp);
     void update(SanPhamChiTiet ctsp);
-    void delete(String MaCTSP);
     ArrayList<SanPhamChiTiet> search (String MaCTSP);
 }

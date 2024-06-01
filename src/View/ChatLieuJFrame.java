@@ -27,7 +27,7 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
     }
     
     public void LoadTable(){
-        DefaultTableModel dtm = (DefaultTableModel) tblSanPham.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) tblChatLieu.getModel();
         dtm.setRowCount(0);
         ArrayList<ChatLieuVM> ListSP = chatLieuService.getAll();
         
@@ -58,15 +58,15 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
         txtMaSP = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtTenSP = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         rdoHoatDong = new javax.swing.JRadioButton();
         rdoDHoatDong = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblSanPham = new javax.swing.JTable();
+        tblChatLieu = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -86,9 +86,9 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Tên SP :");
 
-        jButton1.setText("Thêm");
+        btnThem.setText("Thêm");
 
-        jButton2.setText("Sửa");
+        btnSua.setText("Sửa");
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
                         .addComponent(rdoHoatDong))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jButton1)))
+                        .addComponent(btnThem)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -142,7 +142,7 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jButton2)
+                        .addComponent(btnSua)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLamMoi)
                         .addGap(56, 56, 56))))
@@ -167,15 +167,15 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
                     .addComponent(rdoDHoatDong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
                     .addComponent(btnLamMoi))
                 .addGap(151, 151, 151))
         );
 
         jPanel2.setBackground(new java.awt.Color(222, 229, 226));
 
-        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
+        tblChatLieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -183,12 +183,12 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
                 "ID", "Mã CL", "Tên CL", "Trạng thái"
             }
         ));
-        tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblChatLieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblSanPhamMouseClicked(evt);
+                tblChatLieuMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tblSanPham);
+        jScrollPane4.setViewportView(tblChatLieu);
 
         jButton3.setText("Tìm");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +240,7 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
                     .addComponent(jRadioButton2)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -256,22 +256,21 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
-        int row = tblSanPham.getSelectedRow();
+    private void tblChatLieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChatLieuMouseClicked
+        int row = tblChatLieu.getSelectedRow();
         if(row == -1){
             return;
         }
 
-        String MaSP = tblSanPham.getValueAt(row, 1).toString();
-        String TenSP = tblSanPham.getValueAt(row, 2).toString();
-        String TrangThai = tblSanPham.getValueAt(row, 3).toString();
+        String MaSP = tblChatLieu.getValueAt(row, 1).toString();
+        String TenSP = tblChatLieu.getValueAt(row, 2).toString();
+        String TrangThai = tblChatLieu.getValueAt(row, 3).toString();
 
         txtMaSP.setText(MaSP);
         txtTenSP.setText(TenSP);
@@ -280,7 +279,7 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
         }else{
             this.rdoDHoatDong.setSelected(true);
         }
-    }//GEN-LAST:event_tblSanPhamMouseClicked
+    }//GEN-LAST:event_tblChatLieuMouseClicked
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         LamMoi();
@@ -332,10 +331,10 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -350,7 +349,7 @@ public class ChatLieuJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdoDHoatDong;
     private javax.swing.JRadioButton rdoHoatDong;
-    private javax.swing.JTable tblSanPham;
+    private javax.swing.JTable tblChatLieu;
     private javax.swing.JTextField txtMaSP;
     private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables

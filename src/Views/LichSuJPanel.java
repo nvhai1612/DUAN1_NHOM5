@@ -4,19 +4,42 @@
  */
 package Views;
 
+import Repository.Impl.HDCTCTRepos;
+import ViewModel.HoaDonDTO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
  */
 public class LichSuJPanel extends javax.swing.JPanel {
+    private HDCTCTRepos hDCTCTRepos = new HDCTCTRepos();
 
     /**
      * Creates new form HoaDonJPanel
      */
     public LichSuJPanel() {
         initComponents();
+        LoadTable();
     }
 
+    private void LoadTable(){
+        DefaultTableModel dtm = (DefaultTableModel) tblHoaDon.getModel();
+        dtm.setRowCount(0);
+        
+        ArrayList<HoaDonDTO> listDTO = hDCTCTRepos.getListFormDB();
+        
+        for(HoaDonDTO hdct : listDTO){
+            dtm.addRow(new Object[]{
+                hdct.getMaHD(),
+                hdct.getTenNV(),
+                hdct.getTenKH(),
+                hdct.getTrangThai() == 1 ? "Đã thanh toán" : "Hủy",
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -326,7 +349,7 @@ public class LichSuJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-        
+        LoadTable();
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased

@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Repository;
+package Service;
 
-import DomainModel.HoaDon;
+import DomainModel.PTTT;
+import ViewModel.PTTTVM;
 import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
-public interface IHoaDonRepos {
-    public ArrayList<HoaDon> getListFormDB();
-    public Boolean add(HoaDon hd);
-    public Boolean update(HoaDon hd);
+public interface IPTTTService {
+    ArrayList<PTTTVM> getAll();
+    ArrayList<PTTT> getAllDomain();
 }

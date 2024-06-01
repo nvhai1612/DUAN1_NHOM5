@@ -45,5 +45,74 @@ public class HoaDonVM {
         this.NgayTao = NgayTao;
         this.TrangThaiHD = TrangThaiHD;
     }
+
+    public UUID getId() {
+        return Id;
+    }
+
+    public void setId(UUID Id) {
+        this.Id = Id;
+    }
+
+    public UUID getIdTK() {
+        return IdTK;
+    }
+
+    public void setIdTK(UUID IdTK) {
+        this.IdTK = IdTK;
+    }
+
+    public UUID getIdKH() {
+        return IdKH;
+    }
+
+    public void setIdKH(UUID IdKH) {
+        this.IdKH = IdKH;
+    }
+
+    public String getMaHD() {
+        return MaHD;
+    }
+
+    public void setMaHD(String MaHD) {
+        this.MaHD = MaHD;
+    }
+
+    public String getTenTK() {
+        return TenTK;
+    }
+
+    public void setTenTK(String TenTK) {
+        this.TenTK = TenTK;
+    }
+
+    public String getTenKH() {
+        return TenKH;
+    }
+
+    public void setTenKH(String TenKH) {
+        this.TenKH = TenKH;
+    }
+
+    public Date getNgayTao() {
+        return NgayTao;
+    }
+
+    public void setNgayTao(Date NgayTao) {
+        this.NgayTao = NgayTao;
+    }
+
+    public int getTrangThaiHD() {
+        return TrangThaiHD;
+    }
+
+    public void setTrangThaiHD(int TrangThaiHD) {
+        this.TrangThaiHD = TrangThaiHD;
+    }
+
+    @Override
+    public String toString() {
+        return "HoaDonVM{" + "Id=" + Id + ", IdTK=" + IdTK + ", IdKH=" + IdKH + ", MaHD=" + MaHD + ", TenTK=" + TenTK + ", TenKH=" + TenKH + ", NgayTao=" + NgayTao + ", TrangThaiHD=" + TrangThaiHD + '}';
+    }
     
 }
