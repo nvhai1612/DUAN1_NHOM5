@@ -2,23 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
 
 import java.util.UUID;
+
 
 /**
  *
  * @author Admin
  */
-public class PTTT {
+public class PTTTVM {
     private UUID id;
     private String MaPTTT;
     private String TenPTTT;
 
-    public PTTT() {
+    public PTTTVM() {
     }
 
-    public PTTT(UUID id, String MaPTTT, String TenPTTT) {
+    public PTTTVM(UUID id, String MaPTTT, String TenPTTT) {
         this.id = id;
         this.MaPTTT = MaPTTT;
         this.TenPTTT = TenPTTT;
