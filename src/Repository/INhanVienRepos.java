@@ -6,6 +6,7 @@ package Repository;
 
 import DomainModel.NhanVien;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  *
@@ -14,6 +15,6 @@ import java.util.ArrayList;
 public interface INhanVienRepos {
     public ArrayList<NhanVien> getListFormDB();
     public Boolean add(NhanVien nv);
-    public Boolean update(NhanVien nv);
-    public ArrayList<NhanVien> search();
+    public String update(NhanVien nv , UUID ID);
+    public ArrayList<NhanVien> search(String MaNV);
 }

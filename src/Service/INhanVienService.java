@@ -4,10 +4,22 @@
  */
 package Service;
 
+import DomainModel.NhanVien;
+import java.util.ArrayList;
+import java.util.UUID;
+
 /**
  *
  * @author Admin
  */
 public interface INhanVienService {
-    
+
+    public ArrayList<NhanVien> getListFormDB();
+
+    public Boolean add(NhanVien nv);
+
+    public String update(NhanVien nv, UUID ID);
+
+    public ArrayList<NhanVien> search(String MaNV);
+
 }
