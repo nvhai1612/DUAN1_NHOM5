@@ -5,6 +5,7 @@
 package Views;
 
 import DomainModel.HoaDon;
+import DomainModel.PTTT;
 import DomainModel.SanPhamChiTiet;
 import Repository.Impl.HoaDonRepos;
 import Service.Impl.ChatLieuService;
@@ -16,6 +17,7 @@ import Service.Impl.SPCTService;
 import Service.Impl.SanPhamService;
 import Service.Impl.ThuongHieuService;
 import ViewModel.HoaDonVM;
+import ViewModel.PTTTVM;
 import ViewModel.SPCTVM;
 import java.awt.CardLayout;
 import java.text.SimpleDateFormat;
@@ -49,12 +51,8 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
     CardLayout card;
 
-    private DefaultComboBoxModel dcbbmsp;
-    private DefaultComboBoxModel dcbbmcl;
-    private DefaultComboBoxModel dcbbmkc;
-    private DefaultComboBoxModel dcbbmms;
-    private DefaultComboBoxModel dcbbmnsx;
     private DefaultComboBoxModel dcbbpttt;
+
     DefaultTableModel dtmsp = new DefaultTableModel();
     DefaultTableModel dtmgh = new DefaultTableModel();
     DefaultTableModel dtmhd = new DefaultTableModel();
@@ -69,7 +67,11 @@ public class BanHangJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         LoadTableHoaDon();
-//        ctspjp.LoadTable();
+        
+        dcbbpttt = (DefaultComboBoxModel) cbbPTTT.getModel();
+        dcbbpttt.addAll(PTTTService.getAll());
+        for (int i = 0; i < dcbbpttt.getSize(); i++) {
+        }
 
         LoadTableSanPham();
         LoadTableGioHang();
@@ -84,6 +86,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
 //        ctspjp.LoadTable();
         LoadTableSanPham();
         LoadTableGioHang();
+        LoadPTTT();
         txtNguoiDung.setText(MaNV);
     }
 
@@ -150,9 +153,23 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 spct.getDonGia() * spct.getSoLuongTon(),});
         }
         System.out.println("sadasd");
-        TongTien();
+        TinhTien();
     }
 
+    private void LoadPTTT(){
+        DefaultComboBoxModel dcbbmd = (DefaultComboBoxModel) cbbPTTT.getSelectedItem();
+        dcbbmd.setSelectedItem(0);
+        
+        ArrayList<PTTTVM> listPTTTVM = PTTTService.getAll();
+        
+        for(PTTTVM ptttvm : listPTTTVM){
+            dcbbmd.addElement(new Object[]{
+                ptttvm.getTenPTTT(),
+            });
+        }
+        System.out.println(dcbbmd);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1505,7 +1522,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
             hd.setTrangThaiHD(TrangThaiHD);
             listSPCT.add(SPCTVM);
             hoaDonService.add(hd, Sps);
-        LoadTableGioHang();
+            LoadTableGioHang();
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -1674,13 +1691,11 @@ public class BanHangJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSDTKHKeyReleased
 
     private void cbbPTTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbPTTTActionPerformed
-        int item = cbbPTTT.getItemCount();
-        if (item == -1) {
-            return;
-        }
-        String TenPTTT = cbbPTTT.getItemAt(item);
-
-        dcbbpttt.setSelectedItem(PTTTService.getAll().stream().filter(i -> i.getTenPTTT().equals(TenPTTT)).findFirst().get());
+//        int item = cbbPTTT.getItemCount();
+//        
+//        String TenPTTT = cbbPTTT.getItemAt(item);
+//
+//        dcbbpttt.setSelectedItem(PTTTService.getAll().stream().filter(i -> i.getTenPTTT().equals(TenPTTT)).findFirst().get());
     }//GEN-LAST:event_cbbPTTTActionPerformed
 
     private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
@@ -1863,15 +1878,33 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
     }
 
-    public void TongTien() {
-
+//    public void TongTien() {
+//
+//        float ThanhTien = 0;
+//        for (int i = 0; i < tblGioHang.getRowCount(); i++) {
+//            ThanhTien += Float.valueOf(tblGioHang.getValueAt(i, 4).toString());
+//        }
+//
+//        txtTongTienn.setText(String.valueOf(ThanhTien));
+//        System.out.println(ThanhTien);
+//    }
+    public void TinhTien() {
+        float CanThanhToan = 0;
         float ThanhTien = 0;
+        float Khuyenmai = 0;
+        int Tienkhachdua = 0;
+        float Tienthua = 0;
         for (int i = 0; i < tblGioHang.getRowCount(); i++) {
             ThanhTien += Float.valueOf(tblGioHang.getValueAt(i, 4).toString());
+            CanThanhToan = ThanhTien - Khuyenmai;
+            Tienthua = Tienkhachdua - CanThanhToan;
         }
 
         txtTongTienn.setText(String.valueOf(ThanhTien));
-        System.out.println(ThanhTien);
+        txtKhuyenMai.setText(String.valueOf(Khuyenmai));
+        txtCanThanhToan.setText(String.valueOf(CanThanhToan));
+        txtTienKhachDua.setText(String.valueOf(Tienkhachdua));
+        txtTienThuaa.setText(String.valueOf(Tienthua));
     }
 
     /**

@@ -1,11 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package View;
 
-import Service.Impl.KichCoService;
-import ViewModel.KichCoVM;
+import Service.Impl.ChatLieuService;
+import ViewModel.ChatLieuVM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,30 +13,37 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class KichCoJFrame extends javax.swing.JFrame {
-    private KichCoService kichCoService = new KichCoService();
+public class ChatLieuJDialog extends javax.swing.JDialog {
+    private ChatLieuService chatLieuService = new ChatLieuService();
 
     /**
-     * Creates new form KichCoJFrame
+     * Creates new form ChatLieu
      */
-    public KichCoJFrame() {
+    public ChatLieuJDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         LoadTable();
     }
     
-    public void LoadTable(){
-         DefaultTableModel dtm = (DefaultTableModel) tblKichCo.getModel();
+     public void LoadTable(){
+        DefaultTableModel dtm = (DefaultTableModel) tblChatLieu.getModel();
         dtm.setRowCount(0);
-         ArrayList<KichCoVM> Listkc = kichCoService.getAll();
+        ArrayList<ChatLieuVM> ListSP = chatLieuService.getAll();
         
-        for(KichCoVM kcvm : Listkc){
+        for(ChatLieuVM clvm : ListSP){
             dtm.addRow(new Object[]{
-            kcvm.getId(),
-            kcvm.getMaKC(),
-            kcvm.getTenKC(),
-            kcvm.getTrangThai()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
+            clvm.getId(),
+            clvm.getMaCL(),
+            clvm.getTenCL(),
+            clvm.getTrangThaiCL()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
             });
         }
+    }
+     
+    public void LamMoi(){
+        txtMaSP.setText("");
+        txtTenSP.setText("");
+        rdoHoatDong.setSelected(true);
     }
 
     /**
@@ -62,25 +69,25 @@ public class KichCoJFrame extends javax.swing.JFrame {
         rdoDHoatDong = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblKichCo = new javax.swing.JTable();
+        tblChatLieu = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(222, 229, 226));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Quản Lý Kích Cỡ");
+        jLabel1.setText("Quản Lý Chất Liệu");
 
-        jLabel2.setText("Mã KC :");
+        jLabel2.setText("Mã SP :");
 
-        jLabel3.setText("Tên KC :");
+        jLabel3.setText("Tên SP :");
 
         btnThem.setText("Thêm");
 
@@ -105,38 +112,41 @@ public class KichCoJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaSP)
-                    .addComponent(txtTenSP))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMaSP)
+                            .addComponent(txtTenSP))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(154, 154, 154))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(rdoHoatDong)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnThem)
-                        .addGap(47, 47, 47)))
+                        .addComponent(rdoHoatDong))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(btnThem)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(rdoDHoatDong)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(btnLamMoi)
                         .addGap(56, 56, 56))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,17 +166,17 @@ public class KichCoJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(rdoHoatDong)
                     .addComponent(rdoDHoatDong))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
                     .addComponent(btnLamMoi))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(151, 151, 151))
         );
 
         jPanel2.setBackground(new java.awt.Color(222, 229, 226));
 
-        tblKichCo.setModel(new javax.swing.table.DefaultTableModel(
+        tblChatLieu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -174,12 +184,12 @@ public class KichCoJFrame extends javax.swing.JFrame {
                 "ID", "Mã CL", "Tên CL", "Trạng thái"
             }
         ));
-        tblKichCo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblChatLieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblKichCoMouseClicked(evt);
+                tblChatLieuMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tblKichCo);
+        jScrollPane4.setViewportView(tblChatLieu);
 
         jButton3.setText("Tìm");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +211,7 @@ public class KichCoJFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +239,7 @@ public class KichCoJFrame extends javax.swing.JFrame {
                     .addComponent(jRadioButton2)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -243,27 +253,27 @@ public class KichCoJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        
+        LamMoi();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
-    private void tblKichCoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKichCoMouseClicked
-        int row = tblKichCo.getSelectedRow();
+    private void tblChatLieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChatLieuMouseClicked
+        int row = tblChatLieu.getSelectedRow();
         if(row == -1){
             return;
         }
 
-        String MaSP = tblKichCo.getValueAt(row, 1).toString();
-        String TenSP = tblKichCo.getValueAt(row, 2).toString();
-        String TrangThai = tblKichCo.getValueAt(row, 3).toString();
+        String MaSP = tblChatLieu.getValueAt(row, 1).toString();
+        String TenSP = tblChatLieu.getValueAt(row, 2).toString();
+        String TrangThai = tblChatLieu.getValueAt(row, 3).toString();
 
         txtMaSP.setText(MaSP);
         txtTenSP.setText(TenSP);
@@ -272,7 +282,7 @@ public class KichCoJFrame extends javax.swing.JFrame {
         }else{
             this.rdoDHoatDong.setSelected(true);
         }
-    }//GEN-LAST:event_tblKichCoMouseClicked
+    }//GEN-LAST:event_tblChatLieuMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -295,20 +305,28 @@ public class KichCoJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KichCoJFrame().setVisible(true);
+                ChatLieuJDialog dialog = new ChatLieuJDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -331,7 +349,7 @@ public class KichCoJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdoDHoatDong;
     private javax.swing.JRadioButton rdoHoatDong;
-    private javax.swing.JTable tblKichCo;
+    private javax.swing.JTable tblChatLieu;
     private javax.swing.JTextField txtMaSP;
     private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables

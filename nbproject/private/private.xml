@@ -5,17 +5,14 @@
         <group>
             <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Views/BanHangJFrame.java</file>
             <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Views/SPCTJPanel.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/DomainModel/PTTT.java</file>
             <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/PTTTRepos.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/DomainModel/SanPhamChiTiet.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/HoaDonRepos.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/HDCTCTRepos.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/DomainModel/HoaDon.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Views/KhachHangJPanel.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Service/Impl/HoaDonService.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Service/Impl/SPCTService.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/SanPhamRepos.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/SPCTRepos.java</file>
+            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Service/Impl/PTTTService.java</file>
+            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Service/Impl/NhanVienService.java</file>
+            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Service/Impl/MauSacService.java</file>
+            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/MauSacRepos.java</file>
+            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Views/NhanVienJPanel.java</file>
+            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Views/KhuyenMaiJPanel.java</file>
+            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Service/Impl/KichCoService.java</file>
         </group>
     </open-files>
 </project-private>

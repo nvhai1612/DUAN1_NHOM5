@@ -4,17 +4,39 @@
  */
 package View;
 
+import Service.Impl.MauSacService;
+import ViewModel.MauSacVM;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
  */
 public class MauSacJFrame extends javax.swing.JFrame {
+    private MauSacService mauSacService = new MauSacService();
 
     /**
      * Creates new form MauSacJFrame
      */
     public MauSacJFrame() {
         initComponents();
+        LoadTable();
+    }
+    
+    public void LoadTable(){
+         DefaultTableModel dtm = (DefaultTableModel) tblMauSac.getModel();
+        dtm.setRowCount(0);
+         ArrayList<MauSacVM> Listms = mauSacService.getAll();
+        
+        for(MauSacVM msvm : Listms){
+            dtm.addRow(new Object[]{
+            msvm.getId(),
+            msvm.getMaMS(),
+            msvm.getTenMS(),
+            msvm.getTrangThai()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
+            });
+        }
     }
 
     /**

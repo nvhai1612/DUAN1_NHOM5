@@ -1,11 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package View;
 
-import Service.Impl.KichCoService;
-import ViewModel.KichCoVM;
+import Service.Impl.MauSacService;
+import ViewModel.MauSacVM;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,30 +13,36 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class KichCoJFrame extends javax.swing.JFrame {
-    private KichCoService kichCoService = new KichCoService();
+public class MauSacJDialog extends javax.swing.JDialog {
+    private MauSacService mauSacService = new MauSacService();
 
     /**
-     * Creates new form KichCoJFrame
+     * Creates new form MauSacJDialog
      */
-    public KichCoJFrame() {
+    public MauSacJDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        LoadTable();
     }
     
     public void LoadTable(){
-         DefaultTableModel dtm = (DefaultTableModel) tblKichCo.getModel();
+         DefaultTableModel dtm = (DefaultTableModel) tblMauSac.getModel();
         dtm.setRowCount(0);
-         ArrayList<KichCoVM> Listkc = kichCoService.getAll();
+         ArrayList<MauSacVM> Listms = mauSacService.getAll();
         
-        for(KichCoVM kcvm : Listkc){
+        for(MauSacVM msvm : Listms){
             dtm.addRow(new Object[]{
-            kcvm.getId(),
-            kcvm.getMaKC(),
-            kcvm.getTenKC(),
-            kcvm.getTrangThai()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
+            msvm.getId(),
+            msvm.getMaMS(),
+            msvm.getTenMS(),
+            msvm.getTrangThai()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
             });
         }
+    }
+    
+    public void LamMoi(){
+        txtMaSP.setText("");
+        txtTenSP.setText("");
+        rdoHDMS.setSelected(true);
     }
 
     /**
@@ -54,37 +60,37 @@ public class KichCoJFrame extends javax.swing.JFrame {
         txtMaSP = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtTenSP = new javax.swing.JTextField();
-        btnThem = new javax.swing.JButton();
-        btnSua = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        rdoHoatDong = new javax.swing.JRadioButton();
-        rdoDHoatDong = new javax.swing.JRadioButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tblKichCo = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jButton4 = new javax.swing.JButton();
+        rdoHDMS = new javax.swing.JRadioButton();
+        rdoDHDMS = new javax.swing.JRadioButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblMauSac = new javax.swing.JTable();
+        jTextField3 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
+        rdoLocHDMS = new javax.swing.JRadioButton();
+        rdoLocDHDMS = new javax.swing.JRadioButton();
+        Moi = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(222, 229, 226));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Quản Lý Kích Cỡ");
+        jLabel1.setText("Quản Lý Màu Sắc");
 
-        jLabel2.setText("Mã KC :");
+        jLabel2.setText("Mã MS :");
 
-        jLabel3.setText("Tên KC :");
+        jLabel3.setText("Tên MS :");
 
-        btnThem.setText("Thêm");
+        jButton1.setText("Thêm");
 
-        btnSua.setText("Sửa");
+        jButton2.setText("Sửa");
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -95,9 +101,9 @@ public class KichCoJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Trạng thái :");
 
-        rdoHoatDong.setText("Hoạt động");
+        rdoHDMS.setText("Hoạt động");
 
-        rdoDHoatDong.setText("Dừng hoạt động");
+        rdoDHDMS.setText("Dừng hoạt động");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,25 +120,26 @@ public class KichCoJFrame extends javax.swing.JFrame {
                     .addComponent(txtTenSP))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(rdoHoatDong)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnThem)
-                        .addGap(47, 47, 47)))
+                        .addComponent(rdoHDMS))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton1)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rdoDHoatDong)
+                        .addGap(18, 18, 18)
+                        .addComponent(rdoDHDMS)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton2)
+                        .addGap(46, 46, 46)
                         .addComponent(btnLamMoi)
-                        .addGap(56, 56, 56))))
+                        .addContainerGap(31, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addComponent(jLabel1)
@@ -154,82 +161,82 @@ public class KichCoJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(rdoHoatDong)
-                    .addComponent(rdoDHoatDong))
+                    .addComponent(rdoHDMS)
+                    .addComponent(rdoDHDMS))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThem)
-                    .addComponent(btnSua)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
                     .addComponent(btnLamMoi))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(222, 229, 226));
+        jPanel4.setBackground(new java.awt.Color(222, 229, 226));
 
-        tblKichCo.setModel(new javax.swing.table.DefaultTableModel(
+        tblMauSac.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Mã CL", "Tên CL", "Trạng thái"
+                "ID", "Mã MS", "Tên MS", "Trạng thái"
             }
         ));
-        tblKichCo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblMauSac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblKichCoMouseClicked(evt);
+                tblMauSacMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tblKichCo);
+        jScrollPane6.setViewportView(tblMauSac);
 
-        jButton3.setText("Tìm");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton7.setText("Tìm");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton7ActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setText("Đang hoạt động");
+        rdoLocHDMS.setText("Đang hoạt động");
 
-        jRadioButton2.setText("Dừng hoạt động");
+        rdoLocDHDMS.setText("Dừng hoạt động");
 
-        jButton4.setText("Mới");
+        Moi.setText("Mới");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(rdoLocHDMS)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2)))
+                                .addComponent(rdoLocDHDMS)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Moi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jButton4))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdoLocHDMS)
+                    .addComponent(rdoLocDHDMS)
+                    .addComponent(Moi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -238,45 +245,45 @@ public class KichCoJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        
+        LamMoi();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
-    private void tblKichCoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKichCoMouseClicked
-        int row = tblKichCo.getSelectedRow();
+    private void tblMauSacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMauSacMouseClicked
+        int row = tblMauSac.getSelectedRow();
         if(row == -1){
             return;
         }
 
-        String MaSP = tblKichCo.getValueAt(row, 1).toString();
-        String TenSP = tblKichCo.getValueAt(row, 2).toString();
-        String TrangThai = tblKichCo.getValueAt(row, 3).toString();
+        String MaSP = tblMauSac.getValueAt(row, 1).toString();
+        String TenSP = tblMauSac.getValueAt(row, 2).toString();
+        String TrangThai = tblMauSac.getValueAt(row, 3).toString();
 
         txtMaSP.setText(MaSP);
         txtTenSP.setText(TenSP);
         if(TrangThai.equalsIgnoreCase("Đang Hoạt Động")){
-            this.rdoHoatDong.setSelected(true);
+            this.rdoHDMS.setSelected(true);
         }else{
-            this.rdoDHoatDong.setSelected(true);
+            this.rdoDHDMS.setSelected(true);
         }
-    }//GEN-LAST:event_tblKichCoMouseClicked
+    }//GEN-LAST:event_tblMauSacMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,43 +302,50 @@ public class KichCoJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MauSacJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MauSacJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MauSacJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KichCoJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MauSacJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KichCoJFrame().setVisible(true);
+                MauSacJDialog dialog = new MauSacJDialog(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Moi;
     private javax.swing.JButton btnLamMoi;
-    private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnThem;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JRadioButton rdoDHoatDong;
-    private javax.swing.JRadioButton rdoHoatDong;
-    private javax.swing.JTable tblKichCo;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JRadioButton rdoDHDMS;
+    private javax.swing.JRadioButton rdoHDMS;
+    private javax.swing.JRadioButton rdoLocDHDMS;
+    private javax.swing.JRadioButton rdoLocHDMS;
+    private javax.swing.JTable tblMauSac;
     private javax.swing.JTextField txtMaSP;
     private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables

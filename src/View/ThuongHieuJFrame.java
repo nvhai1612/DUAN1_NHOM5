@@ -4,17 +4,39 @@
  */
 package View;
 
+import Service.Impl.ThuongHieuService;
+import ViewModel.ThuongHieuVM;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
  */
 public class ThuongHieuJFrame extends javax.swing.JFrame {
+    private ThuongHieuService thuongHieuService = new ThuongHieuService();
 
     /**
      * Creates new form ThuongHieuJFrame
      */
     public ThuongHieuJFrame() {
         initComponents();
+        LoadTable();
+    }
+    
+    public void LoadTable(){
+         DefaultTableModel dtm = (DefaultTableModel) tblThuongHieu.getModel();
+        dtm.setRowCount(0);
+         ArrayList<ThuongHieuVM> Listth = thuongHieuService.getAll();
+        
+        for(ThuongHieuVM thvm : Listth){
+            dtm.addRow(new Object[]{
+            thvm.getId(),
+            thvm.getMaTH(),
+            thvm.getTenTH(),
+            thvm.getTrangThaiTH()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
+            });
+        }
     }
     
     

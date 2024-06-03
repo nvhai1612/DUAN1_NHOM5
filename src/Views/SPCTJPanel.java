@@ -13,6 +13,10 @@ import Service.Impl.MauSacService;
 import Service.Impl.SPCTService;
 import Service.Impl.SanPhamService;
 import Service.Impl.ThuongHieuService;
+import View.ChatLieuJDialog;
+import View.KichCoJDialog;
+import View.MauSacJDialog;
+import View.ThuongHieuJDialog;
 import ViewModel.ChatLieuVM;
 import ViewModel.KichCoVM;
 import ViewModel.MauSacVM;
@@ -39,6 +43,10 @@ public class SPCTJPanel extends javax.swing.JPanel {
     private ThuongHieuService thuongHieuService = new ThuongHieuService();
     private SanPhamService sanPhamService = new SanPhamService();
     private SPCTRepos spctrp = new SPCTRepos();
+    private KichCoJDialog diakc;
+    private ChatLieuJDialog diacl;
+    private MauSacJDialog diams;
+    private ThuongHieuJDialog diath;
 
     /**
      * Creates new form SanPhamJFrame
@@ -118,7 +126,8 @@ public class SPCTJPanel extends javax.swing.JPanel {
                 spctvm.getTenMS(),
                 spctvm.getTenTH(),
                 spctvm.getTenCL(),
-                spctvm.getDonGia(),});
+                spctvm.getDonGia(),
+            });
             System.out.println(spctvm);
         }
     }
@@ -378,6 +387,11 @@ public class SPCTJPanel extends javax.swing.JPanel {
         });
 
         btnChatLieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/tshirt.png"))); // NOI18N
+        btnChatLieu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnChatLieuMouseClicked(evt);
+            }
+        });
         btnChatLieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChatLieuActionPerformed(evt);
@@ -385,6 +399,11 @@ public class SPCTJPanel extends javax.swing.JPanel {
         });
 
         btnKichCo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/measurement.png"))); // NOI18N
+        btnKichCo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKichCoMouseClicked(evt);
+            }
+        });
         btnKichCo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKichCoActionPerformed(evt);
@@ -392,6 +411,11 @@ public class SPCTJPanel extends javax.swing.JPanel {
         });
 
         btnMauSac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/wheel.png"))); // NOI18N
+        btnMauSac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMauSacMouseClicked(evt);
+            }
+        });
         btnMauSac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMauSacActionPerformed(evt);
@@ -399,6 +423,11 @@ public class SPCTJPanel extends javax.swing.JPanel {
         });
 
         btnTH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
+        btnTH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTHMouseClicked(evt);
+            }
+        });
         btnTH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTHActionPerformed(evt);
@@ -785,19 +814,23 @@ public class SPCTJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblSanPhamChiTietMouseClicked
 
     private void btnTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTHActionPerformed
-
+        diath.setVisible(true);
+        diath.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnTHActionPerformed
 
     private void btnMauSacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauSacActionPerformed
-
+        diams.setVisible(true);
+        diams.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnMauSacActionPerformed
 
     private void btnKichCoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKichCoActionPerformed
-        
+        diakc.setVisible(true);
+        diakc.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnKichCoActionPerformed
 
     private void btnChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuActionPerformed
-        
+        diacl.setVisible(true);
+        diacl.setLocationRelativeTo(this);
     }//GEN-LAST:event_btnChatLieuActionPerformed
 
     private void cbbTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbTHActionPerformed
@@ -834,6 +867,22 @@ public class SPCTJPanel extends javax.swing.JPanel {
         Moi();
         this.LoadTableSP();
     }//GEN-LAST:event_btnThemSPActionPerformed
+
+    private void btnKichCoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKichCoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKichCoMouseClicked
+
+    private void btnMauSacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMauSacMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMauSacMouseClicked
+
+    private void btnTHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTHMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTHMouseClicked
+
+    private void btnChatLieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChatLieuMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChatLieuMouseClicked
     public void LamMoi() {
         txtMaCTSP.setText("");
         cbbTenSP.setSelectedIndex(0);

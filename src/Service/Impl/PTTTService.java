@@ -22,8 +22,9 @@ public class PTTTService implements IPTTTService{
     public ArrayList<PTTTVM> getAll() {
         ArrayList<PTTT> listPTTT = PTTTRepos.getListFormDB();
         ArrayList<PTTTVM> ListVM = new ArrayList<>();
-        for (PTTTVM pttt : ListVM){
+        for (PTTT pttt : listPTTT){
             PTTTVM ptttvm = new PTTTVM(pttt.getId(), pttt.getMaPTTT(), pttt.getTenPTTT());
+            ListVM.add(ptttvm);
         }
         return ListVM;
     }
