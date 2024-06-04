@@ -12,7 +12,8 @@ import java.util.UUID;
  * @author Admin
  */
 public class NhanVien {
-     private UUID Id, IdTK;
+
+    private UUID Id, IdTK;
     private String MaNV, TenNV, CCCD, DiaChi, SDT, Email, VaiTro;
     private int GioiTinh, TrangThaiNV;
     private Date NgaySinh;
@@ -131,6 +132,4 @@ public class NhanVien {
         this.NgaySinh = NgaySinh;
     }
 
-
-    
 }

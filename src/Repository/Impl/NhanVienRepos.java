@@ -82,7 +82,7 @@ public class NhanVienRepos implements INhanVienRepos {
         try (Connection conn = connection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, "%" + MaNV + "%");
-            ps.setString(2, MaNV); 
+            ps.setString(2, MaNV);
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
@@ -108,21 +108,20 @@ public class NhanVienRepos implements INhanVienRepos {
     }
 
     @Override
-    public String update(NhanVien nv, UUID ID) {
+    public String update(NhanVien nv) {
         try (Connection con = connection.getConnection()) {
-            String sql = "UPDATE NHANVIEN SET MANV = ?, TENNV = ?, GIOITINH = ?, NGAYSINH = ?, CCCD = ?, DIACHI = ?, SDT = ?, EMAIL = ?, TRANGTHAINV = ?, VAITRO = ? WHERE ID = ?";
+            String sql = "UPDATE NHANVIEN SET  TENNV = ?, GIOITINH = ?, NGAYSINH = ?, CCCD = ?, DIACHI = ?, SDT = ?, EMAIL = ?, TRANGTHAINV = ?, VAITRO = ? WHERE MANV = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setObject(1, nv.getMaNV());
-            ps.setObject(2, nv.getTenNV());
-            ps.setObject(3, nv.getGioiTinh());
-            ps.setObject(4, nv.getNgaySinh());
-            ps.setObject(5, nv.getCCCD());
-            ps.setObject(6, nv.getDiaChi());
-            ps.setObject(7, nv.getSDT());
-            ps.setObject(8, nv.getEmail());
-            ps.setObject(9, nv.getTrangThaiNV());
-            ps.setObject(10, nv.getVaiTro());
-            ps.setObject(11, nv.getId());
+            ps.setObject(1, nv.getTenNV());
+            ps.setObject(2, nv.getGioiTinh());
+            ps.setObject(3, nv.getNgaySinh());
+            ps.setObject(4, nv.getCCCD());
+            ps.setObject(5, nv.getDiaChi());
+            ps.setObject(6, nv.getSDT());
+            ps.setObject(7, nv.getEmail());
+            ps.setObject(8, nv.getTrangThaiNV());
+            ps.setObject(9, nv.getVaiTro());
+            ps.setObject(10, nv.getMaNV());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -130,4 +129,34 @@ public class NhanVienRepos implements INhanVienRepos {
         return "Thanh Cong";
     }
 
+    @Override
+    public ArrayList<NhanVien> searchVaiTro(String vaiTro) {
+        ArrayList<NhanVien> list = new ArrayList<>();
+        String sql = "SELECT ID, MANV, TENNV, GIOITINH, NGAYSINH, CCCD, DIACHI, SDT, EMAIL, TRANGTHAINV, VAITRO "
+                + "FROM NHANVIEN WHERE VAITRO = ?";
+
+        try (Connection conn = connection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, vaiTro);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    NhanVien nhanVien = new NhanVien();
+                    nhanVien.setId(rs.getObject("ID", UUID.class));
+                    nhanVien.setMaNV(rs.getString("MANV"));
+                    nhanVien.setTenNV(rs.getString("TENNV"));
+                    nhanVien.setGioiTinh(rs.getInt("GIOITINH"));
+                    nhanVien.setNgaySinh(rs.getDate("NGAYSINH"));
+                    nhanVien.setCCCD(rs.getString("CCCD"));
+                    nhanVien.setDiaChi(rs.getString("DIACHI"));
+                    nhanVien.setSDT(rs.getString("SDT"));
+                    nhanVien.setEmail(rs.getString("EMAIL"));
+                    nhanVien.setTrangThaiNV(rs.getInt("TRANGTHAINV"));
+                    nhanVien.setVaiTro(rs.getString("VAITRO"));
+                    list.add(nhanVien);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

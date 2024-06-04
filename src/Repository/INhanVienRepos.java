@@ -13,8 +13,14 @@ import java.util.UUID;
  * @author Admin
  */
 public interface INhanVienRepos {
+
     public ArrayList<NhanVien> getListFormDB();
+
     public Boolean add(NhanVien nv);
-    public String update(NhanVien nv , UUID ID);
+
+    public String update(NhanVien nv);
+
     public ArrayList<NhanVien> search(String MaNV);
+
+    ArrayList<NhanVien> searchVaiTro(String vaiTro);
 }

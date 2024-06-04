@@ -28,13 +28,17 @@ public class NhanVienService implements INhanVienService{
     }
 
     @Override
-    public String update(NhanVien nv ,UUID ID) {
-    return nvRepo.update(nv,ID);
+    public String update(NhanVien nv) {
+    return nvRepo.update(nv);
     }
 
     @Override
     public ArrayList<NhanVien> search(String MaNV) {
     return  nvRepo.search(MaNV);
     }
+
+    @Override
+    public ArrayList<NhanVien> searchVaiTro(String vaiTro) {
+    return  nvRepo.searchVaiTro(vaiTro);}
     
 }

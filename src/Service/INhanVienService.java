@@ -18,8 +18,9 @@ public interface INhanVienService {
 
     public Boolean add(NhanVien nv);
 
-    public String update(NhanVien nv, UUID ID);
+    public String update(NhanVien nv);
 
     public ArrayList<NhanVien> search(String MaNV);
+    ArrayList<NhanVien> searchVaiTro(String vaiTro);
 
 }
