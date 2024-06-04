@@ -66,7 +66,7 @@ public class HoaDonRepos implements IHoaDonRepos{
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString(5));
                 hd.setTenTK(rs.getString(11));
-                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString(6)));
+                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(6)));
                 hd.setTrangThaiHD(rs.getInt(9));
                 listHD.add(hd);
             }
@@ -203,4 +203,58 @@ public class HoaDonRepos implements IHoaDonRepos{
         return listSPCT;
     }
     
+    public String findMaaHDCtBySpct(String maSPCT, String ma) {
+         try (Connection con = connection.getConnection();
+                 PreparedStatement ps = con.prepareStatement(
+                "select hd.mahdct from hoadonct hd "
+                        + "join sanphamchitiet sp on hd.idspct = sp.id"
+                        + "join hoadon h on h.id = hd.idhd where sp.maspct = ? and h.mahd = ?")) {
+            
+            ps.setObject(1, maSPCT);
+            ps.setObject(2, ma);
+            
+            ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                return rs.getString(1);
+            }
+             } catch (Exception e) {
+        }
+         return null;
+    }
+    
+    public void updateSlHdCT(String maHDCT, Integer sl, Double donGia, String mahd) {
+        String mahdct = findMaaHDCtBySpct(maHDCT, mahd);
+         try (Connection con = connection.getConnection();
+                PreparedStatement ps = con.prepareStatement("update hoadonct set soluong = ?, dongia = ? where mahdct = ?")){
+                
+            ps.setObject(2, donGia);
+            ps.setObject(3, mahdct);
+            ps.setObject(1, sl);
+            ps.executeUpdate();
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+    }
+    
+    public int findHdctByMaHdct(String maHDCT, String ma) {
+        String mahdct = findMaaHDCtBySpct(maHDCT, ma);
+         try (Connection con = connection.getConnection();
+                PreparedStatement ps = con.prepareStatement("select hd.soluong from hoadonct hd "
+                        + "join sanphamchitiet sp on sp.id = hd.idspct"
+                        + "join hoadon h on h.id = hd.idhd where sp.maspct = ? and h.mahd = ?")){
+                
+            ps.setObject(1, maHDCT);
+            ps.setObject(2, ma);
+            ResultSet resultSet = ps.executeQuery();
+            while(resultSet.next()){
+                            return resultSet.getInt(1);
+            }
+             
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+         return 0;
+    }
 }

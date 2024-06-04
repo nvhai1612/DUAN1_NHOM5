@@ -110,6 +110,23 @@ int check;
         }
         return null;    
     }
+    
+     public Boolean updateSL(String maSp, int sl) {
+int check;
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement(
+                "UPDATE SANPHAMCHITIET SET SOLUONGTON = ? WHERE MASPCT = ?")) {
+
+            ps.setObject(1, sl);
+            ps.setObject(2, maSp);
+
+            check = ps.executeUpdate();
+            return check > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;    
+    }
 
     @Override
     public Boolean delete(String id) {

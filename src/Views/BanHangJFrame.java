@@ -8,6 +8,7 @@ import DomainModel.HoaDon;
 import DomainModel.PTTT;
 import DomainModel.SanPhamChiTiet;
 import Repository.Impl.HoaDonRepos;
+import Repository.Impl.SPCTRepos;
 import Service.Impl.ChatLieuService;
 import Service.Impl.HoaDonService;
 import Service.Impl.KichCoService;
@@ -20,6 +21,7 @@ import ViewModel.HoaDonVM;
 import ViewModel.PTTTVM;
 import ViewModel.SPCTVM;
 import java.awt.CardLayout;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -67,7 +69,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         LoadTableHoaDon();
-        
+
         dcbbpttt = (DefaultComboBoxModel) cbbPTTT.getModel();
         dcbbpttt.addAll(PTTTService.getAll());
         for (int i = 0; i < dcbbpttt.getSize(); i++) {
@@ -120,7 +122,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 ctspvm.getTenSP(),
                 ctspvm.getSoLuongTon(),
                 ctspvm.getDonGia(),
-                ctspvm.getSoLuongTon() * ctspvm.getDonGia(),});
+                new BigDecimal(ctspvm.getSoLuongTon() * ctspvm.getDonGia()),});
         }
     }
 
@@ -133,7 +135,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
             dtmhd.addRow(new Object[]{
                 hdvm.getMaHD(),
                 hdvm.getTenTK(),
-                new SimpleDateFormat("yyyy-MM-dd").format(hdvm.getNgayTao()),
+                new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(hdvm.getNgayTao()),
                 hdvm.getTrangThaiHD() == 1 ? "Chờ thanh toán" : "Đã thanh toán"
             });
         }
@@ -150,26 +152,24 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 spct.getTenSP(),
                 spct.getSoLuongTon(),
                 spct.getDonGia(),
-                spct.getDonGia() * spct.getSoLuongTon(),});
+                new BigDecimal(spct.getDonGia() * spct.getSoLuongTon()),});
         }
-        System.out.println("sadasd");
         TinhTien();
     }
 
-    private void LoadPTTT(){
+    private void LoadPTTT() {
         DefaultComboBoxModel dcbbmd = (DefaultComboBoxModel) cbbPTTT.getSelectedItem();
         dcbbmd.setSelectedItem(0);
-        
+
         ArrayList<PTTTVM> listPTTTVM = PTTTService.getAll();
-        
-        for(PTTTVM ptttvm : listPTTTVM){
+
+        for (PTTTVM ptttvm : listPTTTVM) {
             dcbbmd.addElement(new Object[]{
-                ptttvm.getTenPTTT(),
-            });
+                ptttvm.getTenPTTT(),});
         }
         System.out.println(dcbbmd);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1447,7 +1447,8 @@ public class BanHangJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaSanPhamActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-        int row = tblHoaDon.getSelectedRow();
+                listSPCT.clear();
+int row = tblHoaDon.getSelectedRow();
         if (row == -1) {
             return;
         }
@@ -1472,6 +1473,12 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         SPCTVM SPCTVM = new SPCTVM();
+        String MaSPCT = tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 0).toString();
+
+        boolean check = false;
+        int row = tblHoaDon.getSelectedRow();
+        String MaHD = tblHoaDon.getValueAt(row, 0).toString();
+
         int selectedRow = tblDanhSachSP.getSelectedRow();
         int rowHD = tblHoaDon.getSelectedRow();
         if (rowHD < 0) {
@@ -1479,7 +1486,6 @@ public class BanHangJFrame extends javax.swing.JFrame {
             return;
         }
         if (selectedRow != -1) {
-            String MaSPCT = tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 0).toString();
             String TenSP = tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 1).toString();
             float DonGia = Float.parseFloat(tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 7).toString());
             // Hiển thị hộp thoại nhập số lượng
@@ -1492,9 +1498,13 @@ public class BanHangJFrame extends javax.swing.JFrame {
                         // Thực hiện thêm sản phẩm vào giỏ hàng
                         SPCTVM.setMaSPCT(MaSPCT);
                         SPCTVM.setTenSP(TenSP);
-                        SPCTVM.setSoLuongTon(soLuong);
+                        if (hoaDonRes.findMaaHDCtBySpct(MaSPCT,MaHD) != null) {
+                            SPCTVM.setSoLuongTon(soLuong + hoaDonRes.findHdctByMaHdct(MaSPCT,MaHD));
+                        } else {
+                            SPCTVM.setSoLuongTon(soLuong);
+                        }
                         SPCTVM.setDonGia(DonGia);
-                        UpdateLaiGioHang(MaSPCT, TenSP, soLuong, DonGia);
+                        check = UpdateLaiGioHang(MaSPCT, TenSP, soLuong, DonGia, MaHD);
                         UpdateLaiSanpham(MaSPCT, soLuong);
                     } else {
                         JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ.");
@@ -1502,28 +1512,39 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this, "Vui lòng nhập số lượng là một số nguyên dương.");
                 }
+
             }
         } else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm để thêm vào giỏ hàng.");
             return;
         }
-        int row = tblHoaDon.getSelectedRow();
-        for (int j = 0; j < tblGioHang.getRowCount(); j++) {
-            Sps.put(tblGioHang.getValueAt(j, 0).toString(), Integer.parseInt(tblGioHang.getValueAt(j, 2).toString()));
-            String MaHD = tblHoaDon.getValueAt(row, 0).toString();
-            String TenTK = "addssd";
-            String TenKH = txtTenKH.getText();
-            int TrangThaiHD = 0;
 
-            HoaDon hd = new HoaDon();
-            hd.setMaHD(MaHD);
-            hd.setTenKH(TenKH);
-            hd.setTenTK(TenTK);
-            hd.setTrangThaiHD(TrangThaiHD);
-            listSPCT.add(SPCTVM);
+        if (!check) {
+            
+            Sps.put(tblGioHang.getValueAt(tblGioHang.getRowCount() - 1, 0).toString(), Integer.parseInt(tblGioHang.getValueAt(tblGioHang.getRowCount() - 1, 2).toString()));
+        }
+
+        String TenTK = "nguyenvanhai";
+        String TenKH = txtTenKH.getText();
+        int TrangThaiHD = 0;
+
+        HoaDon hd = new HoaDon();
+        hd.setMaHD(MaHD);
+        hd.setTenKH(TenKH);
+        hd.setTenTK(TenTK);
+        hd.setTrangThaiHD(TrangThaiHD);
+        listSPCT.add(SPCTVM);
+
+        if (!check) {
+
             hoaDonService.add(hd, Sps);
             LoadTableGioHang();
+            Sps.clear();
+        } else {
+
+            LoadHoaDonCho(MaHD);
         }
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
@@ -1762,28 +1783,35 @@ public class BanHangJFrame extends javax.swing.JFrame {
         //        }
     }//GEN-LAST:event_btnThanhToan6ActionPerformed
 
-    public void UpdateLaiGioHang(String MaSP, String TenSP, int SoLuong, float DonGia) {
+    public Boolean UpdateLaiGioHang(String MaSP, String TenSP, int SoLuong, float DonGia, String mahd) {
         if (tblGioHang.getRowCount() == 0) {
             dtmgh.addRow(new Object[]{
                 MaSP,
                 TenSP,
                 SoLuong,
                 DonGia,
-                SoLuong * DonGia
+                new BigDecimal(SoLuong * DonGia)
             });
-            return;
+            return false;
         }
 
         for (int i = 0; i < tblGioHang.getRowCount(); i++) {
             String MaSPGH = tblGioHang.getValueAt(i, 0).toString();
             if (MaSPGH.equals(MaSP)) {
-                System.out.println(MaSPGH);
+                for (int j = 0; j < listSPCT.size(); j++) {
+                if (listSPCT.get(j).getMaSPCT().equals(MaSP)) {
+                    listSPCT.remove(j);
+                    break;
+                }
+            }
                 int SoLuongGH = Integer.parseInt(tblGioHang.getValueAt(i, 2).toString());
                 dtmgh.setValueAt((SoLuongGH + SoLuong), i, 2);
-
                 float donGia = Float.parseFloat(tblGioHang.getValueAt(i, 3).toString());
                 dtmgh.setValueAt((SoLuongGH + SoLuong) * donGia, i, 4);
-                return; // exit the method after updating the existing row
+                hoaDonRes.updateSlHdCT(MaSPGH, Integer.parseInt(dtmgh.getValueAt(i, 2).toString()),
+                        Double.parseDouble(dtmgh.getValueAt(i, 3).toString()), mahd);
+
+                return true; // exit the method after updating the existing row
             }
         }
 
@@ -1795,6 +1823,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
             DonGia,
             SoLuong * DonGia
         });
+        return false;
     }
 
     public void UpdateLaiSanpham(String MaCTSP, int SoLuong) {
@@ -1803,6 +1832,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
             if (MaSP.equals(MaCTSP)) {
                 int SoLuongSP = Integer.parseInt(tblDanhSachSP.getValueAt(i, 6).toString());
                 tblDanhSachSP.setValueAt(SoLuongSP - SoLuong, i, 6);
+                new SPCTRepos().updateSL(MaSP, SoLuongSP - SoLuong);
                 break;
             }
         }

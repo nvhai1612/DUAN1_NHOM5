@@ -27,6 +27,14 @@ public class HoaDon {
          this.NgayTao = ngayTao;
     }
     
+    public HoaDon(String maHd, String tenTK, String tenKH, Date ngayTao, int TrangThaiHD) {
+        this.MaHD = maHd;
+        this.TenTK = tenTK;
+        this.TenKH = tenKH;
+        this.NgayTao = ngayTao;
+        this.TrangThaiHD = TrangThaiHD;
+    }
+    
     public HoaDon(String maHd, String TenTK, String tenKH, Date ngayTao, Date NgayThanhToan, int TrangThaiHD) {
         this.MaHD = maHd;
         this.TenTK = TenTK;
