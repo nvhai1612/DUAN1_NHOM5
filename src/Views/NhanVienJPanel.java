@@ -112,9 +112,14 @@ public class NhanVienJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Vai trò :");
+        jLabel8.setText("Chức vụ :");
 
-        cbbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn vai trò..." }));
+        cbbChucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chức vụ..." }));
+        cbbChucVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbChucVuActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("SĐT :");
 
@@ -132,7 +137,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         });
 
         jPanel5.setBackground(new java.awt.Color(222, 231, 227));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc theo vai trò"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Lọc theo chức vụ"));
 
         txtTimkiem1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -257,11 +262,13 @@ public class NhanVienJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtEmail)
-                                    .addComponent(cbbChucVu, 0, 254, Short.MAX_VALUE)
-                                    .addComponent(txtSDT))))))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cbbChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -361,6 +368,10 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     private void tblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNhanVienMouseClicked
 
     }//GEN-LAST:event_tblNhanVienMouseClicked
+
+    private void cbbChucVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbChucVuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbChucVuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

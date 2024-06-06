@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+package ViewModel;
 
 import java.util.Date;
 import java.util.UUID;
+
 /**
  *
  * @author Admin
  */
-public class KhuyenMai {
-
-    private UUID idKM;
+public class khuyeMaiVM {
+  private UUID idKM;
     private UUID IDSP;
     private String maKM;
     private String TenKM;
@@ -22,10 +22,10 @@ public class KhuyenMai {
     private int TrangThai;
     private int SoLuong;
 
-    public KhuyenMai() {
+    public khuyeMaiVM() {
     }
 
-    public KhuyenMai(UUID idKM, UUID IDSP, String maKM, String TenKM, float MucGiamGia, Date ThoiGianBatDau, Date ThoiGianKetThuc, int TrangThai, int SoLuong) {
+    public khuyeMaiVM(UUID idKM, UUID IDSP, String maKM, String TenKM, float MucGiamGia, Date ThoiGianBatDau, Date ThoiGianKetThuc, int TrangThai, int SoLuong) {
         this.idKM = idKM;
         this.IDSP = IDSP;
         this.maKM = maKM;
@@ -111,15 +111,12 @@ public class KhuyenMai {
 
     @Override
     public String toString() {
-        return "KhuyenMai{" + "idKM=" + idKM + ", IDSP=" + IDSP + ", maKM=" + maKM + ", TenKM=" + TenKM + ", MucGiamGia=" + MucGiamGia + ", ThoiGianBatDau=" + ThoiGianBatDau + ", ThoiGianKetThuc=" + ThoiGianKetThuc + ", TrangThai=" + TrangThai + ", SoLuong=" + SoLuong + '}';
+        return "khuyeMaiVM{" + "idKM=" + idKM + ", IDSP=" + IDSP + ", maKM=" + maKM + ", TenKM=" + TenKM + ", MucGiamGia=" + MucGiamGia + ", ThoiGianBatDau=" + ThoiGianBatDau + ", ThoiGianKetThuc=" + ThoiGianKetThuc + ", TrangThai=" + TrangThai + ", SoLuong=" + SoLuong + '}';
     }
-    
-
-    
-
-    
 
   
+
+   
 
     
     

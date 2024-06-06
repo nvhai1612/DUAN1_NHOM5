@@ -4,13 +4,15 @@
  */
 package Repository;
 
-import DomainModel.PTTT;
+import DomainModel.ChucVu;
 import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
-public interface IPTTTReops {
-    public ArrayList<PTTT> getListFormDB();
+public interface IChucVuRepos {
+    public ArrayList<ChucVu> getListFormDB();
+    public Boolean add(ChucVu cv);
+    public Boolean update(ChucVu cv);
 }

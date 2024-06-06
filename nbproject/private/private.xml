@@ -3,10 +3,42 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Views/BanHangJFrame.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/HoaDonRepos.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Repository/Impl/HDCTCTRepos.java</file>
-            <file>file:/E:/DUAN1_NHOM5/DUAN1_NHOM5/src/Service/Impl/HoaDonService.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/ThongKeJPanel.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/Impl/ChatLieuRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Service/IChucVuService.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/MissPassJFrame.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/Impl/HoaDonRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/LichSuJPanel.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/DomainModel/ChucVu.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/SPCTJPanel.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/IKichCoRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Service/Impl/ChucVuService.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/IKhachHangRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/DomainModel/HoaDon.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/NhanVienJPanel.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/ViewModel/NhanVienVM.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/KhuyenMaiJPanel.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/Impl/SPCTRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/Impl/ChucVuRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/Impl/HDCTCTRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/IChucVuRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Service/Impl/ChatLieuService.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/ViewModel/KhachHangVM.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/DoiMatKhauJPanel.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Service/IChatLieuService.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/ViewModel/HoaDonVM.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Utiliti/DBConnection.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/DomainModel/NhanVien.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/IHDCTRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/ViewModel/ChatLieuVM.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/LoginJFrame.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/ViewModel/ChucVuVM.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/IHoaDonRepos.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/BanHangJFrame.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Views/KhachHangJPanel.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Repository/Impl/KhuyenMaiRepons.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/Service/Impl/HoaDonService.java</file>
+            <file>file:/E:/du1_fake/DUAN1_NHOM5/src/DomainModel/KichCo.java</file>
         </group>
     </open-files>
 </project-private>

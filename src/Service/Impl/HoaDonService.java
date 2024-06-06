@@ -29,7 +29,7 @@ public class HoaDonService implements IHoaDonService{
         ArrayList<HoaDon> listHD = hoadonrepos.getListFormDB();
         ArrayList<HoaDonVM> listVM = new ArrayList<>();
         for (HoaDon hd : listHD) {
-            HoaDonVM hdvm = new HoaDonVM(hd.getMaHD(), hd.getTenTK(), hd.getTenKH(), hd.getNgayTao(), hd.getTrangThaiHD());
+            HoaDonVM hdvm = new HoaDonVM(hd.getMaHD(), hd.getTenNV(), hd.getTenKH(), hd.getNgayTao(), hd.getTrangThaiHD());
             listVM.add(hdvm);
         }
         return listVM;
@@ -38,7 +38,7 @@ public class HoaDonService implements IHoaDonService{
         ArrayList<HoaDon> listHD = hoadonrepos.getListHoaDonFormDB();
         ArrayList<HoaDonVM> listVM = new ArrayList<>();
         for (HoaDon hd : listHD) {
-            HoaDonVM hdvm = new HoaDonVM(hd.getMaHD(), hd.getTenTK(),hd.getNgayTao(), hd.getTrangThaiHD());
+            HoaDonVM hdvm = new HoaDonVM(hd.getMaHD(), hd.getTenNV(),hd.getNgayTao(), hd.getTrangThaiHD());
             listVM.add(hdvm);
         }
         return listVM;

@@ -12,8 +12,8 @@ import java.util.UUID;
  * @author Admin
  */
 public class HoaDon {
-    private UUID Id, IdTK, IdKH, IdPTTT;
-    private String MaHD,TenTK,TenKH,TenPTTT;
+    private UUID Id, IdNV, IdKH;
+    private String MaHD,TenNV,TenKH;
     private Date NgayTao,NgayThanhToan;
     private float TongTien;
     private int TrangThaiHD;
@@ -27,32 +27,30 @@ public class HoaDon {
          this.NgayTao = ngayTao;
     }
     
-    public HoaDon(String maHd, String tenTK, String tenKH, Date ngayTao, int TrangThaiHD) {
+    public HoaDon(String maHd, String TenNV, String tenKH, Date ngayTao, int TrangThaiHD) {
         this.MaHD = maHd;
-        this.TenTK = tenTK;
+        this.TenNV = TenNV;
         this.TenKH = tenKH;
         this.NgayTao = ngayTao;
         this.TrangThaiHD = TrangThaiHD;
     }
     
-    public HoaDon(String maHd, String TenTK, String tenKH, Date ngayTao, Date NgayThanhToan, int TrangThaiHD) {
+    public HoaDon(String maHd, String TenNV, String tenKH, Date ngayTao, Date NgayThanhToan, int TrangThaiHD) {
         this.MaHD = maHd;
-        this.TenTK = TenTK;
+        this.TenNV = TenNV;
         this.TenKH = tenKH;
         this.NgayTao = ngayTao;
         this.NgayThanhToan = NgayThanhToan;
         this.TrangThaiHD = TrangThaiHD;
     }
 
-    public HoaDon(UUID Id, UUID IdTK, UUID IdKH, UUID IdPTTT, String MaHD, String TenTK, String TenKH, String TenPTTT, Date NgayTao, Date NgayThanhToan, float TongTien, int TrangThaiHD) {
+    public HoaDon(UUID Id, UUID IdNV, UUID IdKH, String MaHD, String TenNV, String TenKH, Date NgayTao, Date NgayThanhToan, float TongTien, int TrangThaiHD) {
         this.Id = Id;
-        this.IdTK = IdTK;
+        this.IdNV = IdNV;
         this.IdKH = IdKH;
-        this.IdPTTT = IdPTTT;
         this.MaHD = MaHD;
-        this.TenTK = TenTK;
+        this.TenNV = TenNV;
         this.TenKH = TenKH;
-        this.TenPTTT = TenPTTT;
         this.NgayTao = NgayTao;
         this.NgayThanhToan = NgayThanhToan;
         this.TongTien = TongTien;
@@ -67,12 +65,12 @@ public class HoaDon {
         this.Id = Id;
     }
 
-    public UUID getIdTK() {
-        return IdTK;
+    public UUID getIdNV() {
+        return IdNV;
     }
 
-    public void setIdTK(UUID IdTK) {
-        this.IdTK = IdTK;
+    public void setIdNV(UUID IdNV) {
+        this.IdNV = IdNV;
     }
 
     public UUID getIdKH() {
@@ -83,14 +81,6 @@ public class HoaDon {
         this.IdKH = IdKH;
     }
 
-    public UUID getIdPTTT() {
-        return IdPTTT;
-    }
-
-    public void setIdPTTT(UUID IdPTTT) {
-        this.IdPTTT = IdPTTT;
-    }
-
     public String getMaHD() {
         return MaHD;
     }
@@ -99,12 +89,12 @@ public class HoaDon {
         this.MaHD = MaHD;
     }
 
-    public String getTenTK() {
-        return TenTK;
+    public String getTenNV() {
+        return TenNV;
     }
 
-    public void setTenTK(String TenTK) {
-        this.TenTK = TenTK;
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
     }
 
     public String getTenKH() {
@@ -113,14 +103,6 @@ public class HoaDon {
 
     public void setTenKH(String TenKH) {
         this.TenKH = TenKH;
-    }
-
-    public String getTenPTTT() {
-        return TenPTTT;
-    }
-
-    public void setTenPTTT(String TenPTTT) {
-        this.TenPTTT = TenPTTT;
     }
 
     public Date getNgayTao() {
@@ -157,8 +139,7 @@ public class HoaDon {
 
     @Override
     public String toString() {
-        return "HoaDon{" + "Id=" + Id + ", IdTK=" + IdTK + ", IdKH=" + IdKH + ", IdPTTT=" + IdPTTT + ", MaHD=" + MaHD + ", TenTK=" + TenTK + ", TenKH=" + TenKH + ", TenPTTT=" + TenPTTT + ", NgayTao=" + NgayTao + ", NgayThanhToan=" + NgayThanhToan + ", TongTien=" + TongTien + ", TrangThaiHD=" + TrangThaiHD + '}';
+        return "HoaDon{" + "Id=" + Id + ", IdNV=" + IdNV + ", IdKH=" + IdKH + ", MaHD=" + MaHD + ", TenNV=" + TenNV + ", TenKH=" + TenKH + ", NgayTao=" + NgayTao + ", NgayThanhToan=" + NgayThanhToan + ", TongTien=" + TongTien + ", TrangThaiHD=" + TrangThaiHD + '}';
     }
 
-    
 }

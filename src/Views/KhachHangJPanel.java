@@ -4,19 +4,55 @@
  */
 package Views;
 
+
+import DomainModel.HoaDon;
+import DomainModel.KhachHang;
+import Repository.Impl.KhachHangRepos;
+import Service.Impl.KhachHangService;
+import ViewModel.KhachHangVM;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
  */
 public class KhachHangJPanel extends javax.swing.JPanel {
 
+
+    KhachHangService service = new KhachHangService();
+    DefaultTableModel tableModel;
+    DefaultTableModel tableModel1HoaDon;
+    int index = -1;
     /**
      * Creates new form KhachHangJPanel
      */
     public KhachHangJPanel() {
+        
         initComponents();
+       loadTableKhachHang();
+        
     }
-
+    
+    private void loadTableKhachHang() {
+        tableModel = (DefaultTableModel) tblKhachHang.getModel();
+        tableModel.setRowCount(0);
+        ArrayList<KhachHangVM> list = service.getAll();
+        for (KhachHangVM kh : list) {
+            tableModel.addRow(new Object[]{
+                kh.getMaKH(),
+                kh.getTenKH(),
+                kh.getNgaySinh(),
+                kh.getGioiTinh(),
+                kh.getSdt(),
+                kh.getDiaChi()
+            });
+        }
+        
+    }
+    
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +62,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -89,21 +126,23 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
+                btnSuaActionPerformed2(evt);
             }
         });
 
         btnLamMoi.setText("Làm mới ");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiActionPerformed(evt);
+                btnLamMoiActionPerformed2(evt);
             }
         });
 
         jLabel6.setText("Giới tính");
 
+        buttonGroup1.add(rdoNam);
         rdoNam.setText("Nam");
 
+        buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -200,7 +239,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
         ));
         tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblKhachHangMouseClicked(evt);
+                tblKhachHangMouseClicked2(evt);
             }
         });
         jScrollPane2.setViewportView(tblKhachHang);
@@ -279,11 +318,16 @@ public class KhachHangJPanel extends javax.swing.JPanel {
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyReleased(evt);
+                txtTimKiemKeyReleased2(evt);
             }
         });
 
         btnTim.setText("Tìm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -363,24 +407,149 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        
+  String ma = txtMaKH.getText();
+        String ten = txtTenKH.getText();
+        String ngaySinh = txtNgaySinh.getText();
+         int gioiTinh = rdoNam.isSelected() == true ? 1 : 0;
+         String sdt = txtSdt.getText();
+         String diaChi = taDiaChi.getText();
+         KhachHang kh = new KhachHang();
+         kh.setMaKH(ma);
+         kh.setTenKH(ten);
+          kh.setNgaySinh(ngaySinh);
+         kh.setGioiTinh(gioiTinh);
+        kh.setSdt(sdt);
+        kh.setDiaChi(diaChi);
+        service.add(kh);
+        loadTableKhachHang();
+        xoa();
+    }//GEN-LAST:event_btnThemActionPerformed
+    void xoa(){
+        txtMaKH.setText("");
+        txtTenKH.setText("");
+        txtNgaySinh.setText("");
+        txtSdt.setText("");
+        rdoNam.isSelected();
+        taDiaChi.setText("");        
     }//GEN-LAST:event_btnThemActionPerformed
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {                                       
         
-    }//GEN-LAST:event_btnSuaActionPerformed
+    }                                      
 
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {                                          
         
-    }//GEN-LAST:event_btnLamMoiActionPerformed
+    }                                         
 
-    private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
+    private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {                                          
         
-    }//GEN-LAST:event_tblKhachHangMouseClicked
+    }                                         
 
-    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {                                       
 
-    }//GEN-LAST:event_txtTimKiemKeyReleased
+        String ma = txtMaKH.getText();
+        String ten = txtTenKH.getText();
+        String ngaySinh = txtNgaySinh.getText();
+         int gioiTinh = rdoNam.isSelected() == true ? 1 : 0;
+         String sdt = txtSdt.getText();
+         String diaChi = taDiaChi.getText();
+         KhachHang kh = new KhachHang();
+         kh.setMaKH(ma);
+         kh.setTenKH(ten);
+          kh.setNgaySinh(ngaySinh);
+         kh.setGioiTinh(gioiTinh);
+        kh.setSdt(sdt);
+        kh.setDiaChi(diaChi);
+        service.add(kh);
+        loadTableKhachHang();
+        xoa();
+    }                                       
+    
+    
+    private void btnSuaActionPerformed2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed2
+ // Lấy thông tin từ giao diện
+    
+       KhachHang kh = new KhachHang();
+    // Lấy thông tin từ giao diện và thiết lập các giá trị cho đối tượng KhachHang
+        kh.setMaKH(txtMaKH.getText());
+        kh.setTenKH(txtTenKH.getText());
+        
+        kh.setNgaySinh(txtNgaySinh.getText());
+        kh.setGioiTinh(rdoNam.isSelected() == true ? 1 : 0);
+        kh.setSdt(txtSdt.getText());
+        kh.setDiaChi(taDiaChi.getText());
+         
+        service.update(kh);
+        loadTableKhachHang();
+        xoa();
+            
+    
+    }//GEN-LAST:event_btnSuaActionPerformed2
+
+    private void btnLamMoiActionPerformed2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed2
+        xoa();
+    }//GEN-LAST:event_btnLamMoiActionPerformed2
+    
+    private void tblKhachHangMouseClicked2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked2
+        index = tblKhachHang.getSelectedRow();
+        showTable(index);
+       if (index != -1) {
+        String maKH = tblKhachHang.getValueAt(index, 0).toString(); // Lấy mã khách hàng từ bảng
+        showHoaDonHistory(maKH); // Gọi hàm để hiển thị lịch sử hóa đơn của khách hàng được chọn
+    }
+    }//GEN-LAST:event_tblKhachHangMouseClicked2
+    private void showTable(int index) {
+        KhachHangVM kh = service.getAll().get(index);
+        txtMaKH.setText(kh.getMaKH());
+        txtTenKH.setText(kh.getTenKH());
+        txtNgaySinh.setText(kh.getNgaySinh());
+         System.out.println("GioiTinh: " + kh.getGioiTinh());
+        if (kh.getGioiTinh().equals(1)){
+            rdoNam.setSelected(true);
+        }else{
+            rdoNu.setSelected(true);
+        }
+        txtSdt.setText(kh.getSdt());
+        taDiaChi.setText(kh.getDiaChi());
+    }
+    
+    private void showHoaDonHistory(String maKH){
+        List<HoaDon> list = service.getLichSu(maKH);
+        tableModel1HoaDon = (DefaultTableModel) tblHoaDonKH.getModel();
+        tableModel1HoaDon.setRowCount(0);
+        for (HoaDon hoaDon : list) {
+            tableModel1HoaDon.addRow(new Object[]{
+                 hoaDon.getMaHD(),
+                hoaDon.getNgayTao(),
+                hoaDon.getTongTien()
+            });
+        }
+        
+    }
+    
+    
+    private void txtTimKiemKeyReleased2(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased2
+             String keyword = txtTimKiem.getText().trim();
+             if (keyword != null) {
+                tableModel = (DefaultTableModel) tblKhachHang.getModel();
+        tableModel.setRowCount(0);
+        ArrayList<KhachHang> list = service.search(keyword);
+        for (KhachHang kh : list) {
+            tableModel.addRow(new Object[]{
+                kh.getMaKH(),
+                kh.getTenKH(),
+                kh.getNgaySinh(),
+                kh.getGioiTinh(),
+                kh.getSdt(),
+                kh.getDiaChi()
+            });
+        }
+        }
+    }//GEN-LAST:event_txtTimKiemKeyReleased2
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTimActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -388,6 +557,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTim;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -396,7 +566,7 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -416,4 +586,5 @@ public class KhachHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtTimKiem;
     private javax.swing.JLabel txtTongTien;
     // End of variables declaration//GEN-END:variables
+
 }

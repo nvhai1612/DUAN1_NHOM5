@@ -12,30 +12,29 @@ import java.util.UUID;
  * @author Admin
  */
 public class NhanVienVM {
-    private UUID Id, IdTK;
-    private String MaNV, TenNV, CCCD, DiaChi, SDT, Email, VaiTro;
+    private UUID Id, IdCV;
+    private String MaNV, TenNV, CCCD, DiaChi, SDT, Email;
     private int GioiTinh, TrangThaiNV;
     private Date NgaySinh;
 
     public NhanVienVM() {
     }
 
-    public NhanVienVM(UUID Id, UUID IdTK, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, String VaiTro, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
+    public NhanVienVM(UUID Id, UUID IdCV, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
         this.Id = Id;
-        this.IdTK = IdTK;
+        this.IdCV = IdCV;
         this.MaNV = MaNV;
         this.TenNV = TenNV;
         this.CCCD = CCCD;
         this.DiaChi = DiaChi;
         this.SDT = SDT;
         this.Email = Email;
-        this.VaiTro = VaiTro;
         this.GioiTinh = GioiTinh;
         this.TrangThaiNV = TrangThaiNV;
         this.NgaySinh = NgaySinh;
     }
 
-    public NhanVienVM(UUID Id, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, String VaiTro, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
+    public NhanVienVM(UUID Id, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
         this.Id = Id;
         this.MaNV = MaNV;
         this.TenNV = TenNV;
@@ -43,7 +42,6 @@ public class NhanVienVM {
         this.DiaChi = DiaChi;
         this.SDT = SDT;
         this.Email = Email;
-        this.VaiTro = VaiTro;
         this.GioiTinh = GioiTinh;
         this.TrangThaiNV = TrangThaiNV;
         this.NgaySinh = NgaySinh;
@@ -57,12 +55,12 @@ public class NhanVienVM {
         this.Id = Id;
     }
 
-    public UUID getIdTK() {
-        return IdTK;
+    public UUID getIdCV() {
+        return IdCV;
     }
 
-    public void setIdTK(UUID IdTK) {
-        this.IdTK = IdTK;
+    public void setIdCV(UUID IdCV) {
+        this.IdCV = IdCV;
     }
 
     public String getMaNV() {
@@ -113,14 +111,6 @@ public class NhanVienVM {
         this.Email = Email;
     }
 
-    public String getVaiTro() {
-        return VaiTro;
-    }
-
-    public void setVaiTro(String VaiTro) {
-        this.VaiTro = VaiTro;
-    }
-
     public int getGioiTinh() {
         return GioiTinh;
     }
@@ -144,6 +134,7 @@ public class NhanVienVM {
     public void setNgaySinh(Date NgaySinh) {
         this.NgaySinh = NgaySinh;
     }
+
     
     @Override
     public String toString() {

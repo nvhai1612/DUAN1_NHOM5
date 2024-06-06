@@ -70,6 +70,7 @@ public class SanPhamRepos implements ISanPhamRepos {
         int check;
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("UPDATE SANPHAM SET TENSP = ?, TRANGTHAISP = ? WHERE MASP = ?")) {
 
+
             ps.setObject(1, sp.getTenSP());
             ps.setObject(2, sp.getTrangThaiSP());
             ps.setObject(3, sp.getMaSP());

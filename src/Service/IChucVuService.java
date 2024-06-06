@@ -4,15 +4,17 @@
  */
 package Service;
 
-import DomainModel.PTTT;
-import ViewModel.PTTTVM;
+import DomainModel.ChucVu;
+import ViewModel.ChucVuVM;
 import java.util.ArrayList;
 
 /**
  *
  * @author Admin
  */
-public interface IPTTTService {
-    ArrayList<PTTTVM> getAll();
-    ArrayList<PTTT> getAllDomain();
+public interface IChucVuService {
+    ArrayList<ChucVuVM> getAll();
+    ArrayList<ChucVu> getAllDomain();
+    void add(ChucVu cv);
+    void update(ChucVu cv);
 }

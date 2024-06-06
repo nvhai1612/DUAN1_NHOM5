@@ -4,17 +4,20 @@
  */
 package Repository;
 
-import DomainModel.HoaDon;
+import DomainModel.KhuyenMai;
+import DomainModel.ThuongHieu;
+import ViewModel.khuyeMaiVM;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
  *
  * @author Admin
  */
-public interface IHoaDonRepos {
-    public ArrayList<HoaDon> getListFormDB();
-    public Boolean add(HoaDon hd);
-    public Boolean update(HoaDon hd);
-    public Boolean delete(UUID id);
+public interface IkhuyenMairepons {
+ public ArrayList<KhuyenMai> getListFormDB();
+    public UUID add(KhuyenMai km);
+//    public Boolean update(ThuongHieu th);
+    
 }

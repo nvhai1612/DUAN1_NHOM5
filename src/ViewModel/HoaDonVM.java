@@ -12,35 +12,35 @@ import java.util.UUID;
  * @author Admin
  */
 public class HoaDonVM {
-    private UUID Id, IdTK, IdKH;
-    private String MaHD,TenTK,TenKH;
+    private UUID Id, IdNV, IdKH;
+    private String MaHD,TenNV,TenKH;
     private Date NgayTao;
     private int TrangThaiHD;
 
     public HoaDonVM() {
     }
     
-    public HoaDonVM(String maHD, String tenTK, Date ngayTao, int trangThaiHD) {
+    public HoaDonVM(String maHD, String TenNV, Date ngayTao, int trangThaiHD) {
         this.MaHD = maHD;
-        this.TenTK = tenTK;
+        this.TenNV = TenNV;
         this.NgayTao = ngayTao;
         this.TrangThaiHD = trangThaiHD;
     }
     
-    public HoaDonVM(String MaHD, String TenTK, String TenKH, Date NgayTao, int TrangThaiHD) {
+    public HoaDonVM(String MaHD, String TenNV, String TenKH, Date NgayTao, int TrangThaiHD) {
         this.MaHD = MaHD;
-        this.TenTK = TenTK;
+        this.TenNV = TenNV;
         this.TenKH = TenKH;
         this.NgayTao = NgayTao;
         this.TrangThaiHD = TrangThaiHD;
     }
 
-    public HoaDonVM(UUID Id, UUID IdTK, UUID IdKH, String MaHD, String TenTK, String TenKH, Date NgayTao, int TrangThaiHD) {
+    public HoaDonVM(UUID Id, UUID IdNV, UUID IdKH, String MaHD, String TenNV, String TenKH, Date NgayTao, int TrangThaiHD) {
         this.Id = Id;
-        this.IdTK = IdTK;
+        this.IdNV = IdNV;
         this.IdKH = IdKH;
         this.MaHD = MaHD;
-        this.TenTK = TenTK;
+        this.TenNV = TenNV;
         this.TenKH = TenKH;
         this.NgayTao = NgayTao;
         this.TrangThaiHD = TrangThaiHD;
@@ -54,12 +54,12 @@ public class HoaDonVM {
         this.Id = Id;
     }
 
-    public UUID getIdTK() {
-        return IdTK;
+    public UUID getIdNV() {
+        return IdNV;
     }
 
-    public void setIdTK(UUID IdTK) {
-        this.IdTK = IdTK;
+    public void setIdNV(UUID IdNV) {
+        this.IdNV = IdNV;
     }
 
     public UUID getIdKH() {
@@ -78,12 +78,12 @@ public class HoaDonVM {
         this.MaHD = MaHD;
     }
 
-    public String getTenTK() {
-        return TenTK;
+    public String getTenNV() {
+        return TenNV;
     }
 
-    public void setTenTK(String TenTK) {
-        this.TenTK = TenTK;
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
     }
 
     public String getTenKH() {
@@ -112,7 +112,7 @@ public class HoaDonVM {
 
     @Override
     public String toString() {
-        return "HoaDonVM{" + "Id=" + Id + ", IdTK=" + IdTK + ", IdKH=" + IdKH + ", MaHD=" + MaHD + ", TenTK=" + TenTK + ", TenKH=" + TenKH + ", NgayTao=" + NgayTao + ", TrangThaiHD=" + TrangThaiHD + '}';
+        return "HoaDonVM{" + "Id=" + Id + ", IdNV=" + IdNV + ", IdKH=" + IdKH + ", MaHD=" + MaHD + ", TenNV=" + TenNV + ", TenKH=" + TenKH + ", NgayTao=" + NgayTao + ", TrangThaiHD=" + TrangThaiHD + '}';
     }
-    
+
 }

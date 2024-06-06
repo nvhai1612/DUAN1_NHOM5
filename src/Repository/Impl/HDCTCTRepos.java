@@ -57,7 +57,7 @@ public class HDCTCTRepos implements IHDCTRepos{
         
         try (Connection con = connection.getConnection();
                 
-                PreparedStatement ps = con.prepareStatement("select MaHD,IDKH,IDTK,h.TRANGTHAIHD,MASP,TENSP,SOLUONG,hc.DONGIA from hoadonct hc join hoadon h on h.id = hc.IDHD join SANPHAMCHITIET sc on sc.id = hc.IDSPCT join sanpham s on s.id = sc.IDSP")){
+                PreparedStatement ps = con.prepareStatement("select MaHD,IDKH,IDNV,h.TRANGTHAIHD,MASP,TENSP,SOLUONG,hc.DONGIA from hoadonct hc join hoadon h on h.id = hc.IDHD join SANPHAMCHITIET sc on sc.id = hc.IDSPCT join sanpham s on s.id = sc.IDSP")){
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -80,3 +80,5 @@ public class HDCTCTRepos implements IHDCTRepos{
         return ListHDDTO;
     }
 }
+    
+    //update trangthai -> update tongtien -> update tienKhachdua

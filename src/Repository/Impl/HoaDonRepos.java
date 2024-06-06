@@ -9,13 +9,14 @@ import DomainModel.SanPhamChiTiet;
 import Repository.IHoaDonRepos;
 import Utiliti.DBConnection;
 import ViewModel.HoaDonDTO;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.sql.*;
 import java.text.SimpleDateFormat;
+
 
 /**
  *
@@ -35,15 +36,15 @@ public class HoaDonRepos implements IHoaDonRepos{
 "                  HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n" +
 "                  KHACHHANG ON HOADON.IDKH = KHACHHANG.ID \n" +
 "				  INNER JOIN\n" +
-"                  NHANVIEN ON HOADON.IDTK = NHANVIEN.ID")){
+"                  NHANVIEN ON HOADON.IDNV = NHANVIEN.ID")){
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString(4));
-                hd.setNgayTao(rs.getDate(8));
-                hd.setTenTK(rs.getString(18));
-                hd.setTrangThaiHD(rs.getInt(6));
+                hd.setNgayTao(rs.getDate(5));
+                hd.setTenNV(rs.getString(26));
+                hd.setTrangThaiHD(rs.getInt(8));
                 listCV.add(hd);
             }
             
@@ -59,15 +60,15 @@ public class HoaDonRepos implements IHoaDonRepos{
         
         try (Connection con = connection.getConnection();
                 
-                PreparedStatement ps = con.prepareStatement("SELECT * from HoaDon LEFT join TAIKHOAN n on hoadon.idtk = n.id")){
+                PreparedStatement ps = con.prepareStatement("SELECT * from HoaDon join NHANVIEN NV on HOADON.IDNV = NV.ID")){
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
-                hd.setMaHD(rs.getString(5));
-                hd.setTenTK(rs.getString(11));
-                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(6)));
-                hd.setTrangThaiHD(rs.getInt(9));
+                hd.setMaHD(rs.getString(4));
+                hd.setTenNV(rs.getString(11));
+                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(5)));
+                hd.setTrangThaiHD(rs.getInt(8));
                 listHD.add(hd);
             }
             
@@ -109,9 +110,9 @@ public class HoaDonRepos implements IHoaDonRepos{
         int check;
         
         try (Connection con = connection.getConnection();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO HOADON (IDTK, NGAYTAO, TRANGTHAIHD, MAHD) VALUES (?, ?, ?,?)")){
+                PreparedStatement ps = con.prepareStatement("INSERT INTO HOADON (IDNV, NGAYTAO, TRANGTHAIHD, MAHD) VALUES (?, ?, ?,?)")){
         
-            ps.setObject(1, hd.getIdTK());
+            ps.setObject(1, hd.getIdNV());
             ps.setObject(2, hd.getNgayTao());
             ps.setObject(3, hd.getTrangThaiHD());
             ps.setObject(4, hd.getMaHD());
@@ -129,9 +130,9 @@ public class HoaDonRepos implements IHoaDonRepos{
         int check;
         
         try (Connection con = connection.getConnection();
-                PreparedStatement ps = con.prepareStatement("UPDATE hoadon SET TRANGTHAIHD = ?, IDTK = ?, IDKH = ? where MAHD = ?")){
+                PreparedStatement ps = con.prepareStatement("UPDATE hoadon SET TRANGTHAIHD = ?, IDNV = ?, IDKH = ? where MAHD = ?")){
                 
-            ps.setObject(2, hd.getIdTK());
+            ps.setObject(2, hd.getIdNV());
             ps.setObject(3, hd.getIdKH());
             ps.setObject(1, hd.getTrangThaiHD());
             ps.setObject(4, hd.getMaHD());
@@ -256,5 +257,32 @@ public class HoaDonRepos implements IHoaDonRepos{
             e.printStackTrace();
         }        
          return 0;
+
+    }
+    
+//    public int updateTrangThaiHoaDon(HoaDon hd) {
+//        int check;
+//        
+//        try (Connection con = connection.getConnection();
+//                PreparedStatement ps = con.prepareStatement("UPDATE hoadon SET TRANGTHAIHD = ?, TONGTIEN = ? where MAHD = ?")){
+//                
+//            ps.setObject(2, hd.getIdTK());
+//            ps.setFloat(3, hd.getTongTien());
+//            ps.setObject(1, hd.getTrangThaiHD());
+//            ps.setObject(4, hd.getMaHD());
+//
+//            check = ps.executeUpdate();
+//            return check > 0;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        
+//        
+//        return null;
+//    }
+
+    @Override
+    public Boolean delete(UUID id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

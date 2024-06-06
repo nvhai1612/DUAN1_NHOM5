@@ -126,6 +126,7 @@ int check;
             e.printStackTrace();
         }
         return null;    
+
     }
 
     @Override
@@ -137,6 +138,7 @@ int check;
     public ArrayList<SanPhamChiTiet> search() {
         ArrayList<SanPhamChiTiet> listCTSP = new ArrayList<>();
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT MACTSP,IDSP,SOLUONGTON,IDCL,IDKC,IDMS,IDNSX,DONGIA FROM CHITIETSANPHAM JOIN SANPHAM ON CHITIETSANPHAM.IDSP = SANPHAM.ID JOIN CHATLIEU ON CHITIETSANPHAM.IDCL = CHATLIEU.ID JOIN KICHCO ON CHITIETSANPHAM.IDKC = KICHCO.ID JOIN NSX ON CHITIETSANPHAM.IDNSX = NSX.ID JOIN MAUSAC ON CHITIETSANPHAM.IDMS = MAUSAC.ID WHERE MASP = ?");) {
+
             ps.executeUpdate();
 
             SanPhamChiTiet spct = new SanPhamChiTiet();
@@ -168,6 +170,7 @@ public SanPhamChiTiet searchbyMaSp(String ma) {
                 PreparedStatement ps = 
                         con.prepareStatement
         ("SELECT MASPCT,IDSP,SOLUONGTON,IDCL,IDKC,IDMS,IDTH,DONGIA,SANPHAMCHITIET.id FROM SANPHAMCHITIET JOIN SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID JOIN CHATLIEU ON SANPHAMCHITIET.IDCL = CHATLIEU.ID JOIN KICHCO ON SANPHAMCHITIET.IDKC = KICHCO.ID JOIN THUONGHIEU ON SANPHAMCHITIET.IDTH = THUONGHIEU.ID JOIN MAUSAC ON SANPHAMCHITIET.IDMS = MAUSAC.ID WHERE MASPCT = ?");) {
+
                        ps.setObject(1, ma);
 
 //            ps.executeUpdate();
@@ -214,6 +217,7 @@ public SanPhamChiTiet searchbyMaSp(String ma) {
     public UUID SelectSPByTen(String TenSP) {
 
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT ID FROM SANPHAM WHERE MASP = ?")) {
+
             ps.setObject(1, TenSP);
             ResultSet rs = ps.executeQuery();
 
@@ -302,5 +306,5 @@ public SanPhamChiTiet searchbyMaSp(String ma) {
 
         return null;
     }
-    
+
 }
