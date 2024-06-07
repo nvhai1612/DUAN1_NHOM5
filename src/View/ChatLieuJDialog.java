@@ -55,6 +55,8 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -102,8 +104,10 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
 
         jLabel4.setText("Trạng thái :");
 
+        buttonGroup1.add(rdoHoatDong);
         rdoHoatDong.setText("Hoạt động");
 
+        buttonGroup1.add(rdoDHoatDong);
         rdoDHoatDong.setText("Dừng hoạt động");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -136,17 +140,17 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(btnThem)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(rdoDHoatDong)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(9, 9, 9)
                         .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGap(40, 40, 40)
                         .addComponent(btnLamMoi)
-                        .addGap(56, 56, 56))))
+                        .addContainerGap(64, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,8 +202,10 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup2.add(jRadioButton1);
         jRadioButton1.setText("Đang hoạt động");
 
+        buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("Dừng hoạt động");
 
         jButton4.setText("Mới");
@@ -335,6 +341,8 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

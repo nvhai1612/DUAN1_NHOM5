@@ -54,6 +54,8 @@ public class KichCoJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -101,8 +103,10 @@ public class KichCoJDialog extends javax.swing.JDialog {
 
         jLabel4.setText("Trạng thái :");
 
+        buttonGroup1.add(rdoHoatDong);
         rdoHoatDong.setText("Hoạt động");
 
+        buttonGroup1.add(rdoDHoatDong);
         rdoDHoatDong.setText("Dừng hoạt động");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -194,8 +198,10 @@ public class KichCoJDialog extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup2.add(jRadioButton1);
         jRadioButton1.setText("Đang hoạt động");
 
+        buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("Dừng hoạt động");
 
         jButton4.setText("Mới");
@@ -330,6 +336,8 @@ public class KichCoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

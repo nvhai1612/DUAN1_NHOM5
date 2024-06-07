@@ -800,7 +800,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
         btnXoaSanPham.setText("Xoá sản phẩm");
         btnXoaSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaSanPhamActionPerformed2(evt);
+                btnXoaSanPhamActionPerformed(evt);
             }
         });
 
@@ -1400,29 +1400,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm trong giỏ hàng để sửa số lượng.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnSuaGHActionPerformed
-
-    private void btnXoaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        int selectedRow = tblGioHang.getSelectedRow();
-        int rowHD = tblHoaDon.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(this, "chọn 1 sản phẩm trong giỏ hàng để xoá");
-            return;
-        }
-        if (rowHD < 0) {
-            JOptionPane.showMessageDialog(this, "chọn hoá đơn bạn muốn xoá sản phẩm");
-            return;
-        }
-        if (selectedRow != -1) {
-            String MaSPCanXoa = tblGioHang.getValueAt(selectedRow, 0).toString();
-            XoaSPGioHang(MaSPCanXoa);
-            UpdateSoLuongTrongGioHang(MaSPCanXoa);
-//            Updatekhixoa(MaSPCanXoa, tblDanhSachSP.getSelectedRow());
-        } else {
-            // Hiển thị thông báo nếu không có sản phẩm nào được chọn
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm trong giỏ hàng để xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-    }                                             
+                                         
                                       
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
  listSPCT.clear();
@@ -1502,19 +1480,18 @@ int row = tblHoaDon.getSelectedRow();
             Sps.put(tblGioHang.getValueAt(tblGioHang.getRowCount() - 1, 0).toString(), Integer.parseInt(tblGioHang.getValueAt(tblGioHang.getRowCount() - 1, 2).toString()));
         }
 
-        String TenNV = "nguyenvanhai";
+        String TenNV = "hai";
         String TenKH = txtTenKH.getText();
         int TrangThaiHD = 0;
 
         HoaDon hd = new HoaDon();
         hd.setMaHD(MaHD);
-        hd.setTenKH(TenKH);
         hd.setTenNV(TenNV);
+        hd.setTenKH(TenKH);
         hd.setTrangThaiHD(TrangThaiHD);
         listSPCT.add(SPCTVM);
 
         if (!check) {
-
             hoaDonService.add(hd, Sps);
             LoadTableGioHang();
             Sps.clear();
@@ -1604,11 +1581,11 @@ int row = tblHoaDon.getSelectedRow();
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-//        try {
-//            this.dispose();
-//            new LogInJFrame().setVisible(true);
-//        } catch (Exception e) {
-//        }
+        try {
+            this.dispose();
+            new LoginJFrame().setVisible(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void txtTenKHTaiQuay4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenKHTaiQuay4KeyReleased
@@ -1695,7 +1672,6 @@ int row = tblHoaDon.getSelectedRow();
 
     }//GEN-LAST:event_txtTienKhachDuaKeyReleased
 
-       
     private void btnThanhToan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToan5ActionPerformed
  
     }//GEN-LAST:event_btnThanhToan5ActionPerformed
@@ -1746,8 +1722,9 @@ int row = tblHoaDon.getSelectedRow();
             Sps.put(tblGioHang.getValueAt(j, 0).toString(), Integer.parseInt(tblGioHang.getValueAt(j, 2).toString()));
         }
         //        for (int i = 0; i < tblHoaDon.getRowCount(); i++) {
+        
         String MaHD = tblHoaDon.getValueAt(row, 0).toString();
-        String TenNV = "haiyeuquyet";
+        String TenNV = "hai";
         String TenKH = txtTenKH.getText();
         int TrangThaiHD = 0;
 
@@ -1760,7 +1737,20 @@ int row = tblHoaDon.getSelectedRow();
         //        }
     }//GEN-LAST:event_btnThanhToan6ActionPerformed
 
-    private void btnXoaSanPhamActionPerformed2(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSanPhamActionPerformed2
+    private void txtTienKhachDuaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienKhachDuaCaretUpdate
+        try {
+            Double tienKhachDua = Double.parseDouble(txtTienKhachDua.getText().trim());
+            Double CanThanhToan = Double.parseDouble(txtCanThanhToan.getText());
+            Double TienThua = tienKhachDua - CanThanhToan;
+            DecimalFormat format = new DecimalFormat("#,###");
+            txtTienThuaa.setText(String.valueOf(format.format(TienThua)));
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_txtTienKhachDuaCaretUpdate
+
+    private void btnXoaSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSanPhamActionPerformed
         int selectedRow = tblGioHang.getSelectedRow();
         int rowHD = tblHoaDon.getSelectedRow();
         if (selectedRow < 0) {
@@ -1779,21 +1769,8 @@ int row = tblHoaDon.getSelectedRow();
         } else {
             // Hiển thị thông báo nếu không có sản phẩm nào được chọn
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm trong giỏ hàng để xóa.", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        }        
-    }//GEN-LAST:event_btnXoaSanPhamActionPerformed2
-
-    private void txtTienKhachDuaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienKhachDuaCaretUpdate
-        try {
-            Double tienKhachDua = Double.parseDouble(txtTienKhachDua.getText().trim());
-            Double CanThanhToan = Double.parseDouble(txtCanThanhToan.getText());
-            Double TienThua = tienKhachDua - CanThanhToan;
-            DecimalFormat format = new DecimalFormat("#,###");
-            txtTienThuaa.setText(String.valueOf(format.format(TienThua)));
-
-        } catch (Exception e) {
-
         }
-    }//GEN-LAST:event_txtTienKhachDuaCaretUpdate
+    }//GEN-LAST:event_btnXoaSanPhamActionPerformed
 
     public Boolean UpdateLaiGioHang(String MaSP, String TenSP, int SoLuong, float DonGia, String mahd) {
         if (tblGioHang.getRowCount() == 0) {

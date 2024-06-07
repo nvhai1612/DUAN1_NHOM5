@@ -54,6 +54,8 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -101,8 +103,10 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
 
         jLabel4.setText("Trạng thái :");
 
+        buttonGroup1.add(rdoHoatDong);
         rdoHoatDong.setText("Hoạt động");
 
+        buttonGroup1.add(rdoDHoatDong);
         rdoDHoatDong.setText("Dừng hoạt động");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -195,8 +199,10 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup2.add(rdoHDTH);
         rdoHDTH.setText("Đang hoạt động");
 
+        buttonGroup2.add(rdoDHDTH);
         rdoDHDTH.setText("Dừng hoạt động");
 
         jButton8.setText("Mới");
@@ -329,6 +335,8 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton8;

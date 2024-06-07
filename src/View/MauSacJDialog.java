@@ -54,6 +54,9 @@ public class MauSacJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -101,8 +104,10 @@ public class MauSacJDialog extends javax.swing.JDialog {
 
         jLabel4.setText("Trạng thái :");
 
+        buttonGroup1.add(rdoHDMS);
         rdoHDMS.setText("Hoạt động");
 
+        buttonGroup1.add(rdoDHDMS);
         rdoDHDMS.setText("Dừng hoạt động");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -195,8 +200,10 @@ public class MauSacJDialog extends javax.swing.JDialog {
             }
         });
 
+        buttonGroup2.add(rdoLocHDMS);
         rdoLocHDMS.setText("Đang hoạt động");
 
+        buttonGroup2.add(rdoLocDHDMS);
         rdoLocDHDMS.setText("Dừng hoạt động");
 
         Moi.setText("Mới");
@@ -236,8 +243,8 @@ public class MauSacJDialog extends javax.swing.JDialog {
                     .addComponent(rdoLocDHDMS)
                     .addComponent(Moi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -330,6 +337,9 @@ public class MauSacJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Moi;
     private javax.swing.JButton btnLamMoi;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;

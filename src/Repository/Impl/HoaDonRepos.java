@@ -17,28 +17,21 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.text.SimpleDateFormat;
 
-
 /**
  *
  * @author Admin
  */
-public class HoaDonRepos implements IHoaDonRepos{
+public class HoaDonRepos implements IHoaDonRepos {
+
     private DBConnection connection;
 
     @Override
     public ArrayList<HoaDon> getListFormDB() {
         ArrayList<HoaDon> listCV = new ArrayList<>();
-        
-        try (Connection con = connection.getConnection();
-                
-                PreparedStatement ps = con.prepareStatement("SELECT *\n" +
-"FROM     HOADON INNER JOIN\n" +
-"                  HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n" +
-"                  KHACHHANG ON HOADON.IDKH = KHACHHANG.ID \n" +
-"				  INNER JOIN\n" +
-"                  NHANVIEN ON HOADON.IDNV = NHANVIEN.ID")){
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT * FROM HOADON INNER JOIN HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN KHACHHANG ON HOADON.IDKH = KHACHHANG.ID INNER JOIN NHANVIEN ON HOADON.IDNV = NHANVIEN.ID")) {
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString(4));
@@ -47,22 +40,20 @@ public class HoaDonRepos implements IHoaDonRepos{
                 hd.setTrangThaiHD(rs.getInt(8));
                 listCV.add(hd);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return listCV;
-}
-    
+    }
+
     public ArrayList<HoaDon> getListHoaDonFormDB() {
         ArrayList<HoaDon> listHD = new ArrayList<>();
-        
-        try (Connection con = connection.getConnection();
-                
-                PreparedStatement ps = con.prepareStatement("SELECT * from HoaDon join NHANVIEN NV on HOADON.IDNV = NV.ID")){
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT * from HoaDon left join NHANVIEN NV on HOADON.IDNV = NV.ID")) {
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString(4));
@@ -71,7 +62,7 @@ public class HoaDonRepos implements IHoaDonRepos{
                 hd.setTrangThaiHD(rs.getInt(8));
                 listHD.add(hd);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,25 +70,23 @@ public class HoaDonRepos implements IHoaDonRepos{
         return listHD;
     }
 
-      public HoaDon findHoaDonByMa(String maHd) {
+    public HoaDon findHoaDonByMa(String maHd) {
         ArrayList<HoaDon> listCV = new ArrayList<>();
-        
-        try (Connection con = connection.getConnection();
-                
-                PreparedStatement ps = con.prepareStatement("SELECT * from HoaDon where mahd = ?")){
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT * from HoaDon where mahd = ?")) {
             ps.setObject(1, maHd);
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
 //                System.out.println(rs.getDate(4));
                 HoaDon hd = new HoaDon();
-                hd.setMaHD(rs.getString(5));
+                hd.setMaHD(rs.getString(4));
                 hd.setId(UUID.fromString(rs.getString(1)));
-                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString(6)));
-                hd.setTrangThaiHD(rs.getInt(9));
+                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString(5)));
+                hd.setTrangThaiHD(rs.getInt(8));
                 return hd;
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -108,10 +97,9 @@ public class HoaDonRepos implements IHoaDonRepos{
     @Override
     public Boolean add(HoaDon hd) {
         int check;
-        
-        try (Connection con = connection.getConnection();
-                PreparedStatement ps = con.prepareStatement("INSERT INTO HOADON (IDNV, NGAYTAO, TRANGTHAIHD, MAHD) VALUES (?, ?, ?,?)")){
-        
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("INSERT INTO HOADON (IDNV, NGAYTAO, TRANGTHAIHD, MAHD) VALUES (?, ?, ?,?)")) {
+
             ps.setObject(1, hd.getIdNV());
             ps.setObject(2, hd.getNgayTao());
             ps.setObject(3, hd.getTrangThaiHD());
@@ -128,10 +116,9 @@ public class HoaDonRepos implements IHoaDonRepos{
     @Override
     public Boolean update(HoaDon hd) {
         int check;
-        
-        try (Connection con = connection.getConnection();
-                PreparedStatement ps = con.prepareStatement("UPDATE hoadon SET TRANGTHAIHD = ?, IDNV = ?, IDKH = ? where MAHD = ?")){
-                
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("UPDATE hoadon SET TRANGTHAIHD = ?, IDNV = ?, IDKH = ? where MAHD = ?")) {
+
             ps.setObject(2, hd.getIdNV());
             ps.setObject(3, hd.getIdKH());
             ps.setObject(1, hd.getTrangThaiHD());
@@ -142,24 +129,20 @@ public class HoaDonRepos implements IHoaDonRepos{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
+
         return null;
     }
 
     public HoaDonDTO searchbyMaHDCT(String ma) {
         ArrayList<HoaDonDTO> listHDCT = new ArrayList<>();
-        try (Connection con = connection.getConnection();
-                PreparedStatement ps = 
-                        con.prepareStatement
-        ("SELECT * FROM     HOADON INNER JOIN\n" +
-"                  HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n" +
-"                  SANPHAMCHITIET ON HOADONCT.IDSPCT = SANPHAMCHITIET.ID Join\n" +
-"				  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID WHERE MAHDCT = ?");) {
-                       ps.setObject(1, ma);
+        try (Connection con = connection.getConnection(); PreparedStatement ps
+                = con.prepareStatement("SELECT * FROM     HOADON INNER JOIN\n"
+                        + "                  HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n"
+                        + "                  SANPHAMCHITIET ON HOADONCT.IDSPCT = SANPHAMCHITIET.ID Join\n"
+                        + "				  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID WHERE MAHDCT = ?");) {
+            ps.setObject(1, ma);
 
 //            ps.executeUpdate();
-
             HoaDonDTO dto = new HoaDonDTO();
 
             ResultSet rs = ps.executeQuery();
@@ -176,18 +159,18 @@ public class HoaDonRepos implements IHoaDonRepos{
         }
         return null;
     }
-    
-    public ArrayList<SanPhamChiTiet> HoaDonCho (String MaHD){
+
+    public ArrayList<SanPhamChiTiet> HoaDonCho(String MaHD) {
         ArrayList<SanPhamChiTiet> listSPCT = new ArrayList<>();
 
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement(
-                "SELECT MASPCT,TENSP,SOLUONG,SANPHAMCHITIET.DONGIA FROM HOADON INNER JOIN\n" +
-"                  HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n" +
-"                  SANPHAMCHITIET ON HOADONCT.IDSPCT = SANPHAMCHITIET.ID Join\n" +
-"				  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID WHERE MAHD = ? ")) {
-            
+                "SELECT MASPCT,TENSP,SOLUONG,SANPHAMCHITIET.DONGIA FROM HOADON INNER JOIN\n"
+                + "                  HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n"
+                + "                  SANPHAMCHITIET ON HOADONCT.IDSPCT = SANPHAMCHITIET.ID Join\n"
+                + "				  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID WHERE MAHD = ? ")) {
+
             ps.setObject(1, MaHD);
-            
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -203,83 +186,72 @@ public class HoaDonRepos implements IHoaDonRepos{
         }
         return listSPCT;
     }
-    
+
     public String findMaaHDCtBySpct(String maSPCT, String ma) {
-         try (Connection con = connection.getConnection();
-                 PreparedStatement ps = con.prepareStatement(
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement(
                 "select hd.mahdct from hoadonct hd "
-                        + "join sanphamchitiet sp on hd.idspct = sp.id"
-                        + "join hoadon h on h.id = hd.idhd where sp.maspct = ? and h.mahd = ?")) {
-            
+                + "join sanphamchitiet sp on hd.idspct = sp.id"
+                + "join hoadon h on h.id = hd.idhd where sp.maspct = ? and h.mahd = ?")) {
+
             ps.setObject(1, maSPCT);
             ps.setObject(2, ma);
-            
+
             ResultSet rs = ps.executeQuery();
-             while (rs.next()) {
+            while (rs.next()) {
                 return rs.getString(1);
             }
-             } catch (Exception e) {
+        } catch (Exception e) {
         }
-         return null;
+        return null;
     }
-    
+
     public void updateSlHdCT(String maHDCT, Integer sl, Double donGia, String mahd) {
         String mahdct = findMaaHDCtBySpct(maHDCT, mahd);
-         try (Connection con = connection.getConnection();
-                PreparedStatement ps = con.prepareStatement("update hoadonct set soluong = ?, dongia = ? where mahdct = ?")){
-                
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("update hoadonct set soluong = ?, dongia = ? where mahdct = ?")) {
+
             ps.setObject(2, donGia);
             ps.setObject(3, mahdct);
             ps.setObject(1, sl);
             ps.executeUpdate();
- 
+
         } catch (Exception e) {
             e.printStackTrace();
-        }        
+        }
     }
-    
+
     public int findHdctByMaHdct(String maHDCT, String ma) {
         String mahdct = findMaaHDCtBySpct(maHDCT, ma);
-         try (Connection con = connection.getConnection();
-                PreparedStatement ps = con.prepareStatement("select hd.soluong from hoadonct hd "
-                        + "join sanphamchitiet sp on sp.id = hd.idspct"
-                        + "join hoadon h on h.id = hd.idhd where sp.maspct = ? and h.mahd = ?")){
-                
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("select hd.soluong from hoadonct hd "
+                + "join sanphamchitiet sp on sp.id = hd.idspct"
+                + "join hoadon h on h.id = hd.idhd where sp.maspct = ? and h.mahd = ?")) {
+
             ps.setObject(1, maHDCT);
             ps.setObject(2, ma);
             ResultSet resultSet = ps.executeQuery();
-            while(resultSet.next()){
-                            return resultSet.getInt(1);
+            while (resultSet.next()) {
+                return resultSet.getInt(1);
             }
-             
-            
+
         } catch (Exception e) {
             e.printStackTrace();
-        }        
-         return 0;
+        }
+        return 0;
 
     }
-    
-//    public int updateTrangThaiHoaDon(HoaDon hd) {
-//        int check;
-//        
-//        try (Connection con = connection.getConnection();
-//                PreparedStatement ps = con.prepareStatement("UPDATE hoadon SET TRANGTHAIHD = ?, TONGTIEN = ? where MAHD = ?")){
-//                
-//            ps.setObject(2, hd.getIdTK());
-//            ps.setFloat(3, hd.getTongTien());
-//            ps.setObject(1, hd.getTrangThaiHD());
-//            ps.setObject(4, hd.getMaHD());
-//
-//            check = ps.executeUpdate();
-//            return check > 0;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        
-//        
-//        return null;
-//    }
+
+    public void updateTrangThaiHoaDon(String maHDCT, Integer TrangThaiHD, Double TongTien, String mahd) {
+        String mahdct = findMaaHDCtBySpct(maHDCT, mahd);
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("update hoadon set TrangThaiHD = ?, TongTien = ? where mahd = ?")) {
+
+            ps.setObject(1, TrangThaiHD);
+            ps.setObject(2, TongTien);
+            ps.setObject(3, mahdct);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public Boolean delete(UUID id) {
