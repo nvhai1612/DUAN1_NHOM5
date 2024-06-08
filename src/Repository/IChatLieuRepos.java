@@ -16,4 +16,5 @@ public interface IChatLieuRepos {
     public ArrayList<ChatLieu> getListFormDB();
     public Boolean add(ChatLieu cl);
     public Boolean update(ChatLieu cl);
+    public ArrayList<ChatLieu> search();
 }

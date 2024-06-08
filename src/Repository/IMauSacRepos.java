@@ -16,4 +16,5 @@ public interface IMauSacRepos {
     public ArrayList<MauSac> getListFormDB();
     public Boolean add(MauSac ms);
     public Boolean update(MauSac ms);
+    public ArrayList<MauSac> search();
 }

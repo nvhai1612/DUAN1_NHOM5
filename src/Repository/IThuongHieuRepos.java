@@ -16,4 +16,5 @@ public interface IThuongHieuRepos {
     public ArrayList<ThuongHieu> getListFormDB();
     public Boolean add(ThuongHieu th);
     public Boolean update(ThuongHieu th);
+    public ArrayList<ThuongHieu> search();
 }

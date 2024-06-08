@@ -42,5 +42,10 @@ public class KichCoService implements IKichCoService{
     public void update(KichCo kc) {
         KichCoRepos.update(kc);
     }
+
+    @Override
+    public ArrayList<KichCo> search(String MaKC) {
+        return KichCoRepos.search();
+    }
     
 }

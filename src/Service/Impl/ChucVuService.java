@@ -42,5 +42,10 @@ public class ChucVuService implements IChucVuService{
     public void update(ChucVu cv) {
         ChucVuRepos.update(cv);
     }
+
+    @Override
+    public ArrayList<ChucVu> search(String MaCV) {
+        return ChucVuRepos.search();
+    }
     
 }

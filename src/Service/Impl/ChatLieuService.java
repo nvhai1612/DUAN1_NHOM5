@@ -42,5 +42,10 @@ public class ChatLieuService implements IChatLieuService{
     public void update(ChatLieu cl) {
         ChatLieuRepos.update(cl);
     }
+
+    @Override
+    public ArrayList<ChatLieu> search(String MaCL) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

@@ -4,9 +4,11 @@
  */
 package View;
 
+import DomainModel.KichCo;
 import Service.Impl.KichCoService;
 import ViewModel.KichCoVM;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +24,7 @@ public class KichCoJDialog extends javax.swing.JDialog {
     public KichCoJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        LoadTable();
     }
     
     public void LoadTable(){
@@ -40,8 +43,8 @@ public class KichCoJDialog extends javax.swing.JDialog {
     }
     
     public void LamMoi(){
-        txtMaSP.setText("");
-        txtTenSP.setText("");
+        txtMaKC.setText("");
+        txtTenKC.setText("");
         rdoHoatDong.setSelected(true);
     }
 
@@ -59,9 +62,9 @@ public class KichCoJDialog extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtMaSP = new javax.swing.JTextField();
+        txtMaKC = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtTenSP = new javax.swing.JTextField();
+        txtTenKC = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
@@ -71,8 +74,8 @@ public class KichCoJDialog extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblKichCo = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        txtTim = new javax.swing.JTextField();
+        btnTim = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton4 = new javax.swing.JButton();
@@ -91,8 +94,18 @@ public class KichCoJDialog extends javax.swing.JDialog {
         jLabel3.setText("Tên KC :");
 
         btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -120,8 +133,8 @@ public class KichCoJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaSP)
-                    .addComponent(txtTenSP))
+                    .addComponent(txtMaKC)
+                    .addComponent(txtTenKC))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -156,11 +169,11 @@ public class KichCoJDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaKC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenKC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -191,10 +204,10 @@ public class KichCoJDialog extends javax.swing.JDialog {
         });
         jScrollPane4.setViewportView(tblKichCo);
 
-        jButton3.setText("Tìm");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnTim.setText("Tìm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnTimActionPerformed(evt);
             }
         });
 
@@ -216,7 +229,7 @@ public class KichCoJDialog extends javax.swing.JDialog {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jRadioButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,7 +237,7 @@ public class KichCoJDialog extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
+                            .addComponent(btnTim))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -233,8 +246,8 @@ public class KichCoJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTim))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
@@ -277,8 +290,8 @@ public class KichCoJDialog extends javax.swing.JDialog {
         String TenSP = tblKichCo.getValueAt(row, 2).toString();
         String TrangThai = tblKichCo.getValueAt(row, 3).toString();
 
-        txtMaSP.setText(MaSP);
-        txtTenSP.setText(TenSP);
+        txtMaKC.setText(MaSP);
+        txtTenKC.setText(TenSP);
         if(TrangThai.equalsIgnoreCase("Đang Hoạt Động")){
             this.rdoHoatDong.setSelected(true);
         }else{
@@ -286,9 +299,50 @@ public class KichCoJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tblKichCoMouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        ArrayList<KichCoVM> listKCVM = kichCoService.getAll();
+        String TimKiem = this.txtTim.getText();
+        int index = -1;
+        for (KichCoVM clvm : listKCVM) {
+            if (TimKiem.equalsIgnoreCase(clvm.getMaKC())) {
+                index = listKCVM.indexOf(clvm);
+            }
+        }
+        
+        if(index==-1){
+            JOptionPane.showMessageDialog(this, "Không tìm thấy !");
+            return;
+        }
+        txtMaKC.setText(listKCVM.get(index).getMaKC());
+        txtTenKC.setText(listKCVM.get(index).getTenKC());
+        rdoHoatDong.setSelected(true);
+    }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String MaKC = txtMaKC.getText();
+        String TenKC = txtMaKC.getText();
+        
+        KichCo kc = new KichCo();
+        kc.setMaKC(MaKC);
+        kc.setTenKC(TenKC);
+        
+        kichCoService.add(kc);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String MaKC = txtMaKC.getText();
+        String TenKC = txtMaKC.getText();
+        
+        KichCo kc = new KichCo();
+        kc.setMaKC(MaKC);
+        kc.setTenKC(TenKC);
+        
+        kichCoService.update(kc);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,9 +390,9 @@ public class KichCoJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTim;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -349,11 +403,11 @@ public class KichCoJDialog extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdoDHoatDong;
     private javax.swing.JRadioButton rdoHoatDong;
     private javax.swing.JTable tblKichCo;
-    private javax.swing.JTextField txtMaSP;
-    private javax.swing.JTextField txtTenSP;
+    private javax.swing.JTextField txtMaKC;
+    private javax.swing.JTextField txtTenKC;
+    private javax.swing.JTextField txtTim;
     // End of variables declaration//GEN-END:variables
 }

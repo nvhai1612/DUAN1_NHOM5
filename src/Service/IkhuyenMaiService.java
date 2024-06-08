@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Admin
  */
-public interface IkhuyenMaiSeviec {
+public interface IkhuyenMaiService {
      ArrayList<khuyeMaiVM> getAll();
     ArrayList<KhuyenMai> getAllDomain();
     void add(KhuyenMai km);

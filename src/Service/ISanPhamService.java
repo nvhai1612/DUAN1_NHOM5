@@ -17,4 +17,5 @@ public interface ISanPhamService {
     ArrayList<SanPham> getAllDomain();
     void add(SanPham sp);
     void update(SanPham sp);
+    ArrayList<SanPham> search (String MaSP);
 }

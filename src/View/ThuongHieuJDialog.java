@@ -4,9 +4,11 @@
  */
 package View;
 
+import DomainModel.ThuongHieu;
 import Service.Impl.ThuongHieuService;
 import ViewModel.ThuongHieuVM;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +24,7 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
     public ThuongHieuJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        LoadTable();
     }
     
     public void LoadTable(){
@@ -40,8 +43,8 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
     }
     
     public void LamMoi(){
-        txtMaSP.setText("");
-        txtTenSP.setText("");
+        txtMaTH.setText("");
+        txtTenTH.setText("");
         rdoHoatDong.setSelected(true);
     }
 
@@ -59,11 +62,11 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtMaSP = new javax.swing.JTextField();
+        txtMaTH = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtTenSP = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtTenTH = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         rdoHoatDong = new javax.swing.JRadioButton();
@@ -71,11 +74,11 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblThuongHieu = new javax.swing.JTable();
-        jTextField3 = new javax.swing.JTextField();
+        txtTim = new javax.swing.JTextField();
         tbnTimTH = new javax.swing.JButton();
         rdoHDTH = new javax.swing.JRadioButton();
         rdoDHDTH = new javax.swing.JRadioButton();
-        jButton8 = new javax.swing.JButton();
+        btnMoi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,9 +93,19 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
 
         jLabel3.setText("Tên TH :");
 
-        jButton1.setText("Thêm");
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Sửa");
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -120,8 +133,8 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaSP)
-                    .addComponent(txtTenSP))
+                    .addComponent(txtMaTH)
+                    .addComponent(txtTenTH))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,16 +145,15 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                         .addComponent(rdoHoatDong))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jButton1)))
+                        .addComponent(btnThem)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(rdoDHoatDong)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addComponent(btnSua)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addComponent(btnLamMoi)
                         .addGap(56, 56, 56))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -157,11 +169,11 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -169,8 +181,8 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                     .addComponent(rdoDHoatDong))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
                     .addComponent(btnLamMoi))
                 .addGap(151, 151, 151))
         );
@@ -205,7 +217,7 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
         buttonGroup2.add(rdoDHDTH);
         rdoDHDTH.setText("Dừng hoạt động");
 
-        jButton8.setText("Mới");
+        btnMoi.setText("Mới");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -217,14 +229,14 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(rdoHDTH)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rdoDHDTH)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tbnTimTH))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -234,13 +246,13 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tbnTimTH))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoHDTH)
                     .addComponent(rdoDHDTH)
-                    .addComponent(jButton8))
+                    .addComponent(btnMoi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
@@ -278,8 +290,8 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
         String TenTH = tblThuongHieu.getValueAt(row, 2).toString();
         String TrangThai = tblThuongHieu.getValueAt(row, 3).toString();
 
-        txtMaSP.setText(MaTH);
-        txtTenSP.setText(TenTH);
+        txtMaTH.setText(MaTH);
+        txtTenTH.setText(TenTH);
         if(TrangThai.equalsIgnoreCase("Đang Hoạt Động")){
             this.rdoHoatDong.setSelected(true);
         }else{
@@ -288,8 +300,49 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_tblThuongHieuMouseClicked
 
     private void tbnTimTHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnTimTHActionPerformed
-        // TODO add your handling code here:
+        ArrayList<ThuongHieuVM> listTHVM = thuongHieuService.getAll();
+        String TimKiem = this.txtTim.getText();
+        int index = -1;
+        for (ThuongHieuVM msvm : listTHVM) {
+            if (TimKiem.equalsIgnoreCase(msvm.getMaTH())) {
+                index = listTHVM.indexOf(msvm);
+            }
+        }
+        
+        if(index==-1){
+            JOptionPane.showMessageDialog(this, "Không tìm thấy !");
+            return;
+        }
+        txtMaTH.setText(listTHVM.get(index).getMaTH());
+        txtTenTH.setText(listTHVM.get(index).getTenTH());
+        rdoHoatDong.setSelected(true);
     }//GEN-LAST:event_tbnTimTHActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String MaTH = txtMaTH.getText();
+        String TenTH = txtTenTH.getText();
+        
+        ThuongHieu th = new ThuongHieu();
+        th.setMaTH(MaTH);
+        th.setTenTH(TenTH);
+        
+        thuongHieuService.add(th);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String MaTH = txtMaTH.getText();
+        String TenTH = txtTenTH.getText();
+        
+        ThuongHieu th = new ThuongHieu();
+        th.setMaTH(MaTH);
+        th.setTenTH(TenTH);
+        
+        thuongHieuService.update(th);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,11 +388,11 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -347,14 +400,14 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JRadioButton rdoDHDTH;
     private javax.swing.JRadioButton rdoDHoatDong;
     private javax.swing.JRadioButton rdoHDTH;
     private javax.swing.JRadioButton rdoHoatDong;
     private javax.swing.JTable tblThuongHieu;
     private javax.swing.JButton tbnTimTH;
-    private javax.swing.JTextField txtMaSP;
-    private javax.swing.JTextField txtTenSP;
+    private javax.swing.JTextField txtMaTH;
+    private javax.swing.JTextField txtTenTH;
+    private javax.swing.JTextField txtTim;
     // End of variables declaration//GEN-END:variables
 }

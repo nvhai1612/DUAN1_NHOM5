@@ -17,4 +17,5 @@ public interface IMauSacService {
     ArrayList<MauSac> getAllDomain();
     void add(MauSac ms);
     void update(MauSac ms);
+    ArrayList<MauSac> search (String MaMS);
 }

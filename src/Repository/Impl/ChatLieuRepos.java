@@ -78,4 +78,27 @@ public class ChatLieuRepos implements IChatLieuRepos{
 
         return null;
     }
+
+    @Override
+    public ArrayList<ChatLieu> search() {
+        ArrayList<ChatLieu> listCL = new ArrayList<>();
+        try (Connection con = connection.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM CHATLIEU WHERE MACL = ?");){
+            ps.executeUpdate();
+            
+            ChatLieu cl = new ChatLieu();
+            ps.setObject(1, cl.getMaCL());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                cl.setId((UUID) rs.getObject(1));
+                cl.setMaCL(rs.getString(2));
+                listCL.add(cl);
+            } 
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return listCL;
+    }
 }

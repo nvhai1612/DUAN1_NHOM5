@@ -4,9 +4,11 @@
  */
 package View;
 
+import DomainModel.MauSac;
 import Service.Impl.MauSacService;
 import ViewModel.MauSacVM;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +24,7 @@ public class MauSacJDialog extends javax.swing.JDialog {
     public MauSacJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        LoadTable();
     }
     
     public void LoadTable(){
@@ -40,8 +43,8 @@ public class MauSacJDialog extends javax.swing.JDialog {
     }
     
     public void LamMoi(){
-        txtMaSP.setText("");
-        txtTenSP.setText("");
+        txtMaMS.setText("");
+        txtTenMS.setText("");
         rdoHDMS.setSelected(true);
     }
 
@@ -60,11 +63,11 @@ public class MauSacJDialog extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtMaSP = new javax.swing.JTextField();
+        txtMaMS = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtTenSP = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtTenMS = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         rdoHDMS = new javax.swing.JRadioButton();
@@ -72,8 +75,8 @@ public class MauSacJDialog extends javax.swing.JDialog {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblMauSac = new javax.swing.JTable();
-        jTextField3 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        txtTim = new javax.swing.JTextField();
+        btnTim = new javax.swing.JButton();
         rdoLocHDMS = new javax.swing.JRadioButton();
         rdoLocDHDMS = new javax.swing.JRadioButton();
         Moi = new javax.swing.JButton();
@@ -91,9 +94,19 @@ public class MauSacJDialog extends javax.swing.JDialog {
 
         jLabel3.setText("Tên MS :");
 
-        jButton1.setText("Thêm");
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Sửa");
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -121,8 +134,8 @@ public class MauSacJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMaSP)
-                    .addComponent(txtTenSP))
+                    .addComponent(txtMaMS)
+                    .addComponent(txtTenMS))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +146,7 @@ public class MauSacJDialog extends javax.swing.JDialog {
                         .addComponent(rdoHDMS))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jButton1)))
+                        .addComponent(btnThem)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -141,7 +154,7 @@ public class MauSacJDialog extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(jButton2)
+                        .addComponent(btnSua)
                         .addGap(46, 46, 46)
                         .addComponent(btnLamMoi)
                         .addContainerGap(31, Short.MAX_VALUE))))
@@ -158,11 +171,11 @@ public class MauSacJDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtMaSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaMS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTenMS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -170,8 +183,8 @@ public class MauSacJDialog extends javax.swing.JDialog {
                     .addComponent(rdoDHDMS))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
                     .addComponent(btnLamMoi))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
@@ -193,10 +206,10 @@ public class MauSacJDialog extends javax.swing.JDialog {
         });
         jScrollPane6.setViewportView(tblMauSac);
 
-        jButton7.setText("Tìm");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnTim.setText("Tìm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnTimActionPerformed(evt);
             }
         });
 
@@ -218,7 +231,7 @@ public class MauSacJDialog extends javax.swing.JDialog {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(rdoLocHDMS)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -226,7 +239,7 @@ public class MauSacJDialog extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Moi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7))
+                            .addComponent(btnTim))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -235,8 +248,8 @@ public class MauSacJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7))
+                    .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTim))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoLocHDMS)
@@ -279,8 +292,8 @@ public class MauSacJDialog extends javax.swing.JDialog {
         String TenSP = tblMauSac.getValueAt(row, 2).toString();
         String TrangThai = tblMauSac.getValueAt(row, 3).toString();
 
-        txtMaSP.setText(MaSP);
-        txtTenSP.setText(TenSP);
+        txtMaMS.setText(MaSP);
+        txtTenMS.setText(TenSP);
         if(TrangThai.equalsIgnoreCase("Đang Hoạt Động")){
             this.rdoHDMS.setSelected(true);
         }else{
@@ -288,9 +301,50 @@ public class MauSacJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tblMauSacMouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        ArrayList<MauSacVM> listMSVM = mauSacService.getAll();
+        String TimKiem = this.txtTim.getText();
+        int index = -1;
+        for (MauSacVM msvm : listMSVM) {
+            if (TimKiem.equalsIgnoreCase(msvm.getMaMS())) {
+                index = listMSVM.indexOf(msvm);
+            }
+        }
+        
+        if(index==-1){
+            JOptionPane.showMessageDialog(this, "Không tìm thấy !");
+            return;
+        }
+        txtMaMS.setText(listMSVM.get(index).getMaMS());
+        txtTenMS.setText(listMSVM.get(index).getTenMS());
+        rdoHDMS.setSelected(true);
+    }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String MaMS = txtMaMS.getText();
+        String TenMS = txtTenMS.getText();
+        
+        MauSac ms = new MauSac();
+        ms.setMaMS(MaMS);
+        ms.setTenMS(TenMS);
+        
+        mauSacService.add(ms);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String MaMS = txtMaMS.getText();
+        String TenMS = txtTenMS.getText();
+        
+        MauSac ms = new MauSac();
+        ms.setMaMS(MaMS);
+        ms.setTenMS(TenMS);
+        
+        mauSacService.update(ms);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,12 +391,12 @@ public class MauSacJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Moi;
     private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTim;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -350,13 +404,13 @@ public class MauSacJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JRadioButton rdoDHDMS;
     private javax.swing.JRadioButton rdoHDMS;
     private javax.swing.JRadioButton rdoLocDHDMS;
     private javax.swing.JRadioButton rdoLocHDMS;
     private javax.swing.JTable tblMauSac;
-    private javax.swing.JTextField txtMaSP;
-    private javax.swing.JTextField txtTenSP;
+    private javax.swing.JTextField txtMaMS;
+    private javax.swing.JTextField txtTenMS;
+    private javax.swing.JTextField txtTim;
     // End of variables declaration//GEN-END:variables
 }

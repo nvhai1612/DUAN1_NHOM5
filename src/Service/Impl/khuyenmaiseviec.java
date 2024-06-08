@@ -8,15 +8,15 @@ import DomainModel.KhuyenMai;
 
 import Repository.Impl.KhuyenMaiRepons;
 import Repository.Impl.SanPhamRepos;
-import Service.IkhuyenMaiSeviec;
 import ViewModel.khuyeMaiVM;
 import java.util.ArrayList;
+import Service.IkhuyenMaiService;
 
 /**
  *
  * @author Admin
  */
-public class khuyenmaiseviec implements IkhuyenMaiSeviec{
+public class khuyenmaiseviec implements IkhuyenMaiService{
     KhuyenMaiRepons respon = new KhuyenMaiRepons();
 
     @Override

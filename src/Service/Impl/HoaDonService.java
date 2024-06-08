@@ -68,6 +68,10 @@ public class HoaDonService implements IHoaDonService{
 //        hdctrepos.add(hd2, maSps);
     }
     
+    public void updateTrangThaiHoaDon(String maHDCT, Integer TrangThaiHD, Double TongTien, String mahd){
+        hoadonrepos.updateTrangThaiHoaDon(maHDCT, TrangThaiHD, TongTien, mahd);
+    }
+    
     public ArrayList<SanPhamChiTiet> HoaDonCho(String MaHD){
         return hoadonrepos.HoaDonCho(MaHD);
     }
