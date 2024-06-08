@@ -77,8 +77,6 @@ public class MauSacJDialog extends javax.swing.JDialog {
         tblMauSac = new javax.swing.JTable();
         txtTim = new javax.swing.JTextField();
         btnTim = new javax.swing.JButton();
-        rdoLocHDMS = new javax.swing.JRadioButton();
-        rdoLocDHDMS = new javax.swing.JRadioButton();
         Moi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -157,7 +155,7 @@ public class MauSacJDialog extends javax.swing.JDialog {
                         .addComponent(btnSua)
                         .addGap(46, 46, 46)
                         .addComponent(btnLamMoi)
-                        .addContainerGap(31, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(127, 127, 127)
                 .addComponent(jLabel1)
@@ -213,13 +211,12 @@ public class MauSacJDialog extends javax.swing.JDialog {
             }
         });
 
-        buttonGroup2.add(rdoLocHDMS);
-        rdoLocHDMS.setText("Đang hoạt động");
-
-        buttonGroup2.add(rdoLocDHDMS);
-        rdoLocDHDMS.setText("Dừng hoạt động");
-
         Moi.setText("Mới");
+        Moi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -228,18 +225,13 @@ public class MauSacJDialog extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(rdoLocHDMS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoLocDHDMS)))
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Moi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTim))
+                        .addComponent(btnTim)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Moi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -249,13 +241,9 @@ public class MauSacJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTim))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoLocHDMS)
-                    .addComponent(rdoLocDHDMS)
+                    .addComponent(btnTim)
                     .addComponent(Moi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addGap(21, 21, 21))
         );
@@ -322,8 +310,15 @@ public class MauSacJDialog extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String MaMS = txtMaMS.getText();
+         if (MaMS.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không để trống mã!");
+            return;
+        }
         String TenMS = txtTenMS.getText();
-        
+         if (TenMS.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không để trống ten!");
+            return;
+        }
         MauSac ms = new MauSac();
         ms.setMaMS(MaMS);
         ms.setTenMS(TenMS);
@@ -331,20 +326,37 @@ public class MauSacJDialog extends javax.swing.JDialog {
         mauSacService.add(ms);
         LamMoi();
         LoadTable();
+        JOptionPane.showMessageDialog(this, "Thêm thành công!");
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        String MaMS = txtMaMS.getText();
-        String TenMS = txtTenMS.getText();
-        
-        MauSac ms = new MauSac();
-        ms.setMaMS(MaMS);
-        ms.setTenMS(TenMS);
-        
-        mauSacService.update(ms);
+        int selectedRow = tblMauSac.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một màu sắc để sửa!");
+            return; // Thoát ra khỏi phương thức nếu chưa có dòng nào được chọn
+        }
+        int check = JOptionPane.showConfirmDialog(this, "Xác nhận sửa!");
+        if (check == JOptionPane.YES_OPTION) {
+            String MaMS = txtMaMS.getText();
+            String TenMS = txtTenMS.getText(); 
+            int TrangThai = rdoHDMS.isSelected() ? 1 : 0;
+            MauSac ms = new MauSac();
+            ms.setMaMS(MaMS);
+            ms.setTenMS(TenMS);
+            ms.setTrangThaiMS(TrangThai);
+             mauSacService.update(ms);
         LamMoi();
         LoadTable();
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Sửa thất bại!");
+        }  
     }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void MoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoiActionPerformed
+        LamMoi();
+        txtTim.setText("");
+    }//GEN-LAST:event_MoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,8 +418,6 @@ public class MauSacJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JRadioButton rdoDHDMS;
     private javax.swing.JRadioButton rdoHDMS;
-    private javax.swing.JRadioButton rdoLocDHDMS;
-    private javax.swing.JRadioButton rdoLocHDMS;
     private javax.swing.JTable tblMauSac;
     private javax.swing.JTextField txtMaMS;
     private javax.swing.JTextField txtTenMS;

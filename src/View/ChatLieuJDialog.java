@@ -76,8 +76,6 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
         tblChatLieu = new javax.swing.JTable();
         txtTim = new javax.swing.JTextField();
         btnTimCL = new javax.swing.JButton();
-        rdohd = new javax.swing.JRadioButton();
-        rdodhd = new javax.swing.JRadioButton();
         btnMoi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -117,6 +115,7 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
         jLabel4.setText("Trạng thái :");
 
         buttonGroup1.add(rdoHoatDong);
+        rdoHoatDong.setSelected(true);
         rdoHoatDong.setText("Hoạt động");
 
         buttonGroup1.add(rdoDHoatDong);
@@ -214,12 +213,6 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
             }
         });
 
-        buttonGroup2.add(rdohd);
-        rdohd.setText("Đang hoạt động");
-
-        buttonGroup2.add(rdodhd);
-        rdodhd.setText("Dừng hoạt động");
-
         btnMoi.setText("Mới");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -231,16 +224,11 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(rdohd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdodhd)))
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTimCL))
+                        .addComponent(btnTimCL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -250,13 +238,9 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimCL))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdohd)
-                    .addComponent(rdodhd)
+                    .addComponent(btnTimCL)
                     .addComponent(btnMoi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -323,28 +307,47 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String MaCL = txtMaCL.getText();
-        String TenCL = txtMaCL.getText();
-        
+        if (MaCL.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không để trống mã!");
+            return;
+        }
+        String TenCL = txtTenCL.getText();
+        if (TenCL.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không để trống ten!");
+            return;
+        }
         ChatLieu cl = new ChatLieu();
         cl.setMaCL(MaCL);
-        cl.setTenCL(TenCL);
-        
+        cl.setTenCL(TenCL);       
         chatLieuService.add(cl);
         LamMoi();
         LoadTable();
+        JOptionPane.showMessageDialog(this, "Thêm thành công!");
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        String MaCL = txtMaCL.getText();
-        String TenCL = txtMaCL.getText();
-        
-        ChatLieu cl = new ChatLieu();
-        cl.setMaCL(MaCL);
-        cl.setTenCL(TenCL);
-        
-        chatLieuService.update(cl);
-        LamMoi();
-        LoadTable();
+        int selectedRow = tblChatLieu.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một chất liệu để sửa!");
+            return; // Thoát ra khỏi phương thức nếu chưa có dòng nào được chọn
+        }
+        int check = JOptionPane.showConfirmDialog(this, "Xác nhận sửa!");
+        if (check == JOptionPane.YES_OPTION) {
+            String MaCL = txtMaCL.getText();
+            String TenCL = txtTenCL.getText();
+             int TrangThai = rdoHoatDong.isSelected() ? 1 : 0;
+            ChatLieu cl = new ChatLieu();
+            cl.setMaCL(MaCL);
+            cl.setTenCL(TenCL);
+            cl.setTrangThaiCL(TrangThai);
+            chatLieuService.update(cl);
+            LamMoi();
+            LoadTable();
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Sửa thất bại!");
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
@@ -407,8 +410,6 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JRadioButton rdoDHoatDong;
     private javax.swing.JRadioButton rdoHoatDong;
-    private javax.swing.JRadioButton rdodhd;
-    private javax.swing.JRadioButton rdohd;
     private javax.swing.JTable tblChatLieu;
     private javax.swing.JTextField txtMaCL;
     private javax.swing.JTextField txtTenCL;
