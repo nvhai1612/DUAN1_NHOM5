@@ -100,7 +100,7 @@ public class NhanVienJ extends javax.swing.JFrame {
         txtMaCV = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtTenCV = new javax.swing.JTextField();
-        btnThemCV = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         SuaCv = new javax.swing.JButton();
         btnLamMoi1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -151,6 +151,8 @@ public class NhanVienJ extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(222, 229, 226));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jPanel2.setPreferredSize(new java.awt.Dimension(465, 335));
+        jPanel2.setVerifyInputWhenFocusTarget(false);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
@@ -160,19 +162,14 @@ public class NhanVienJ extends javax.swing.JFrame {
 
         jLabel13.setText("Tên CV :");
 
-        btnThemCV.setText("Thêm");
-        btnThemCV.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemCVActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
         SuaCv.setText("Sửa");
-        SuaCv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SuaCvActionPerformed(evt);
-            }
-        });
 
         btnLamMoi1.setText("Làm mới");
         btnLamMoi1.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +222,7 @@ public class NhanVienJ extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnThemCV)
+                                .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(SuaCv)
                                 .addGap(54, 54, 54)
@@ -262,7 +259,7 @@ public class NhanVienJ extends javax.swing.JFrame {
                     .addComponent(rdoDungHD))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThemCV)
+                    .addComponent(jButton1)
                     .addComponent(SuaCv)
                     .addComponent(btnLamMoi1))
                 .addGap(18, 18, 18)
@@ -281,7 +278,10 @@ public class NhanVienJ extends javax.swing.JFrame {
         );
         ChucVujDialogLayout.setVerticalGroup(
             ChucVujDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(ChucVujDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -807,7 +807,7 @@ public class NhanVienJ extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblChucVuMouseClicked
 
-    private void btnThemCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCVActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        String MaCV = txtMaCV.getText();
         String TenCV = txtTenCV.getText();
         int TrangThai = rdoHoatDong.isSelected() ? 1 : 0;
@@ -819,21 +819,7 @@ public class NhanVienJ extends javax.swing.JFrame {
         
         chucVuService.add(cv);
         this.loadTableCV();
-    }//GEN-LAST:event_btnThemCVActionPerformed
-
-    private void SuaCvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuaCvActionPerformed
-        String MaCV = txtMaCV.getText();
-        String TenCV = txtTenCV.getText();
-        int TrangThai = rdoHoatDong.isSelected() ? 1 : 0;
-
-        ChucVu cv = new ChucVu();
-        cv.setMaCV(MaCV);
-        cv.setTenCV(TenCV);
-        cv.setTrangThai(TrangThai);
-        
-        chucVuService.update(cv);
-        this.loadTableCV();
-    }//GEN-LAST:event_SuaCvActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
      private void loadTableCV() {
         ArrayList<ChucVuVM> list = chucVuService.getAll();
@@ -907,12 +893,12 @@ public class NhanVienJ extends javax.swing.JFrame {
     private javax.swing.JButton btnLamMoi1;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnThemCV;
     private javax.swing.JButton btnTimKiem1;
     private javax.swing.JButton btnTimKiem2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbbChucVu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
