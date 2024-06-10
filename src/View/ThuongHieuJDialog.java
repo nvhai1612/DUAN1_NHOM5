@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Admin
  */
 public class ThuongHieuJDialog extends javax.swing.JDialog {
+
     private ThuongHieuService thuongHieuService = new ThuongHieuService();
 
     /**
@@ -26,23 +27,23 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
         initComponents();
         LoadTable();
     }
-    
-    public void LoadTable(){
-         DefaultTableModel dtm = (DefaultTableModel) tblThuongHieu.getModel();
+
+    public void LoadTable() {
+        DefaultTableModel dtm = (DefaultTableModel) tblThuongHieu.getModel();
         dtm.setRowCount(0);
-         ArrayList<ThuongHieuVM> Listth = thuongHieuService.getAll();
-        
-        for(ThuongHieuVM thvm : Listth){
+        ArrayList<ThuongHieuVM> Listth = thuongHieuService.getAll();
+
+        for (ThuongHieuVM thvm : Listth) {
             dtm.addRow(new Object[]{
-            thvm.getId(),
-            thvm.getMaTH(),
-            thvm.getTenTH(),
-            thvm.getTrangThaiTH()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
+                thvm.getId(),
+                thvm.getMaTH(),
+                thvm.getTenTH(),
+                thvm.getTrangThaiTH() == 1 ? "Đang hoạt động" : "Dừng hoạt động"
             });
         }
     }
-    
-    public void LamMoi(){
+
+    public void LamMoi() {
         txtMaTH.setText("");
         txtTenTH.setText("");
         rdoHoatDong.setSelected(true);
@@ -76,8 +77,6 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
         tblThuongHieu = new javax.swing.JTable();
         txtTim = new javax.swing.JTextField();
         tbnTimTH = new javax.swing.JButton();
-        rdoHDTH = new javax.swing.JRadioButton();
-        rdoDHDTH = new javax.swing.JRadioButton();
         btnMoi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -153,7 +152,7 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLamMoi)
                         .addGap(56, 56, 56))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -211,13 +210,12 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
             }
         });
 
-        buttonGroup2.add(rdoHDTH);
-        rdoHDTH.setText("Đang hoạt động");
-
-        buttonGroup2.add(rdoDHDTH);
-        rdoDHDTH.setText("Dừng hoạt động");
-
         btnMoi.setText("Mới");
+        btnMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -228,16 +226,11 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(rdoHDTH)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoDHDTH)))
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tbnTimTH))
+                        .addComponent(tbnTimTH)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -247,13 +240,9 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbnTimTH))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdoHDTH)
-                    .addComponent(rdoDHDTH)
+                    .addComponent(tbnTimTH)
                     .addComponent(btnMoi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -282,7 +271,7 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
 
     private void tblThuongHieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThuongHieuMouseClicked
         int row = tblThuongHieu.getSelectedRow();
-        if(row == -1){
+        if (row == -1) {
             return;
         }
 
@@ -292,9 +281,9 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
 
         txtMaTH.setText(MaTH);
         txtTenTH.setText(TenTH);
-        if(TrangThai.equalsIgnoreCase("Đang Hoạt Động")){
+        if (TrangThai.equalsIgnoreCase("Đang Hoạt Động")) {
             this.rdoHoatDong.setSelected(true);
-        }else{
+        } else {
             this.rdoDHoatDong.setSelected(true);
         }
     }//GEN-LAST:event_tblThuongHieuMouseClicked
@@ -308,8 +297,8 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
                 index = listTHVM.indexOf(msvm);
             }
         }
-        
-        if(index==-1){
+
+        if (index == -1) {
             JOptionPane.showMessageDialog(this, "Không tìm thấy !");
             return;
         }
@@ -320,29 +309,54 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String MaTH = txtMaTH.getText();
+        if (MaTH.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không để trống mã!");
+            return;
+        }
         String TenTH = txtTenTH.getText();
-        
+        if (TenTH.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không để trống ten!");
+            return;
+        }
         ThuongHieu th = new ThuongHieu();
         th.setMaTH(MaTH);
         th.setTenTH(TenTH);
-        
+
         thuongHieuService.add(th);
         LamMoi();
         LoadTable();
+        JOptionPane.showMessageDialog(this, "Thêm thành công!");
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        String MaTH = txtMaTH.getText();
-        String TenTH = txtTenTH.getText();
-        
-        ThuongHieu th = new ThuongHieu();
-        th.setMaTH(MaTH);
-        th.setTenTH(TenTH);
-        
-        thuongHieuService.update(th);
-        LamMoi();
-        LoadTable();
+        int selectedRow = tblThuongHieu.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một chất liệu để sửa!");
+            return; // Thoát ra khỏi phương thức nếu chưa có dòng nào được chọn
+        }
+        int check = JOptionPane.showConfirmDialog(this, "Xác nhận sửa!");
+        if (check == JOptionPane.YES_OPTION) {
+            String MaTH = txtMaTH.getText();
+            String TenTH = txtTenTH.getText();
+            int TrangThai = rdoHoatDong.isSelected() ? 1 : 0;
+            ThuongHieu th = new ThuongHieu();
+            th.setMaTH(MaTH);
+            th.setTenTH(TenTH);
+            th.setTrangThaiTH(TrangThai);
+            thuongHieuService.update(th);
+            LamMoi();
+            LoadTable();
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại!");
+        }
     }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
+        txtMaTH.setText("");
+        txtTenTH.setText("");
+        txtTim.setText("");
+    }//GEN-LAST:event_btnMoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,9 +414,7 @@ public class ThuongHieuJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JRadioButton rdoDHDTH;
     private javax.swing.JRadioButton rdoDHoatDong;
-    private javax.swing.JRadioButton rdoHDTH;
     private javax.swing.JRadioButton rdoHoatDong;
     private javax.swing.JTable tblThuongHieu;
     private javax.swing.JButton tbnTimTH;

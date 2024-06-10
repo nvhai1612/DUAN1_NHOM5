@@ -310,23 +310,9 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         jLabel45.setText("Tên KH");
 
-        txtTenKHTaiQuay4.setBackground(new java.awt.Color(222, 231, 227));
-        txtTenKHTaiQuay4.setBorder(null);
-        txtTenKHTaiQuay4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTenKHTaiQuay4KeyReleased(evt);
-            }
-        });
 
         jLabel46.setText("SĐT");
 
-        txtSDTTQ3.setBackground(new java.awt.Color(222, 231, 227));
-        txtSDTTQ3.setBorder(null);
-        txtSDTTQ3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSDTTQ3KeyReleased(evt);
-            }
-        });
 
         jLabel47.setText("Tổng tiền: ");
 
@@ -342,56 +328,14 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         jLabel50.setText("Hình thức");
 
-        cboTTTaiQuay3.setBackground(new java.awt.Color(222, 231, 227));
-        cboTTTaiQuay3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboTTTaiQuay3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboTTTaiQuay3ActionPerformed(evt);
-            }
-        });
 
         jLabel51.setText("Tiền khách đưa");
 
-        txtTienKhachDuaTQ4.setBackground(new java.awt.Color(222, 231, 227));
-        txtTienKhachDuaTQ4.setBorder(null);
-        txtTienKhachDuaTQ4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTienKhachDuaTQ4KeyReleased(evt);
-            }
-        });
 
         jLabel52.setText("Tiền thừa");
 
         txtTienThua3.setText("0");
 
-        btnThanhToan4.setText("Thanh toán");
-        btnThanhToan4.setEnabled(false);
-        btnThanhToan4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhToan4ActionPerformed(evt);
-            }
-        });
-
-        btnTaoHoaDon4.setText("Tạo HD");
-        btnTaoHoaDon4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaoHoaDon4ActionPerformed(evt);
-            }
-        });
-
-        btnHuy4.setText("Huỷ");
-        btnHuy4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHuy4ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("Chọn KH");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -522,23 +466,9 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Tên KH");
 
-        txtTenKHDH.setBackground(new java.awt.Color(222, 231, 227));
-        txtTenKHDH.setBorder(null);
-        txtTenKHDH.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTenKHDHKeyReleased(evt);
-            }
-        });
 
         jLabel4.setText("SĐT");
 
-        txtSDTDH.setBackground(new java.awt.Color(222, 231, 227));
-        txtSDTDH.setBorder(null);
-        txtSDTDH.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSDTDHKeyReleased(evt);
-            }
-        });
 
         jLabel5.setText("Tổng tiền: ");
 
@@ -554,56 +484,16 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         jLabel11.setText("Hình thức");
 
-        cboTTDatHang.setBackground(new java.awt.Color(222, 231, 227));
-        cboTTDatHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboTTDatHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboTTDatHangActionPerformed(evt);
-            }
-        });
+        
 
         jLabel12.setText("Tiền khách đưa");
 
-        txtTKDDH.setBackground(new java.awt.Color(222, 231, 227));
-        txtTKDDH.setBorder(null);
-        txtTKDDH.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTKDDHKeyReleased(evt);
-            }
-        });
+        
 
         jLabel53.setText("Tiền thừa");
 
         txtTienThuaDH.setText("0");
 
-        jButton5.setText("Tạo hoá đơn");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        btnGiaoHang.setText("Giao hàng");
-        btnGiaoHang.setEnabled(false);
-        btnGiaoHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGiaoHangActionPerformed(evt);
-            }
-        });
-
-        btnDaGiao.setText("Đã giao");
-        btnDaGiao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDaGiaoActionPerformed(evt);
-            }
-        });
-
-        jButton7.setText("Huỷ");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
 
         txtDiaChiDH.setBackground(new java.awt.Color(222, 231, 227));
         txtDiaChiDH.setBorder(null);
@@ -611,11 +501,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
         jLabel54.setText("Địa chỉ");
 
         jButton6.setText("Chọn KH");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
+        
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -974,6 +860,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
         jLabel55.setText("Tên KH");
 
         txtTenKH.setBackground(new java.awt.Color(222, 231, 227));
+        txtTenKH.setText("Vãng lai");
         txtTenKH.setBorder(null);
 
         jLabel56.setText("SĐT");

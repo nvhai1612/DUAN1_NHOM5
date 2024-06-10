@@ -10,6 +10,7 @@ import ViewModel.ChucVuVM;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -213,6 +214,54 @@ public class ChucVuJDIALog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String MaCV = txtMaCV.getText();
+         if (MaCV.isEmpty()) {
+             JOptionPane.showMessageDialog(this, "Không để trống mã!");
+            return;
+        }
+        String TenCV = txtTenCV.getText();
+        if (TenCV.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không để trống ten!");
+            return;
+        }
+        ChucVu chucVu = new ChucVu();
+        chucVu.setMaCV(MaCV);
+        chucVu.setTenCV(TenCV);
+        
+        chucVuService.add(chucVu);
+        LamMoi();
+        loadTableCV();
+        JOptionPane.showMessageDialog(this, "Thêm thành công!");
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        int selectedRow = tblChucVu.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một chất liệu để sửa!");
+            return; // Thoát ra khỏi phương thức nếu chưa có dòng nào được chọn
+        }
+        int check = JOptionPane.showConfirmDialog(this, "Xác nhận sửa!");
+        if (check == JOptionPane.YES_OPTION) {
+             String MaCV = txtMaCV.getText();
+             String TenCV = txtTenCV.getText();       
+            ChucVu chucVu = new ChucVu();
+            chucVu.setMaCV(MaCV);
+            chucVu.setTenCV(TenCV);
+            chucVuService.update(chucVu);
+            LamMoi();
+            loadTableCV();
+            JOptionPane.showMessageDialog(this, "Sửa thành công!");
+        }else{
+            JOptionPane.showMessageDialog(this, "Sửa thất bại!");
+        }
+       
+        
+        
+        
+        
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         LamMoi();

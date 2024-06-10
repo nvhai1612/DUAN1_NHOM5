@@ -6,9 +6,6 @@ package View;
 
 import DomainModel.NhanVien;
 import Repository.Impl.NhanVienRepos;
-import Service.Impl.NhanVienService;
-import Utiliti.Session;
-import Utiliti.XEmail;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,9 +13,6 @@ import javax.swing.JOptionPane;
  * @author admin
  */
 public class MissPassJpane extends javax.swing.JFrame {
-    private  Session ss = Session.getInstance();
-    private NhanVienService nvs = new NhanVienService();
-    private XEmail xemail = new XEmail();
     private NhanVienRepos nhanVienRepo = new NhanVienRepos();
     /**
      * Creates new form MissPassJpane
@@ -245,7 +239,7 @@ public class MissPassJpane extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

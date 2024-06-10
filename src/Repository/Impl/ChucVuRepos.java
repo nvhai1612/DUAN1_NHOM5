@@ -62,7 +62,7 @@ public class ChucVuRepos implements IChucVuRepos{
         int check;
 
         try (Connection con = connection.getConnection(); 
-                PreparedStatement ps = con.prepareStatement("UPDATE CHUCVU SET TENCV = ? WHERE MACL = ?")) {
+                PreparedStatement ps = con.prepareStatement("UPDATE CHUCVU SET TENCV = ? WHERE MACV = ?")) {
 
             ps.setObject(1, cv.getTenCV());
             ps.setObject(2, cv.getMaCV());
