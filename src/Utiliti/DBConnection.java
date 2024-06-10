@@ -12,6 +12,7 @@ public class DBConnection {
     public static final String USERNAME = "sa1";
     public static final String PASSWORD = "123456";
 
+
     /**
      * Get connection to MSSQL Server
      *
