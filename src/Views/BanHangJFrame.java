@@ -69,7 +69,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
         LoadTableHoaDon();
         LoadTableSanPham();
         LoadTableGioHang();
-        
+
     }
 
     public BanHangJFrame(String MaNV) {
@@ -148,22 +148,31 @@ public class BanHangJFrame extends javax.swing.JFrame {
         }
         TinhTien();
     }
-    
-    //    private void updateTrangThaiHoaDon(String maHDCT, Integer TrangThaiHD, Double TongTien, String mahd) {
-    //        dtmgh = (DefaultTableModel) tblGioHang.getModel();
-    //        dtmgh.setRowCount(0);
-    //
-    //        ArrayList<HoaDon> listUpdateTTHD = hoaDonService.updateTrangThaiHoaDon(maHDCT, TrangThaiHD, TongTien, mahd);
-    //        for (SanPhamChiTiet spct : listHDC) {
-    //            dtmgh.addRow(new Object[]{
-    //                spct.getMaSPCT(),
-    //                spct.getTenSP(),
-    //                spct.getSoLuongTon(),
-    //                spct.getDonGia(),
-    //                new BigDecimal(spct.getDonGia() * spct.getSoLuongTon()),});
-    //        }
-    //        TinhTien();
-    //    }
+
+//        private void updateTrangThaiHoaDon(String maHDCT, Integer TrangThaiHD, Double TongTien, String mahd) {
+//            dtmgh = (DefaultTableModel) tblGioHang.getModel();
+//            dtmgh.setRowCount(0);
+//    
+//            ArrayList<HoaDon> listUpdateTTHD = hoaDonService.updateTrangThaiHoaDon(maHDCT, TrangThaiHD, TongTien, mahd);
+//            for (SanPhamChiTiet spct : listHDC) {
+//                dtmgh.addRow(new Object[]{
+//                    spct.getMaSPCT(),
+//                    spct.getTenSP(),
+//                    spct.getSoLuongTon(),
+//                    spct.getDonGia(),
+//                    new BigDecimal(spct.getDonGia() * spct.getSoLuongTon()),});
+//            }
+//            TinhTien();
+//        }
+    public void reset() {
+        txtTongTien.setText("0");
+        txtTienThua.setText("0");
+        txtCanThanhToan.setText("0");
+        txtTienKhachDua.setText("0");
+        cbbPTTT.setSelectedItem(0);
+        dtmgh = (DefaultTableModel) tblGioHang.getModel();
+        dtmgh.setRowCount(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -303,13 +312,21 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         txtTenKHTaiQuay4.setBackground(new java.awt.Color(222, 231, 227));
         txtTenKHTaiQuay4.setBorder(null);
-        
+        txtTenKHTaiQuay4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTenKHTaiQuay4KeyReleased(evt);
+            }
+        });
 
         jLabel46.setText("SĐT");
 
         txtSDTTQ3.setBackground(new java.awt.Color(222, 231, 227));
         txtSDTTQ3.setBorder(null);
-        
+        txtSDTTQ3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSDTTQ3KeyReleased(evt);
+            }
+        });
 
         jLabel47.setText("Tổng tiền: ");
 
@@ -327,13 +344,21 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         cboTTTaiQuay3.setBackground(new java.awt.Color(222, 231, 227));
         cboTTTaiQuay3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        
+        cboTTTaiQuay3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTTTaiQuay3ActionPerformed(evt);
+            }
+        });
 
         jLabel51.setText("Tiền khách đưa");
 
         txtTienKhachDuaTQ4.setBackground(new java.awt.Color(222, 231, 227));
         txtTienKhachDuaTQ4.setBorder(null);
-        
+        txtTienKhachDuaTQ4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTienKhachDuaTQ4KeyReleased(evt);
+            }
+        });
 
         jLabel52.setText("Tiền thừa");
 
@@ -341,16 +366,32 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         btnThanhToan4.setText("Thanh toán");
         btnThanhToan4.setEnabled(false);
-        
+        btnThanhToan4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToan4ActionPerformed(evt);
+            }
+        });
 
         btnTaoHoaDon4.setText("Tạo HD");
-        
+        btnTaoHoaDon4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaoHoaDon4ActionPerformed(evt);
+            }
+        });
 
         btnHuy4.setText("Huỷ");
-        
+        btnHuy4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHuy4ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Chọn KH");
-        
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -483,13 +524,21 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         txtTenKHDH.setBackground(new java.awt.Color(222, 231, 227));
         txtTenKHDH.setBorder(null);
-        
+        txtTenKHDH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTenKHDHKeyReleased(evt);
+            }
+        });
 
         jLabel4.setText("SĐT");
 
         txtSDTDH.setBackground(new java.awt.Color(222, 231, 227));
         txtSDTDH.setBorder(null);
-        
+        txtSDTDH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSDTDHKeyReleased(evt);
+            }
+        });
 
         jLabel5.setText("Tổng tiền: ");
 
@@ -507,29 +556,54 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         cboTTDatHang.setBackground(new java.awt.Color(222, 231, 227));
         cboTTDatHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        
+        cboTTDatHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTTDatHangActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Tiền khách đưa");
 
         txtTKDDH.setBackground(new java.awt.Color(222, 231, 227));
         txtTKDDH.setBorder(null);
-        
+        txtTKDDH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTKDDHKeyReleased(evt);
+            }
+        });
 
         jLabel53.setText("Tiền thừa");
 
         txtTienThuaDH.setText("0");
 
         jButton5.setText("Tạo hoá đơn");
-        
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         btnGiaoHang.setText("Giao hàng");
         btnGiaoHang.setEnabled(false);
+        btnGiaoHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGiaoHangActionPerformed(evt);
+            }
+        });
 
         btnDaGiao.setText("Đã giao");
-        
+        btnDaGiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaGiaoActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Huỷ");
-        
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         txtDiaChiDH.setBackground(new java.awt.Color(222, 231, 227));
         txtDiaChiDH.setBorder(null);
@@ -537,7 +611,11 @@ public class BanHangJFrame extends javax.swing.JFrame {
         jLabel54.setText("Địa chỉ");
 
         jButton6.setText("Chọn KH");
-        
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -897,13 +975,11 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         txtTenKH.setBackground(new java.awt.Color(222, 231, 227));
         txtTenKH.setBorder(null);
-        
 
         jLabel56.setText("SĐT");
 
         txtSDTKH.setBackground(new java.awt.Color(222, 231, 227));
         txtSDTKH.setBorder(null);
-        
 
         jLabel57.setText("Tổng tiền: ");
 
@@ -921,7 +997,6 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
         cbbPTTT.setBackground(new java.awt.Color(222, 231, 227));
         cbbPTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "chọn...", "Tiền mặt", "Quét mã" }));
-        
 
         jLabel61.setText("Tiền khách đưa");
 
@@ -932,7 +1007,6 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 txtTienKhachDuaCaretUpdate(evt);
             }
         });
-        
 
         jLabel62.setText("Tiền thừa");
 
@@ -1335,7 +1409,7 @@ public class BanHangJFrame extends javax.swing.JFrame {
 
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-        listSPCT.clear();
+//        listSPCT.clear();
         int row = tblHoaDon.getSelectedRow();
         if (row == -1) {
             return;
@@ -1360,19 +1434,18 @@ public class BanHangJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        SPCTVM SPCTVM = new SPCTVM();
-        String MaSPCT = tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 0).toString();
-
-        boolean check = false;
-        int row = tblHoaDon.getSelectedRow();
-        String MaHD = tblHoaDon.getValueAt(row, 0).toString();
-
         int selectedRow = tblDanhSachSP.getSelectedRow();
         int rowHD = tblHoaDon.getSelectedRow();
         if (rowHD < 0) {
             JOptionPane.showMessageDialog(this, "Bạn cần chọn hóa đơn để thêm sản phẩm!");
             return;
         }
+        SPCTVM SPCTVM = new SPCTVM();
+        String MaSPCT = tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 0).toString();
+
+        boolean check = false;
+        int row = tblHoaDon.getSelectedRow();
+        String MaHD = tblHoaDon.getValueAt(row, 0).toString();
         if (selectedRow != -1) {
             String TenSP = tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 1).toString();
             float DonGia = Float.parseFloat(tblDanhSachSP.getValueAt(tblDanhSachSP.getSelectedRow(), 7).toString());
@@ -1400,7 +1473,15 @@ public class BanHangJFrame extends javax.swing.JFrame {
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this, "Vui lòng nhập số lượng là một số nguyên dương.");
                 }
-
+////                int soLuongMua = Integer.parseInt(NhapSL);
+////                if (soLuongMua > sp.getSoLuongTon()) {
+////                    JOptionPane.showMessageDialog(this, "Số lượng sản phẩm trong kho không đủ", "Thao tác không thành công", JOptionPane.ERROR_MESSAGE);
+////                    return;
+////                }
+//                if (soLuongMua == 0) {
+//                    JOptionPane.showMessageDialog(this, "Vui lòng nhập lại số lượng", "Thao tác không thành công", JOptionPane.ERROR_MESSAGE);
+//                    return;
+//                }
             }
         } else {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một sản phẩm để thêm vào giỏ hàng.");
@@ -1423,13 +1504,11 @@ public class BanHangJFrame extends javax.swing.JFrame {
         hd.setTrangThaiHD(TrangThaiHD);
         listSPCT.add(SPCTVM);
 
-        if (!check) {
+        
             hoaDonService.add(hd, Sps);
-            LoadTableGioHang();
+            
             Sps.clear();
-        } else {
             LoadHoaDonCho(MaHD);
-        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
@@ -1535,57 +1614,44 @@ public class BanHangJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChonKHActionPerformed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        boolean check = false;
-        int rowHD = tblHoaDon.getSelectedRow();
-//        if (rowHD < 0) {
-//            JOptionPane.showMessageDialog(this, "chọn hoá đơn bạn muốn thanh toán");
-//            return;
-//        }
-//        
-//        if (txtTenKH.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "chưa có thông tin khách hàng");
-//            return;
-//        }
-//        
-//        if (txtTienKhachDua.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "tiền khách đưa không được để trống");
-//            return;
-//        }
-//        
-//        try {
-//            if (Double.parseDouble(txtTienKhachDua.getText()) < Double.parseDouble(txtCanThanhToan.getText())) {
-//                JOptionPane.showMessageDialog(this, "tiền khách đưa chưa đủ");
-//                return;
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Tiền khách đưa không hợp lệ");
-//            return;
-//        }
-
         int row = tblHoaDon.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "chọn hoá đơn bạn muốn thanh toán");
+            return;
+        }
+
+        if (txtTienKhachDua.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "tiền khách đưa không được để trống");
+            return;
+        }
+
+        try {
+            if (Double.parseDouble(txtTienKhachDua.getText()) < Double.parseDouble(txtCanThanhToan.getText())) {
+                JOptionPane.showMessageDialog(this, "tiền khách đưa chưa đủ");
+                return;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Tiền khách đưa không hợp lệ");
+            return;
+        }
+
         for (int j = 0; j < tblGioHang.getRowCount(); j++) {
             Sps.put(tblGioHang.getValueAt(j, 0).toString(), Integer.parseInt(tblGioHang.getValueAt(j, 2).toString()));
         }
-        //        for (int i = 0; i < tblHoaDon.getRowCount(); i++) {
 
         String MaHD = tblHoaDon.getValueAt(row, 0).toString();
-        String TenNV = "hai";
-        String TenKH = txtTenKH.getText();
-        int TrangThaiHD = 0;
+        String TongTien = txtCanThanhToan.getText().trim();
+        int TrangThaiHD = 1;
 
         HoaDon hd = new HoaDon();
         hd.setMaHD(MaHD);
-        hd.setTenKH(TenKH);
-        hd.setTenNV(TenNV);
+        hd.setTongTien(Float.valueOf(TongTien));
         hd.setTrangThaiHD(TrangThaiHD);
-        if (!check) {
-            hoaDonService.add(hd, Sps);
-            LoadTableGioHang();
-            Sps.clear();
-        } else {
-            
-        }
-        //        }
+
+        hoaDonService.updateTrangThaiHoaDon(MaHD, TrangThaiHD, Float.valueOf(TongTien), MaHD);
+        LoadTableGioHang();
+        LoadTableHoaDon();
+        reset();
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void txtTienKhachDuaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTienKhachDuaCaretUpdate
@@ -1638,12 +1704,8 @@ public class BanHangJFrame extends javax.swing.JFrame {
         for (int i = 0; i < tblGioHang.getRowCount(); i++) {
             String MaSPGH = tblGioHang.getValueAt(i, 0).toString();
             if (MaSPGH.equals(MaSP)) {
-                for (int j = 0; j < listSPCT.size(); j++) {
-                    if (listSPCT.get(j).getMaSPCT().equals(MaSP)) {
-                        listSPCT.remove(j);
-                        break;
-                    }
-                }
+                
+                
                 int SoLuongGH = Integer.parseInt(tblGioHang.getValueAt(i, 2).toString());
                 dtmgh.setValueAt((SoLuongGH + SoLuong), i, 2);
                 float donGia = Float.parseFloat(tblGioHang.getValueAt(i, 3).toString());

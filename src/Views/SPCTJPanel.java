@@ -108,7 +108,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
                 spvm.getId(),
                 spvm.getMaSP(),
                 spvm.getTenSP(),
-                spvm.getTrangThaiSP() == 1 ? "Hoạt động" : "Dừng Hoạt động",});
+                spvm.getTrangThaiSP() == 1 ? "Còn hàng" : "Hết hàng",});
         }
     }
 
@@ -1154,11 +1154,6 @@ public class SPCTJPanel extends javax.swing.JPanel {
 
         jLabel14.setText("Tìm theo mã sản phẩm :");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jButton3.setText("Tìm");
 
@@ -1276,12 +1271,6 @@ public class SPCTJPanel extends javax.swing.JPanel {
 
         txtMaCTSP.setEditable(false);
 
-        txtSoLuongTon.setText("0");
-        txtSoLuongTon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSoLuongTonActionPerformed(evt);
-            }
-        });
 
         cbbChatLieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn chất liệu..." }));
 
@@ -1289,12 +1278,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
 
         cbbMauSac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn màu sắc..." }));
 
-        cbbTH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn TH..." }));
-        cbbTH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbTHActionPerformed(evt);
-            }
-        });
+        
 
         btnChatLieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/tshirt.png"))); // NOI18N
         btnChatLieu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1481,13 +1465,7 @@ public class SPCTJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblSanPhamChiTiet);
 
-        jLabel11.setText("Tìm kiếm sản phẩm");
-
-        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtTimKiemKeyReleased(evt);
-            }
-        });
+        
 
         btnTim.setText("Tìm");
         btnTim.addActionListener(new java.awt.event.ActionListener() {
