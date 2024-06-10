@@ -7,6 +7,7 @@ package Service.Impl;
 import DomainModel.NhanVien;
 import Repository.Impl.NhanVienRepos;
 import Service.INhanVienService;
+import ViewModel.NhanVienVM;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -14,31 +15,43 @@ import java.util.UUID;
  *
  * @author Admin
  */
-public class NhanVienService implements INhanVienService{
+public class NhanVienService implements INhanVienService {
+
     private NhanVienRepos nvRepo = new NhanVienRepos();
 
     @Override
-    public ArrayList<NhanVien> getListFormDB() {
-    return  nvRepo.getListFormDB();
-    }
+    public ArrayList<NhanVienVM> getAll() { 
+        ArrayList<NhanVien> listNV = nvRepo.getListFormDB();
+        ArrayList<NhanVienVM> listNVVM = new ArrayList<>();
+        for(NhanVien nv : listNV){
+            NhanVienVM nvvm = new 
+        NhanVienVM(nv.getId(), nv.getMaNV(), nv.getTenNV(), nv.getCCCD(), nv.getDiaChi(), 
+                nv.getSDT(), nv.getEmail(), nvRepo.SelectById(nv.getIdCV()), nv.getGioiTinh(), nv.getTrangThaiNV(), nv.getNgaySinh());
+            listNVVM.add(nvvm);
+        }
+        return listNVVM;}
 
     @Override
-    public Boolean add(NhanVien nv) {
-    return nvRepo.add(nv);
-    }
+    public ArrayList<NhanVien> getAllDoMain() {
+    return nvRepo.getListFormDB();
+            }
 
     @Override
-    public String update(NhanVien nv) {
-    return nvRepo.update(nv);
+    public void add(NhanVien nv) {
+    nvRepo.add(nv);
     }
+    public String capNhatMatKhau(String matKhauMoi, String Email){
+        
+        return nvRepo.capNhatMatKhau(matKhauMoi, Email);
+        
+    }
+    @Override
+    public void update(NhanVien nv) {
+    nvRepo.update(nv);}
 
     @Override
     public ArrayList<NhanVien> search(String MaNV) {
-    return  nvRepo.search(MaNV);
+    return nvRepo.search(MaNV);
     }
 
-    @Override
-    public ArrayList<NhanVien> searchVaiTro(String vaiTro) {
-    return  nvRepo.searchVaiTro(vaiTro);}
-    
 }

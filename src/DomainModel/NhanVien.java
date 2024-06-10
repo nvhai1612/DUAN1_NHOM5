@@ -13,24 +13,47 @@ import java.util.UUID;
  */
 public class NhanVien {
 
-    private UUID Id, IdTK;
-    private String MaNV, TenNV, CCCD, DiaChi, SDT, Email, VaiTro;
+    private UUID Id, IdCV;
+    private String MaNV, TenNV, CCCD, DiaChi, SDT, Email,MatKhau,TenCV ;
     private int GioiTinh, TrangThaiNV;
     private Date NgaySinh;
 
     public NhanVien() {
     }
 
-    public NhanVien(UUID Id, UUID IdTK, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, String VaiTro, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
+    public String getTenCV() {
+        return TenCV;
+    }
+
+    public void setTenCV(String TenCV) {
+        this.TenCV = TenCV;
+    }
+
+    public NhanVien(UUID Id, UUID IdCV, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, String MatKhau, String TenCV, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
         this.Id = Id;
-        this.IdTK = IdTK;
+        this.IdCV = IdCV;
         this.MaNV = MaNV;
         this.TenNV = TenNV;
         this.CCCD = CCCD;
         this.DiaChi = DiaChi;
         this.SDT = SDT;
         this.Email = Email;
-        this.VaiTro = VaiTro;
+        this.MatKhau = MatKhau;
+        this.TenCV = TenCV;
+        this.GioiTinh = GioiTinh;
+        this.TrangThaiNV = TrangThaiNV;
+        this.NgaySinh = NgaySinh;
+    }
+
+    public NhanVien(UUID Id, UUID IdCV, String MaNV, String TenNV, String CCCD, String DiaChi, String Email, String TenCV, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
+        this.Id = Id;
+        this.IdCV = IdCV;
+        this.MaNV = MaNV;
+        this.TenNV = TenNV;
+        this.CCCD = CCCD;
+        this.DiaChi = DiaChi;
+        this.Email = Email;
+        this.TenCV = TenCV;
         this.GioiTinh = GioiTinh;
         this.TrangThaiNV = TrangThaiNV;
         this.NgaySinh = NgaySinh;
@@ -44,12 +67,12 @@ public class NhanVien {
         this.Id = Id;
     }
 
-    public UUID getIdTK() {
-        return IdTK;
+    public UUID getIdCV() {
+        return IdCV;
     }
 
-    public void setIdTK(UUID IdTK) {
-        this.IdTK = IdTK;
+    public void setIdCV(UUID IdCV) {
+        this.IdCV = IdCV;
     }
 
     public String getMaNV() {
@@ -100,12 +123,12 @@ public class NhanVien {
         this.Email = Email;
     }
 
-    public String getVaiTro() {
-        return VaiTro;
+    public String getMatKhau() {
+        return MatKhau;
     }
 
-    public void setVaiTro(String VaiTro) {
-        this.VaiTro = VaiTro;
+    public void setMatKhau(String MatKhau) {
+        this.MatKhau = MatKhau;
     }
 
     public int getGioiTinh() {
@@ -130,6 +153,11 @@ public class NhanVien {
 
     public void setNgaySinh(Date NgaySinh) {
         this.NgaySinh = NgaySinh;
+    }
+
+    @Override
+    public String toString() {
+        return "NhanVien{" + "Id=" + Id + ", IdCV=" + IdCV + ", MaNV=" + MaNV + ", TenNV=" + TenNV + ", CCCD=" + CCCD + ", DiaChi=" + DiaChi + ", SDT=" + SDT + ", Email=" + Email + ", MatKhau=" + MatKhau + ", TenCV=" + TenCV + ", GioiTinh=" + GioiTinh + ", TrangThaiNV=" + TrangThaiNV + ", NgaySinh=" + NgaySinh + '}';
     }
 
 }

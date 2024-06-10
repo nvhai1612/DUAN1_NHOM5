@@ -3,18 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/NhanVienJFrame.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/ITaiKhoanRepo.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/ViewModel/NhanVienVM.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/ITaiKhoanService.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/LoginJFrame.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/NhanVienJPane.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/Impl/ChucVuRepo.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/Impl/ChucVuService.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/DomainModel/NhanVien.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/Impl/NhanVienService.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/Impl/TaiKhoanRepo.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/NhanVienJ.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/ChucVuJDIALog.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/IChucVuService.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/DomainModel/ChucVu.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/Impl/NhanVienRepos.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/ViewModel/ChucVuVM.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/MissPassJpane.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/IChucVuRepo.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/INhanVienService.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/Impl/TaiKhoanService.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/DomainModel/TaiKhoan.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/INhanVienRepos.java</file>
         </group>
     </open-files>

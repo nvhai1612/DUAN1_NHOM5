@@ -5,22 +5,17 @@
 package Service;
 
 import DomainModel.NhanVien;
+import ViewModel.NhanVienVM;
 import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  *
  * @author Admin
  */
 public interface INhanVienService {
-
-    public ArrayList<NhanVien> getListFormDB();
-
-    public Boolean add(NhanVien nv);
-
-    public String update(NhanVien nv);
-
-    public ArrayList<NhanVien> search(String MaNV);
-    ArrayList<NhanVien> searchVaiTro(String vaiTro);
-
+    ArrayList<NhanVienVM> getAll();
+    ArrayList<NhanVien>getAllDoMain();
+    void add(NhanVien nv);
+    void update(NhanVien nv);
+    ArrayList<NhanVien> search (String MaNV);
 }

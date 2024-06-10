@@ -16,11 +16,9 @@ public interface INhanVienRepos {
 
     public ArrayList<NhanVien> getListFormDB();
 
-    public Boolean add(NhanVien nv);
+    public void add(NhanVien nv);
 
     public String update(NhanVien nv);
 
     public ArrayList<NhanVien> search(String MaNV);
-
-    ArrayList<NhanVien> searchVaiTro(String vaiTro);
 }
