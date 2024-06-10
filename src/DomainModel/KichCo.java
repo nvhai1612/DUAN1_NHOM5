@@ -4,13 +4,17 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class KichCo {
+<<<<<<< HEAD
     private UUID id;
     private String MaKC;
     private String TenKC;
@@ -57,4 +61,7 @@ public class KichCo {
     public void setTrangThaiKC(int TrangThaiKC) {
         this.TrangThaiKC = TrangThaiKC;
     }
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }

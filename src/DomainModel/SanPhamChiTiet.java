@@ -4,13 +4,17 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class SanPhamChiTiet {
+<<<<<<< HEAD
     private UUID id, IdSP, IdCL, IdKC, IdMS, IdTH;
     private String MaSPCT, MoTa, TenMS, TenCL, TenTH, TenKC, TenSP, NguoiTao,TenKM;
     private int SoLuongTon, TrangThaiSPCT;
@@ -190,4 +194,7 @@ public class SanPhamChiTiet {
     }
 
    
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }

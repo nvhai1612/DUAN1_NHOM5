@@ -4,14 +4,18 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class HoaDon {
+<<<<<<< HEAD
     private UUID Id, IdNV, IdKH;
     private String MaHD,TenNV,TenKH;
     private Date NgayTao,NgayThanhToan;
@@ -142,4 +146,7 @@ public class HoaDon {
         return "HoaDon{" + "Id=" + Id + ", IdNV=" + IdNV + ", IdKH=" + IdKH + ", MaHD=" + MaHD + ", TenNV=" + TenNV + ", TenKH=" + TenKH + ", NgayTao=" + NgayTao + ", NgayThanhToan=" + NgayThanhToan + ", TongTien=" + TongTien + ", TrangThaiHD=" + TrangThaiHD + '}';
     }
 
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }

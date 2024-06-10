@@ -4,13 +4,17 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class MauSac {
+<<<<<<< HEAD
     private UUID id;
     private String MaMS;
     private String TenMS;
@@ -57,4 +61,7 @@ public class MauSac {
     public void setTrangThaiMS(int TrangThaiMS) {
         this.TrangThaiMS = TrangThaiMS;
     }
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }

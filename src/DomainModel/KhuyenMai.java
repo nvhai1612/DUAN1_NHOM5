@@ -4,14 +4,18 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class KhuyenMai {
+<<<<<<< HEAD
     private UUID idKM;
     private UUID IDSP;
     private String maKM;
@@ -130,5 +134,7 @@ public class KhuyenMai {
 
     
     
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
     
 }

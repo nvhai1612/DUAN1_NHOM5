@@ -4,13 +4,17 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class SanPham {
+<<<<<<< HEAD
     private UUID id;
     private String MaSP;
     private String TenSP;
@@ -57,4 +61,7 @@ public class SanPham {
     public void setTrangThaiSP(int TrangThaiSP) {
         this.TrangThaiSP = TrangThaiSP;
     }
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }

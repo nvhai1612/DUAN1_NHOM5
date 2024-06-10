@@ -4,13 +4,17 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class ThuongHieu {
+<<<<<<< HEAD
     private UUID id;
     private String MaTH;
     private String TenTH;
@@ -57,4 +61,7 @@ public class ThuongHieu {
     public void setTrangThaiTH(int TrangThaiTH) {
         this.TrangThaiTH = TrangThaiTH;
     }
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }

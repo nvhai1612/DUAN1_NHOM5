@@ -4,13 +4,17 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class ChatLieu {
+<<<<<<< HEAD
     private UUID id;
     private String MaCL;
     private String TenCL;
@@ -57,4 +61,7 @@ public class ChatLieu {
     public void setTrangThaiCL(int TrangThaiCL) {
         this.TrangThaiCL = TrangThaiCL;
     }
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }

@@ -4,13 +4,17 @@
  */
 package DomainModel;
 
+<<<<<<< HEAD
 import java.util.UUID;
 
+=======
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 /**
  *
  * @author Admin
  */
 public class PTTT {
+<<<<<<< HEAD
     private UUID id;
     private String MaPTTT;
     private String TenPTTT;
@@ -52,4 +56,7 @@ public class PTTT {
     public String toString() {
         return "PhuongThucThanhToan{" + "id=" + id + ", MaPTTT=" + MaPTTT + ", TenPTTT=" + TenPTTT + '}';
     }
+=======
+    
+>>>>>>> 1eeae9b02218b17e9b8f17b03b2df8066407a144
 }
