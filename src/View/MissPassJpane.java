@@ -6,6 +6,9 @@ package View;
 
 import DomainModel.NhanVien;
 import Repository.Impl.NhanVienRepos;
+import Service.Impl.NhanVienService;
+import Utiliti.Session;
+import Utiliti.XEmail;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +16,9 @@ import javax.swing.JOptionPane;
  * @author admin
  */
 public class MissPassJpane extends javax.swing.JFrame {
+    private  Session ss = Session.getInstance();
+    private NhanVienService nvs = new NhanVienService();
+    private XEmail xemail = new XEmail();
     private NhanVienRepos nhanVienRepo = new NhanVienRepos();
     /**
      * Creates new form MissPassJpane

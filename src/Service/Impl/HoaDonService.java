@@ -58,21 +58,24 @@ public class HoaDonService implements IHoaDonService{
         hdctrepos.add(hd2, maSPs);
     }
     
-    @Override
-    public void add(HoaDon hd, Set<String> mapSps) {
-//        HoaDon hd2 = hoadonrepos.findHoaDonByMa(hd.getMaHD());
-//        hd.setId(hd2.getId());
-//        hd.setIdKH(khachhngRespo.SelectById(hd2.getTenKH()));
-////        hd.setIdNV(nhanvienRespon.SelectByname(hd2.getTenNV()));
-//        hoadonrepos.update(hd2);
-//        hdctrepos.add(hd2, maSps);
-    }
-    
     public void updateTrangThaiHoaDon(String maHDCT,Integer TrangThaiHD, Float TongTien, String mahd){
         hoadonrepos.updateTrangThaiHoaDon(maHDCT,TrangThaiHD, TongTien, mahd);
     }
     
     public ArrayList<SanPhamChiTiet> HoaDonCho(String MaHD){
         return hoadonrepos.HoaDonCho(MaHD);
+    }
+
+    public void update(HoaDon hd, Map<String, Integer> maSPs) {
+        HoaDon hd2 = hoadonrepos.findHoaDonByMa(hd.getMaHD());
+        hd.setId(hd2.getId());
+//        hd.setIdKH(khachhngRespo.SelectById(hd2.getTenKH()));
+//        hd.setIdNV(nhanvienRespon.SelectByname(hd2.getTenNV()));
+        hoadonrepos.update(hd2);
+        hdctrepos.update(hd2, maSPs);
+    }
+
+    public void delete(HoaDon hd, Map<String, Integer> maSPs) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

@@ -27,7 +27,7 @@ public class HoaDonRepos implements IHoaDonRepos {
 
     @Override
     public ArrayList<HoaDon> getListFormDB() {
-        ArrayList<HoaDon> listCV = new ArrayList<>();
+        ArrayList<HoaDon> listHD = new ArrayList<>();
 
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT * from HoaDon left join NHANVIEN NV on HOADON.IDNV = NV.ID WHERE TRANGTHAIHD = 1")) {
             ResultSet rs = ps.executeQuery();
@@ -38,14 +38,14 @@ public class HoaDonRepos implements IHoaDonRepos {
                 hd.setNgayTao(rs.getDate(5));
                 hd.setTenNV(rs.getString(11));
                 hd.setTrangThaiHD(rs.getInt(8));
-                listCV.add(hd);
+                listHD.add(hd);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return listCV;
+        return listHD;
     }
 
     public ArrayList<HoaDon> getListHoaDonFormDB() {
@@ -252,6 +252,8 @@ public class HoaDonRepos implements IHoaDonRepos {
             e.printStackTrace();
         }
     }
+    
+    
 
     @Override
     public Boolean delete(UUID id) {

@@ -4,7 +4,6 @@
  */
 package Repository.Impl;
 
-import DomainModel.HoaDon;
 import DomainModel.SanPham;
 import DomainModel.SanPhamChiTiet;
 import Repository.ISPCTRepos;
@@ -112,8 +111,7 @@ int check;
     }
     
      public Boolean updateSL(String maSp, int sl) {
-int check;
-
+        int check;
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement(
                 "UPDATE SANPHAMCHITIET SET SOLUONGTON = ? WHERE MASPCT = ?")) {
 

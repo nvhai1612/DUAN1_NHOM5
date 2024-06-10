@@ -7,7 +7,6 @@ package Service;
 import DomainModel.HoaDon;
 import ViewModel.HoaDonVM;
 import java.util.ArrayList;
-import java.util.Set;
 
 /**
  *
@@ -16,5 +15,4 @@ import java.util.Set;
 public interface IHoaDonService {
     ArrayList<HoaDonVM> getAll();
     ArrayList<HoaDon> getAllDomain();
-    void add(HoaDon hd, Set<String >mapSps);
 }
