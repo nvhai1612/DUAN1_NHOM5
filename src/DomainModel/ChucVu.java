@@ -14,6 +14,19 @@ public class ChucVu {
     private UUID id;
     private String MaCV;
     private String TenCV;
+    private int TrangThai ;
+
+    public ChucVu(int TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+
+    public int getTrangThai() {
+        return TrangThai;
+    }
+
+    public void setTrangThai(int TrangThai) {
+        this.TrangThai = TrangThai;
+    }
 
     public ChucVu() {
     }

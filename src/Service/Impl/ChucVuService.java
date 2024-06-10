@@ -5,47 +5,65 @@
 package Service.Impl;
 
 import DomainModel.ChucVu;
-import Repository.Impl.ChucVuRepos;
+import DomainModel.NhanVien;
+import Repository.Impl.ChucVuRepo;
 import Service.IChucVuService;
-import ViewModel.ChucVuVM;
+import Utiliti.DBConnection;
 import java.util.ArrayList;
+import java.util.Collection;
+import Utiliti.DBConnection;
+import ViewModel.ChucVuVM;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.UUID;
 
 /**
  *
- * @author Admin
+ * @author admin
  */
-public class ChucVuService implements IChucVuService{
-    private ChucVuRepos ChucVuRepos = new ChucVuRepos();
+public class ChucVuService implements IChucVuService {
+    private ChucVuRepo chucVuRepo = new ChucVuRepo();
+
+    DBConnection connection;
 
     @Override
-    public ArrayList<ChucVuVM> getAll() {
-        ArrayList<ChucVu> listCV = ChucVuRepos.getListFormDB();
-        ArrayList<ChucVuVM> listVM = new ArrayList<>();
-        for (ChucVu cv : listCV) {
-            ChucVuVM cvvm = new ChucVuVM(cv.getId(), cv.getMaCV(), cv.getTenCV());
-            listVM.add(cvvm);
-        }
-        return listVM;
+    public ArrayList<ChucVu> getAllDoMain() {
+
+        return chucVuRepo.getListFormDB();
+
     }
 
     @Override
-    public ArrayList<ChucVu> getAllDomain() {
-        return ChucVuRepos.getListFormDB();
+    public ArrayList<ChucVuVM> getAll() {
+        ArrayList<ChucVu> listCV = chucVuRepo.getListFormDB();
+        ArrayList<ChucVuVM> listCVVM = new ArrayList<>();
+        for (ChucVu cv : listCV) {
+            ChucVuVM cvvm = new ChucVuVM(cv.getId(), cv.getMaCV(), cv.getTenCV());
+            listCVVM.add(cvvm);
+        }
+        return listCVVM;
     }
 
     @Override
     public void add(ChucVu cv) {
-        ChucVuRepos.add(cv);
+    chucVuRepo.add(cv);
     }
 
     @Override
     public void update(ChucVu cv) {
-        ChucVuRepos.update(cv);
+    chucVuRepo.update(cv);
+    }
+    
+    @Override
+    public ArrayList<ChucVu> search(String MaCV) {
+    return chucVuRepo.search(MaCV);
+    
     }
 
     @Override
-    public ArrayList<ChucVu> search(String MaCV) {
-        return ChucVuRepos.search();
-    }
-    
+    public ArrayList<NhanVien> searchbyCV(String TenCV) {
+   return  chucVuRepo.searchbyCV(TenCV);
+}
 }

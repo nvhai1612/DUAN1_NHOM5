@@ -5,17 +5,21 @@
 package Service;
 
 import DomainModel.ChucVu;
+import DomainModel.NhanVien;
 import ViewModel.ChucVuVM;
 import java.util.ArrayList;
 
-/**
- *
- * @author Admin
- */
 public interface IChucVuService {
+
     ArrayList<ChucVuVM> getAll();
-    ArrayList<ChucVu> getAllDomain();
+
+    ArrayList<ChucVu> getAllDoMain();
+
     void add(ChucVu cv);
+
     void update(ChucVu cv);
-    ArrayList<ChucVu> search (String MaCV);
+
+    ArrayList<ChucVu> search(String MaCV);
+
+    public ArrayList<NhanVien> searchbyCV(String TenCV);
 }

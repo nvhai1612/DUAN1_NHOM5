@@ -13,14 +13,14 @@ import java.util.UUID;
  */
 public class NhanVienVM {
     private UUID Id, IdCV;
-    private String MaNV, TenNV, CCCD, DiaChi, SDT, Email;
+    private String MaNV, TenNV, CCCD, DiaChi, SDT, Email, TenCV;
     private int GioiTinh, TrangThaiNV;
     private Date NgaySinh;
 
     public NhanVienVM() {
     }
-
-    public NhanVienVM(UUID Id, UUID IdCV, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
+    
+    public NhanVienVM(UUID Id, UUID IdCV, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, String TenCV, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
         this.Id = Id;
         this.IdCV = IdCV;
         this.MaNV = MaNV;
@@ -29,12 +29,13 @@ public class NhanVienVM {
         this.DiaChi = DiaChi;
         this.SDT = SDT;
         this.Email = Email;
+        this.TenCV = TenCV;
         this.GioiTinh = GioiTinh;
         this.TrangThaiNV = TrangThaiNV;
         this.NgaySinh = NgaySinh;
     }
 
-    public NhanVienVM(UUID Id, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
+    public NhanVienVM(UUID Id, String MaNV, String TenNV, String CCCD, String DiaChi, String SDT, String Email, String TenCV, int GioiTinh, int TrangThaiNV, Date NgaySinh) {
         this.Id = Id;
         this.MaNV = MaNV;
         this.TenNV = TenNV;
@@ -42,6 +43,7 @@ public class NhanVienVM {
         this.DiaChi = DiaChi;
         this.SDT = SDT;
         this.Email = Email;
+        this.TenCV = TenCV;
         this.GioiTinh = GioiTinh;
         this.TrangThaiNV = TrangThaiNV;
         this.NgaySinh = NgaySinh;
@@ -111,6 +113,14 @@ public class NhanVienVM {
         this.Email = Email;
     }
 
+    public String getTenCV() {
+        return TenCV;
+    }
+
+    public void setTenCV(String TenCV) {
+        this.TenCV = TenCV;
+    }
+
     public int getGioiTinh() {
         return GioiTinh;
     }
@@ -134,7 +144,6 @@ public class NhanVienVM {
     public void setNgaySinh(Date NgaySinh) {
         this.NgaySinh = NgaySinh;
     }
-
     
     @Override
     public String toString() {

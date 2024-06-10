@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ViewModel;
-
 import java.util.UUID;
 
 /**
@@ -14,10 +13,23 @@ public class ChucVuVM {
     private UUID id;
     private String MaCV;
     private String TenCV;
+    private int TrangThaiCV ;
 
     public ChucVuVM() {
     }
 
+    public int getTrangThaiCV() {
+        return TrangThaiCV;
+    }
+
+    public void setTrangThaiCV(int TrangThaiCV) {
+        this.TrangThaiCV = TrangThaiCV;
+    }
+
+    public ChucVuVM(int TrangThaiCV) {
+        this.TrangThaiCV = TrangThaiCV;
+    }
+    
     public ChucVuVM(UUID id, String MaCV, String TenCV) {
         this.id = id;
         this.MaCV = MaCV;

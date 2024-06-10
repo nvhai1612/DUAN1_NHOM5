@@ -9,7 +9,7 @@ public class DBConnection {
     public static final String HOSTNAME = "localhost";
     public static final String PORT = "1433";
     public static final String DBNAME = "DUAN1_NHOM5";
-    public static final String USERNAME = "sa1";
+    public static final String USERNAME = "sa";
     public static final String PASSWORD = "123456";
 
 
@@ -18,7 +18,7 @@ public class DBConnection {
      *
      * @return Connection
      */
-    public static Connection getConnection() {
+ public static Connection getConnection() {
 
         // Create a variable for the connection string.
         String connectionUrl = "jdbc:sqlserver://" + HOSTNAME + ":" + PORT + ";"

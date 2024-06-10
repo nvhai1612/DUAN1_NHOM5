@@ -298,7 +298,7 @@ SELECT MASPCT,TENSP,SOLUONGTON,IDCL,IDKC,IDMS,IDTH,DONGIA,SANPHAMCHITIET.id FROM
 SELECT MASPCT,TENSP,SOLUONG,SANPHAMCHITIET.DONGIA FROM HOADON INNER JOIN
                   HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN
                   SANPHAMCHITIET ON HOADONCT.IDSPCT = SANPHAMCHITIET.ID Join
-				  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID WHERE MAHD = '9261' 
+				  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID WHERE MAHD = '7414' 
 
 select MaHD,IDKH,IDNV,h.TRANGTHAIHD,MASP,TENSP,SOLUONG,hc.DONGIA from hoadonct hc join hoadon h on h.id = hc.IDHD join SANPHAMCHITIET sc on sc.id = hc.IDSPCT join sanpham s on s.id = sc.IDSP
 
@@ -318,3 +318,5 @@ select hd.mahdct from hoadonct hd join sanphamchitiet sp on hd.idspct = sp.id jo
 select MAHD,IDNV,NGAYTAO,TRANGTHAIHD from HoaDon where TRANGTHAIHD = 0 order by TRANGTHAIHD asc
 
 SELECT * from HoaDon where mahd = '9261'
+
+select hd.mahdct from hoadonct hd join sanphamchitiet sp on hd.idspct = sp.id join hoadon h on h.id = hd.idhd where sp.maspct = 'SPCT03' and h.mahd = '5378'
