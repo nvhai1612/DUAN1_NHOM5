@@ -84,6 +84,83 @@ public class NhanVienJ extends javax.swing.JFrame {
         loadTable();
     }
 
+    public void getData() {
+        String MaNV = txtMaNV.getText();
+        String TenNV = txtTenNV.getText();
+        int GioiTinh = rdoNam.isSelected() ? 1 : 0;
+        String NgaySinh = txtNgaySinh.getText();
+        String CCCD = txtCCCD.getText();
+        String DiaChi = txtDiaChi.getText();
+        String SDT = txtSDT.getText();
+        String Email = txtEmail.getText();
+        UUID TenCV;
+        try {
+            TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn chức vụ.");
+            return;
+        }
+        int TrangThai = rdDangLam.isSelected() ? 1 : 0;
+
+        NhanVien nv = new NhanVien();
+        nv.setMaNV(MaNV);
+        nv.setTenNV(TenNV);
+        nv.setGioiTinh(GioiTinh);
+        nv.setNgaySinh(NgaySinh(NgaySinh));
+        nv.setCCCD(CCCD);
+        nv.setDiaChi(DiaChi);
+        nv.setSDT(SDT);
+        nv.setEmail(Email);
+        nv.setIdCV(TenCV);
+        nv.setTrangThaiNV(TrangThai);
+
+    }
+
+    public boolean checkTrong() {
+        if (txtMaNV.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Mã Nhân Viên không để trống");
+            txtMaNV.requestFocus();
+            return false;
+        }
+        if (txtTenNV.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "tên Nhân Viên không được để trống");
+            txtTenNV.requestFocus();
+            return false;
+        }
+        if (!rdoNam.isSelected() && !rdoNu.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Chọn Giới Tính");
+            return false;
+        }
+        if (!rdDangLam.isSelected() && !rdDaNghi.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Chọn Trạng Thái");
+            return false;
+        }
+//        if (cbbChucVu.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "khong de chuc vu");
+//            txtChucVu.requestFocus();
+//            return false;
+//        }
+        if (txtSDT.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Số Điện Thoại không đụoec để trống");
+            txtMaNV.requestFocus();
+            return false;
+        }
+        if (txtDiaChi.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Địa chỉ không được để trống");
+            txtDiaChi.requestFocus();
+            return false;
+        }
+        if (txtEmail.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email không được để ");
+            txtEmail.requestFocus();
+            return false;
+        }
+
+        //
+        return true;
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -682,34 +759,40 @@ public class NhanVienJ extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbChucVuActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String MaNV = txtMaNV.getText();
-        String TenNV = txtTenNV.getText();
-        int GioiTinh = rdoNam.isSelected() == true ? 1 : 0;
-        String NgaySinh = txtNgaySinh.getText();
-        String CCCD = txtCCCD.getText();
-        String DiaChi = txtDiaChi.getText();
-        String SDT = txtSDT.getText();
-        String Email = txtEmail.getText();
-        UUID TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
-        int TrangThai = rdDangLam.isSelected() == true ? 1 : 0;
+        int chon = JOptionPane.showConfirmDialog(this, "xac nhan them", "huy", JOptionPane.YES_NO_OPTION);
+        if (chon == JOptionPane.YES_OPTION) {
+            if (checkTrong()) {
+                String MaNV = txtMaNV.getText();
+                String TenNV = txtTenNV.getText();
+                int GioiTinh = rdoNam.isSelected() == true ? 1 : 0;
+                String NgaySinh = txtNgaySinh.getText();
+                String CCCD = txtCCCD.getText();
+                String DiaChi = txtDiaChi.getText();
+                String SDT = txtSDT.getText();
+                String Email = txtEmail.getText();
+                UUID TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
+                int TrangThai = rdDangLam.isSelected() == true ? 1 : 0;
 
-        NhanVien nv = new NhanVien();
-        nv.setMaNV(MaNV);
-        nv.setTenNV(TenNV);
-        nv.setGioiTinh(GioiTinh);
-        nv.setNgaySinh(NgaySinh(NgaySinh));
-        nv.setCCCD(CCCD);
-        nv.setDiaChi(DiaChi);
-        nv.setSDT(SDT);
-        nv.setEmail(Email);
-        nv.setIdCV(TenCV);
-        nv.setTrangThaiNV(TrangThai);
+                NhanVien nv = new NhanVien();
+                nv.setMaNV(MaNV);
+                nv.setTenNV(TenNV);
+                nv.setGioiTinh(GioiTinh);
+                nv.setNgaySinh(NgaySinh(NgaySinh));
+                nv.setCCCD(CCCD);
+                nv.setDiaChi(DiaChi);
+                nv.setSDT(SDT);
+                nv.setEmail(Email);
+                nv.setIdCV(TenCV);
+                nv.setTrangThaiNV(TrangThai);
 
-        System.out.println(nv);
+                System.out.println(nv);
 
-        this.nhanVienService.add(nv);
-        LamMoi();
-        this.loadTable();
+                this.nhanVienService.add(nv);
+                LamMoi();
+                this.loadTable();
+            }
+        }
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void txtTimkiem1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimkiem1KeyReleased
@@ -808,7 +891,7 @@ public class NhanVienJ extends javax.swing.JFrame {
     }//GEN-LAST:event_tblChucVuMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String MaCV = txtMaCV.getText();
+        String MaCV = txtMaCV.getText();
         String TenCV = txtTenCV.getText();
         int TrangThai = rdoHoatDong.isSelected() ? 1 : 0;
 
@@ -816,12 +899,12 @@ public class NhanVienJ extends javax.swing.JFrame {
         cv.setMaCV(MaCV);
         cv.setTenCV(TenCV);
         cv.setTrangThai(TrangThai);
-        
+
         chucVuService.add(cv);
         this.loadTableCV();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-     private void loadTableCV() {
+    private void loadTableCV() {
         ArrayList<ChucVuVM> list = chucVuService.getAll();
         dtm.setRowCount(0);
         for (ChucVuVM cv : list) {
@@ -835,13 +918,14 @@ public class NhanVienJ extends javax.swing.JFrame {
             );
         }
     }
-     
+
     private void LamMoicv() {
         txtMaCV.setText("");
         txtTenCV.setText("");
         rdoDungHD.setSelected(true);
         loadTableCV();
     }
+
     /**
      * @param args the command line arguments
      */
