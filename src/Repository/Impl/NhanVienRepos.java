@@ -118,10 +118,11 @@ public class NhanVienRepos implements INhanVienRepos {
     }
 
     @Override
-    public String update(NhanVien nv) {
+    public Boolean update(NhanVien nv) {
         try (Connection con = connection.getConnection()) {
             String sql = "UPDATE NHANVIEN SET TENNV = ?, GIOITINH = ?, NGAYSINH = ?, CCCD = ?, DIACHI = ?, SDT = ?, EMAIL = ?, MATKHAU = ?, TRANGTHAINV = ?, IdCV = ? WHERE MANV = ?";
             PreparedStatement ps = con.prepareStatement(sql);
+            
             ps.setObject(1, nv.getTenNV());
             ps.setObject(2, nv.getGioiTinh());
             ps.setObject(3, nv.getNgaySinh());
@@ -134,12 +135,10 @@ public class NhanVienRepos implements INhanVienRepos {
             ps.setObject(10, nv.getIdCV());
             ps.setObject(11, nv.getMaNV());
             ps.executeUpdate();
-            return "Thanh Cong";
         } catch (Exception e) {
             e.printStackTrace();
-            return "That Bai";
         }
-
+        return null;
     }
 
     public String capNhatMatKhau(String matKhauMoi, String Email) {
@@ -183,22 +182,22 @@ public class NhanVienRepos implements INhanVienRepos {
     }
 
     public String SelectById(UUID id) {
-        
-        try (Connection con = connection.getConnection();
-                PreparedStatement ps = con.prepareStatement("SELECT TENCV FROM CHUCVU WHERE ID = ?")){
+
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT TENCV FROM CHUCVU WHERE ID = ?")) {
             ps.setObject(1, id);
             ResultSet rs = ps.executeQuery();
-           
-            while (rs.next()) {                
+
+            while (rs.next()) {
                 return rs.getString(1);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return null;
     }
+
     public UUID SelectByname(String id) {
 
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("SELECT ID FROM NHANVIEN WHERE TENNV = ?")) {

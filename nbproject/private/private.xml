@@ -8,14 +8,19 @@
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/Impl/ChucVuService.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/DomainModel/NhanVien.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/NhanVienJ.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/icon/email.png</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/ChucVuJDIALog.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/Impl/NhanVienService.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/IChucVuService.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/icon/aosomi.png</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/DomainModel/ChucVu.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/Utiliti/DBConnection.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/Impl/NhanVienRepos.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/ViewModel/ChucVuVM.java</file>
-            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/MissPassJpane.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/View/Login.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/IChucVuRepo.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Service/INhanVienService.java</file>
+            <file>file:/D:/GitHub/DUAN1_NHOM5/src/DomainModel/MauSac.java</file>
             <file>file:/D:/GitHub/DUAN1_NHOM5/src/Repository/INhanVienRepos.java</file>
         </group>
     </open-files>

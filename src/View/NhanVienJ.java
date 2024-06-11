@@ -27,8 +27,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class NhanVienJ extends javax.swing.JFrame {
 
-    DefaultTableModel dtm = new DefaultTableModel();
     List<NhanVien> list = new ArrayList<>();
+    DefaultTableModel dtm = new DefaultTableModel();
     private NhanVienService nhanVienService = new NhanVienService();
     private ChucVuService chucVuService = new ChucVuService();
     private DefaultComboBoxModel dcbbm;
@@ -40,7 +40,7 @@ public class NhanVienJ extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         dtm = (DefaultTableModel) tblNhanVien.getModel();
-        dtm = (DefaultTableModel) tblChucVu.getModel();
+        DefaultTableModel dtmChucVu = (DefaultTableModel) tblChucVu.getModel();
         list = nhanVienService.getAllDoMain();
         dcbbm = (DefaultComboBoxModel) cbbChucVu.getModel();
         dcbbm.addAll(chucVuService.getAll());
@@ -53,7 +53,7 @@ public class NhanVienJ extends javax.swing.JFrame {
 
     private void loadTable() {
         ArrayList<NhanVienVM> list = nhanVienService.getAll();
-        dtm.setRowCount(0);
+
         for (NhanVienVM nhanVien : list) {
             dtm.addRow(new Object[]{
                 nhanVien.getMaNV(),
@@ -82,38 +82,6 @@ public class NhanVienJ extends javax.swing.JFrame {
         cbbChucVu.setSelectedIndex(0);
         rdDangLam.setSelected(true);
         loadTable();
-    }
-
-    public void getData() {
-        String MaNV = txtMaNV.getText();
-        String TenNV = txtTenNV.getText();
-        int GioiTinh = rdoNam.isSelected() ? 1 : 0;
-        String NgaySinh = txtNgaySinh.getText();
-        String CCCD = txtCCCD.getText();
-        String DiaChi = txtDiaChi.getText();
-        String SDT = txtSDT.getText();
-        String Email = txtEmail.getText();
-        UUID TenCV;
-        try {
-            TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn chức vụ.");
-            return;
-        }
-        int TrangThai = rdDangLam.isSelected() ? 1 : 0;
-
-        NhanVien nv = new NhanVien();
-        nv.setMaNV(MaNV);
-        nv.setTenNV(TenNV);
-        nv.setGioiTinh(GioiTinh);
-        nv.setNgaySinh(NgaySinh(NgaySinh));
-        nv.setCCCD(CCCD);
-        nv.setDiaChi(DiaChi);
-        nv.setSDT(SDT);
-        nv.setEmail(Email);
-        nv.setIdCV(TenCV);
-        nv.setTrangThaiNV(TrangThai);
-
     }
 
     public boolean checkTrong() {
@@ -705,23 +673,17 @@ public class NhanVienJ extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // Lấy dữ liệu từ UI
+
         String MaNV = txtMaNV.getText();
         String TenNV = txtTenNV.getText();
-        int GioiTinh = rdoNam.isSelected() ? 1 : 0;
+        int GioiTinh = rdoNam.isSelected() == true ? 1 : 0;
         String NgaySinh = txtNgaySinh.getText();
         String CCCD = txtCCCD.getText();
         String DiaChi = txtDiaChi.getText();
         String SDT = txtSDT.getText();
         String Email = txtEmail.getText();
-        UUID TenCV;
-        try {
-            TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn chức vụ.");
-            return;
-        }
-        int TrangThai = rdDangLam.isSelected() ? 1 : 0;
+        UUID TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
+        int TrangThai = rdDangLam.isSelected() == true ? 1 : 0;
 
         NhanVien nv = new NhanVien();
         nv.setMaNV(MaNV);
@@ -732,13 +694,14 @@ public class NhanVienJ extends javax.swing.JFrame {
         nv.setDiaChi(DiaChi);
         nv.setSDT(SDT);
         nv.setEmail(Email);
-        nv.setIdCV(TenCV);
+        nv.setTenCV(TenNV);
         nv.setTrangThaiNV(TrangThai);
 
+        System.out.println(nv);
+
         this.nhanVienService.update(nv);
+        LamMoi();
         this.loadTable();
-
-
     }//GEN-LAST:event_btnSuaActionPerformed
 
     public Date NgaySinh(String ngaysinh) {
@@ -759,40 +722,34 @@ public class NhanVienJ extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbChucVuActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        int chon = JOptionPane.showConfirmDialog(this, "xac nhan them", "huy", JOptionPane.YES_NO_OPTION);
-        if (chon == JOptionPane.YES_OPTION) {
-            if (checkTrong()) {
-                String MaNV = txtMaNV.getText();
-                String TenNV = txtTenNV.getText();
-                int GioiTinh = rdoNam.isSelected() == true ? 1 : 0;
-                String NgaySinh = txtNgaySinh.getText();
-                String CCCD = txtCCCD.getText();
-                String DiaChi = txtDiaChi.getText();
-                String SDT = txtSDT.getText();
-                String Email = txtEmail.getText();
-                UUID TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
-                int TrangThai = rdDangLam.isSelected() == true ? 1 : 0;
+        String MaNV = txtMaNV.getText();
+        String TenNV = txtTenNV.getText();
+        int GioiTinh = rdoNam.isSelected() == true ? 1 : 0;
+        String NgaySinh = txtNgaySinh.getText();
+        String CCCD = txtCCCD.getText();
+        String DiaChi = txtDiaChi.getText();
+        String SDT = txtSDT.getText();
+        String Email = txtEmail.getText();
+        UUID TenCV = ((ChucVuVM) cbbChucVu.getSelectedItem()).getId();
+        int TrangThai = rdDangLam.isSelected() == true ? 1 : 0;
 
-                NhanVien nv = new NhanVien();
-                nv.setMaNV(MaNV);
-                nv.setTenNV(TenNV);
-                nv.setGioiTinh(GioiTinh);
-                nv.setNgaySinh(NgaySinh(NgaySinh));
-                nv.setCCCD(CCCD);
-                nv.setDiaChi(DiaChi);
-                nv.setSDT(SDT);
-                nv.setEmail(Email);
-                nv.setIdCV(TenCV);
-                nv.setTrangThaiNV(TrangThai);
+        NhanVien nv = new NhanVien();
+        nv.setMaNV(MaNV);
+        nv.setTenNV(TenNV);
+        nv.setGioiTinh(GioiTinh);
+        nv.setNgaySinh(NgaySinh(NgaySinh));
+        nv.setCCCD(CCCD);
+        nv.setDiaChi(DiaChi);
+        nv.setSDT(SDT);
+        nv.setEmail(Email);
+        nv.setIdCV(TenCV);
+        nv.setTrangThaiNV(TrangThai);
 
-                System.out.println(nv);
+        System.out.println(nv);
 
-                this.nhanVienService.add(nv);
-                LamMoi();
-                this.loadTable();
-            }
-        }
-
+        this.nhanVienService.add(nv);
+        LamMoi();
+        this.loadTable();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void txtTimkiem1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimkiem1KeyReleased
@@ -802,7 +759,7 @@ public class NhanVienJ extends javax.swing.JFrame {
     private void btnTimKiem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiem1ActionPerformed
         String TenCV = txtTimkiem1.getText(); // Lấy vai trò được chọn từ combobox
         ArrayList<NhanVien> filteredList = filterByTenCV(TenCV);
-        loadTable(filteredList);
+        loadTableSreach(filteredList);
     }//GEN-LAST:event_btnTimKiem1ActionPerformed
     private ArrayList<NhanVien> filterByTenCV(String TenCV) {
         ArrayList<NhanVien> filteredList = new ArrayList<>();
@@ -814,7 +771,7 @@ public class NhanVienJ extends javax.swing.JFrame {
         return filteredList;
     }
 
-    private void loadTable(ArrayList<NhanVien> dataList) {
+    private void loadTableSreach(ArrayList<NhanVien> dataList) {
         dtm.setRowCount(0);
         for (NhanVien nhanVien : dataList) {
             dtm.addRow(new Object[]{
@@ -906,9 +863,9 @@ public class NhanVienJ extends javax.swing.JFrame {
 
     private void loadTableCV() {
         ArrayList<ChucVuVM> list = chucVuService.getAll();
-        dtm.setRowCount(0);
+        DefaultTableModel dtmChucVu = (DefaultTableModel) tblChucVu.getModel();
         for (ChucVuVM cv : list) {
-            dtm.addRow(new Object[]{
+            dtmChucVu.addRow(new Object[]{
                 cv.getId(),
                 cv.getMaCV(),
                 cv.getTenCV(),

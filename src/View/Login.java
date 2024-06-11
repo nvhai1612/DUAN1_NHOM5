@@ -206,13 +206,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_lblQuenMKMouseClicked
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        if (checkLogin()) {
-            ViewMain main = new ViewMain();
-            main.setVisible(true);
-            this.dispose();
-        } else {
-            return;
-        }
+//        if (checkLogin()) {
+//            ViewMain main = new ViewMain();
+//            main.setVisible(true);
+//            this.dispose();
+//        } else {
+//            return;
+//        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**

@@ -20,33 +20,35 @@ public class NhanVienService implements INhanVienService {
     private NhanVienRepos nvRepo = new NhanVienRepos();
 
     @Override
-    public ArrayList<NhanVienVM> getAll() { 
+    public ArrayList<NhanVienVM> getAll() {
         ArrayList<NhanVien> listNV = nvRepo.getListFormDB();
         ArrayList<NhanVienVM> listNVVM = new ArrayList<>();
-        for(NhanVien nv : listNV){
-            NhanVienVM nvvm = new 
-        NhanVienVM(nv.getId(), nv.getMaNV(), nv.getTenNV(), nv.getCCCD(), nv.getDiaChi(), 
-                nv.getSDT(), nv.getEmail(), nvRepo.SelectById(nv.getIdCV()), nv.getGioiTinh(), nv.getTrangThaiNV(), nv.getNgaySinh());
+        for (NhanVien nv : listNV) {
+            NhanVienVM nvvm = new NhanVienVM(nv.getId(), nv.getMaNV(), nv.getTenNV(), nv.getCCCD(), nv.getDiaChi(),
+                    nv.getSDT(), nv.getEmail(), nvRepo.SelectById(nv.getIdCV()), nv.getGioiTinh(), nv.getTrangThaiNV(), nv.getNgaySinh());
             listNVVM.add(nvvm);
         }
-        return listNVVM;}
+        return listNVVM;
+    }
 
     @Override
     public ArrayList<NhanVien> getAllDoMain() {
-    return nvRepo.getListFormDB();
-            }
+        return nvRepo.getListFormDB();
+    }
 
     @Override
     public void add(NhanVien nv) {
-    nvRepo.add(nv);
+        nvRepo.add(nv);
     }
+
     @Override
     public void update(NhanVien nv) {
-    nvRepo.update(nv);}
+        nvRepo.update(nv);
+    }
 
     @Override
     public ArrayList<NhanVien> search(String MaNV) {
-    return nvRepo.search(MaNV);
+        return nvRepo.search(MaNV);
     }
 
 }

@@ -18,7 +18,7 @@ public interface INhanVienRepos {
 
     public void add(NhanVien nv);
 
-    public String update(NhanVien nv);
+    public Boolean update(NhanVien nv);
 
     public ArrayList<NhanVien> search(String MaNV);
 }
