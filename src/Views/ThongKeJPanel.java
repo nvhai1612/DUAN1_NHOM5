@@ -4,17 +4,33 @@
  */
 package Views;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
  */
 public class ThongKeJPanel extends javax.swing.JPanel {
 
+    private DomainModel.ThongKe sm = new DomainModel.ThongKe();
+    private DefaultTableModel mol = new DefaultTableModel();
+    private int i = -1;
+
     /**
      * Creates new form ThongKeJPanel
      */
     public ThongKeJPanel() {
         initComponents();
+    }
+
+    public void fillTable(ArrayList<DomainModel.ThongKe> list) {
+        mol = (DefaultTableModel) tbSanPham.getModel();
+        mol.setRowCount(0); // xoá dl cũ trong bảng
+
+        for (DomainModel.ThongKe x : list) {
+            mol.addRow(x.todataRow());
+        }
     }
 
     /**
@@ -364,7 +380,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 813, Short.MAX_VALUE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -612,7 +628,7 @@ public class ThongKeJPanel extends javax.swing.JPanel {
 
         jPanel21.setBackground(new java.awt.Color(222, 231, 227));
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Thống kê"));
-        jPanel21.setLayout(new java.awt.GridLayout());
+        jPanel21.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel22.setBackground(new java.awt.Color(245, 147, 137));
         jPanel22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
