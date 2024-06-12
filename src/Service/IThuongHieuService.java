@@ -17,4 +17,5 @@ public interface IThuongHieuService {
     ArrayList<ThuongHieu> getAllDomain();
     void add(ThuongHieu th);
     void update(ThuongHieu th);
+    ArrayList<ThuongHieu> search (String MaTH);
 }

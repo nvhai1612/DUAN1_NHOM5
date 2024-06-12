@@ -17,4 +17,5 @@ public interface IChucVuService {
     ArrayList<ChucVu> getAllDomain();
     void add(ChucVu cv);
     void update(ChucVu cv);
+    ArrayList<ChucVu> search (String MaCV);
 }

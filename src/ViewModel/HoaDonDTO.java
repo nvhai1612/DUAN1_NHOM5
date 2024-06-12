@@ -4,24 +4,30 @@
  */
 package ViewModel;
 
+import oracle.sql.DATE;
+
 /**
  *
  * @author Admin
  */
 public class HoaDonDTO {
-    private String MaHD, TenNV, TenKH, MaSP, TenSP;
+    private String MaHD, TenNV, TenKH, MaSP, TenSP,DiaChi,SDT;
     private int TrangThai, SoLuong;
     private float DonGia;
+    private String ngayThanhToan;
 
     public HoaDonDTO() {
     }
 
-    public HoaDonDTO(String MaHD, String TenNV, String TenKH, String MaSP, String TenSP, int TrangThai, int SoLuong, float DonGia) {
+    public HoaDonDTO(String MaHD, String TenNV, String TenKH, String MaSP, String TenSP, String DiaChi, String SDT, String ngayThanhToan, int TrangThai, int SoLuong, float DonGia) {
         this.MaHD = MaHD;
         this.TenNV = TenNV;
         this.TenKH = TenKH;
         this.MaSP = MaSP;
         this.TenSP = TenSP;
+        this.DiaChi = DiaChi;
+        this.SDT = SDT;
+        this.ngayThanhToan = ngayThanhToan;
         this.TrangThai = TrangThai;
         this.SoLuong = SoLuong;
         this.DonGia = DonGia;
@@ -67,6 +73,30 @@ public class HoaDonDTO {
         this.TenSP = TenSP;
     }
 
+    public String getDiaChi() {
+        return DiaChi;
+    }
+
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
+    }
+
+    public String getSDT() {
+        return SDT;
+    }
+
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
+    }
+
+    public String getNgayThanhToan() {
+        return ngayThanhToan;
+    }
+
+    public void setNgayThanhToan(String ngayThanhToan) {
+        this.ngayThanhToan = ngayThanhToan;
+    }
+
     public int getTrangThai() {
         return TrangThai;
     }
@@ -91,8 +121,7 @@ public class HoaDonDTO {
         this.DonGia = DonGia;
     }
 
-    @Override
-    public String toString() {
-        return "hoadonDTO{" + "MaHD=" + MaHD + ", TenNV=" + TenNV + ", TenKH=" + TenKH + ", MaSP=" + MaSP + ", TenSP=" + TenSP + ", TrangThai=" + TrangThai + ", SoLuong=" + SoLuong + ", DonGia=" + DonGia + '}';
-    }
+  
+
+    
 }

@@ -1066,6 +1066,35 @@
                                 <Column editable="true" title="Tha&#x300;nh ti&#xea;&#x300;n" type="java.lang.Object"/>
                               </Table>
                             </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
                             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
@@ -1399,7 +1428,7 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jLabel62" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="txtTienThuaa" max="32767" attributes="0"/>
+                                                  <Component id="txtTienThua" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="jSeparator33" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
@@ -1425,18 +1454,18 @@
                                                               <EmptySpace max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="btnChonKH" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="txtTongTienn" min="-2" pref="130" max="-2" attributes="0"/>
+                                                                  <Component id="txtTongTien" min="-2" pref="130" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="btnThanhToan6" pref="176" max="32767" attributes="0"/>
+                                                              <Component id="btnThanhToan" pref="176" max="32767" attributes="0"/>
                                                               <Group type="102" attributes="0">
-                                                                  <Component id="btnTaoHoaDon5" min="-2" pref="82" max="-2" attributes="0"/>
+                                                                  <Component id="btnTaoHoaDon" min="-2" pref="82" max="-2" attributes="0"/>
                                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                                  <Component id="btnHuy5" min="-2" pref="82" max="-2" attributes="0"/>
+                                                                  <Component id="btnHuy" min="-2" pref="82" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
                                                       </Group>
@@ -1474,7 +1503,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTongTienn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTongTien" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1499,17 +1528,17 @@
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtTienThuaa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTienThua" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator33" min="-2" pref="3" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnTaoHoaDon5" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                                      <Component id="btnHuy5" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="btnTaoHoaDon" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                                      <Component id="btnHuy" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnThanhToan6" min="-2" pref="62" max="-2" attributes="0"/>
+                                  <Component id="btnThanhToan" min="-2" pref="62" max="-2" attributes="0"/>
                                   <EmptySpace pref="74" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1561,7 +1590,7 @@
                             <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n: "/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="txtTongTienn">
+                        <Component class="javax.swing.JLabel" name="txtTongTien">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="0"/>
                           </Properties>
@@ -1635,27 +1664,27 @@
                             <Property name="text" type="java.lang.String" value="Ti&#x1ec1;n th&#x1eeb;a"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="txtTienThuaa">
+                        <Component class="javax.swing.JLabel" name="txtTienThua">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="0"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator33">
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnTaoHoaDon5">
+                        <Component class="javax.swing.JButton" name="btnTaoHoaDon">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="T&#x1ea1;o HD"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoHoaDon5ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoHoaDonActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnHuy5">
+                        <Component class="javax.swing.JButton" name="btnHuy">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Hu&#x1ef7;"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHuy5ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHuyActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnChonKH">
@@ -1668,7 +1697,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator34">
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnThanhToan6">
+                        <Component class="javax.swing.JButton" name="btnThanhToan">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/icons/mua.png"/>
@@ -1676,7 +1705,7 @@
                             <Property name="text" type="java.lang.String" value="Thanh toa&#x301;n"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhToan6ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThanhToanActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>

@@ -17,4 +17,5 @@ public interface IChatLieuService {
     ArrayList<ChatLieu> getAllDomain();
     void add(ChatLieu cl);
     void update(ChatLieu cl);
+    ArrayList<ChatLieu> search (String MaCL);
 }

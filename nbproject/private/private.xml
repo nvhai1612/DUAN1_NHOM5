@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/ViewModel/SPCTVM.java</file>
             <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Views/LichSuJPanel.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/DomainModel/KhuyenMaiChiTiet.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Repository/IkhuyenMairepons.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Repository/Impl/KhuyenMaiRepons.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/DomainModel/SanPhamChiTiet.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Service/IkhuyenMaiSeviec.java</file>
             <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Views/BanHangJFrame.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/ViewModel/khuyeMaiVM.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Service/Impl/khuyenmaiseviec.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/DomainModel/KhuyenMai.java</file>
-            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Views/KhuyenMaiJPanel.java</file>
+            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Repository/Impl/HoaDonRepos.java</file>
+            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Repository/Impl/HDCTCTRepos.java</file>
+            <file>file:/C:/Users/Admin/Downloads/DUAN1_NHOM5-hainv/src/Service/Impl/HoaDonService.java</file>
         </group>
     </open-files>
 </project-private>

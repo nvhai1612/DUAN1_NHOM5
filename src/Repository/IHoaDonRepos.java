@@ -5,6 +5,7 @@
 package Repository;
 
 import DomainModel.HoaDon;
+import DomainModel.KhachHang;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -17,4 +18,5 @@ public interface IHoaDonRepos {
     public Boolean add(HoaDon hd);
     public Boolean update(HoaDon hd);
     public Boolean delete(UUID id);
+//        public ArrayList<HoaDon> search(String ma);
 }

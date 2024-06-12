@@ -13,8 +13,8 @@ import java.util.UUID;
 public class SPCTVM {
     private UUID id, IdSP, IdCL, IdKC, IdMS, IdTH;
     private String MaSPCT, MoTa, TenMS, TenCL, TenTH, TenKC, TenSP, NguoiTao;
-    private int SoLuongTon, TrangThaiSPCT;
-    private float DonGia;
+    private int SoLuongTon, TrangThaiSPCT ;
+    private float DonGia ,MucGiamGia;
 
     public SPCTVM() {
     }
@@ -37,7 +37,21 @@ public class SPCTVM {
         this.SoLuongTon = SoLuongTon;
         this.TrangThaiSPCT = TrangThaiSPCT;
         this.DonGia = DonGia;
+        
     }
+
+    public SPCTVM(float MucGiamGia) {
+        this.MucGiamGia = MucGiamGia;
+    }
+
+    public float getMucGiamGia() {
+        return MucGiamGia;
+    }
+
+    public void setMucGiamGia(float MucGiamGia) {
+        this.MucGiamGia = MucGiamGia;
+    }
+    
 
     public SPCTVM(UUID id, String MaSPCT, String TenMS, String TenCL, String TenTH, String TenKC, String TenSP, String NguoiTao, int SoLuongTon, int TrangThaiSPCT, float DonGia) {
         this.id = id;

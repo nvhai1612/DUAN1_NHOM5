@@ -17,4 +17,5 @@ public interface IKichCoService {
     ArrayList<KichCo> getAllDomain();
     void add(KichCo kc);
     void update(KichCo kc);
+    ArrayList<KichCo> search (String MaKC);
 }

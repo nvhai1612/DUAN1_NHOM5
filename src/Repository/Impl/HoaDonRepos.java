@@ -5,6 +5,7 @@
 package Repository.Impl;
 
 import DomainModel.HoaDon;
+import DomainModel.KhachHang;
 import DomainModel.SanPhamChiTiet;
 import Repository.IHoaDonRepos;
 import Utiliti.DBConnection;
@@ -164,10 +165,11 @@ public class HoaDonRepos implements IHoaDonRepos {
         ArrayList<SanPhamChiTiet> listSPCT = new ArrayList<>();
 
         try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement(
-                "SELECT MASPCT,TENSP,SOLUONG,SANPHAMCHITIET.DONGIA FROM HOADON INNER JOIN\n"
-                + "                  HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n"
-                + "                  SANPHAMCHITIET ON HOADONCT.IDSPCT = SANPHAMCHITIET.ID Join\n"
-                + "				  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID WHERE MAHD = ? ")) {
+                "	SELECT MASPCT,TENSP,HOADONCT.SOLUONG,SANPHAMCHITIET.DONGIA,MUCGIAMGIA FROM HOADON INNER JOIN\n" +
+"                               HOADONCT ON HOADON.ID = HOADONCT.IDHD INNER JOIN\n" +
+"                                SANPHAMCHITIET ON HOADONCT.IDSPCT = SANPHAMCHITIET.ID Join\n" +
+"                			  SANPHAM ON SANPHAMCHITIET.IDSP = SANPHAM.ID join KHUYENMAICHITIET on SANPHAMCHITIET.ID=KHUYENMAICHITIET.IDSPCT\n" +
+"							   join KHUYENMAI on KHUYENMAI.ID=KHUYENMAICHITIET.IDKM WHERE MAHD = ? ")) {
 
             ps.setObject(1, MaHD);
 
@@ -179,6 +181,7 @@ public class HoaDonRepos implements IHoaDonRepos {
                 spct.setTenSP(rs.getString(2));
                 spct.setSoLuongTon(rs.getInt(3));
                 spct.setDonGia(rs.getFloat(4));
+                spct.setMucGiamGia(rs.getFloat(5));
                 listSPCT.add(spct);
             }
 
@@ -258,3 +261,31 @@ public class HoaDonRepos implements IHoaDonRepos {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
+
+//    @Override
+//    public ArrayList<HoaDon> search(String ma) {
+//    }
+
+//    @Override
+//    public ArrayList<HoaDon> search(String ma) {
+////ArrayList<hoa> hoadonseach = new ArrayList<>();
+////    try {
+////        Connection coon = connection.getConnection();
+////        String sql = "select MaHD,IDKH,IDNV,h.TRANGTHAIHD,MASP,TENSP,SOLUONG,hc.DONGIA from hoadonct hc join hoadon h on h.id = hc.IDHD join SANPHAMCHITIET sc on sc.id = hc.IDSPCT join sanpham s on s.id = sc.IDSP where MAHD like ?";
+////        PreparedStatement prsm = coon.prepareStatement(sql);
+////        prsm.setString(1, "%" + ma + "%");
+////
+////        ResultSet rs = prsm.executeQuery();
+////        while (rs.next()) {
+////            HoaDonDTO kh = new HoaDonDTO();
+////            kh.setMaHD(rs.getString("MaHD"));
+////            kh.setTrangThai(rs.getString("TENKH"));
+////            
+////            
+////            khachHangList.add(kh);
+////        }
+////    } catch (Exception e) {
+////        e.printStackTrace();
+////    }
+////    return khachHangList;     }
+//}

@@ -42,5 +42,10 @@ public class SanPhamService implements ISanPhamService{
     public void update(SanPham sp) {
         SanPhamRepos.update(sp);
     }
+
+    @Override
+    public ArrayList<SanPham> search(String MaSP) {
+        return SanPhamRepos.search();
+    }
     
 }

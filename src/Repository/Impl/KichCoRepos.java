@@ -80,4 +80,26 @@ public class KichCoRepos implements IKichCoRepos {
         return null;
     }
 
+    @Override
+    public ArrayList<KichCo> search() {
+        ArrayList<KichCo> listKC = new ArrayList<>();
+        try (Connection con = connection.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM KICHCO WHERE MAKC = ?");){
+            ps.executeUpdate();
+            
+            KichCo kc = new KichCo();
+            ps.setObject(1, kc.getMaKC());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                kc.setId((UUID) rs.getObject(1));
+                kc.setMaKC(rs.getString(2));
+                listKC.add(kc);
+            } 
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return listKC;
+    }
 }

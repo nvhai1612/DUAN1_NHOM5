@@ -60,6 +60,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         txtTimkiem2 = new javax.swing.JTextField();
         btnTimKiem2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(222, 231, 227));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhân viên ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
@@ -210,6 +211,8 @@ public class NhanVienJPanel extends javax.swing.JPanel {
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
+        jButton1.setText("chức vụ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -268,6 +271,8 @@ public class NhanVienJPanel extends javax.swing.JPanel {
                                     .addComponent(txtSDT, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(cbbChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton1)
                                         .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addContainerGap())
         );
@@ -292,7 +297,8 @@ public class NhanVienJPanel extends javax.swing.JPanel {
                     .addComponent(rdoNam)
                     .addComponent(rdoNu)
                     .addComponent(jLabel8)
-                    .addComponent(cbbChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbChucVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -381,6 +387,7 @@ public class NhanVienJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnTimKiem1;
     private javax.swing.JButton btnTimKiem2;
     private javax.swing.JComboBox<String> cbbChucVu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

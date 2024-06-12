@@ -81,4 +81,26 @@ public class MauSacRepos implements IMauSacRepos {
         return null;
     }
 
+    @Override
+    public ArrayList<MauSac> search() {
+        ArrayList<MauSac> listMS = new ArrayList<>();
+        try (Connection con = connection.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM MAUSAC WHERE MAMS = ?");){
+            ps.executeUpdate();
+            
+            MauSac ms = new MauSac();
+            ps.setObject(1, ms.getMaMS());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                ms.setId((UUID) rs.getObject(1));
+                ms.setMaMS(rs.getString(2));
+                listMS.add(ms);
+            } 
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return listMS;
+    }
 }

@@ -42,5 +42,10 @@ public class MauSacService implements IMauSacService{
     public void update(MauSac ms) {
         MauSacRepos.update(ms);
     }
+
+    @Override
+    public ArrayList<MauSac> search(String MaMS) {
+        return MauSacRepos.search();
+    }
     
 }

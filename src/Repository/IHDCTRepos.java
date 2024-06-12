@@ -4,6 +4,7 @@
  */
 package Repository;
 
+import DomainModel.HoaDon;
 import ViewModel.HoaDonDTO;
 import java.util.ArrayList;
 
@@ -13,4 +14,5 @@ import java.util.ArrayList;
  */
 public interface IHDCTRepos {
     public ArrayList<HoaDonDTO> getListFormDB();
+     public ArrayList<HoaDonDTO> search(String ma);
 }

@@ -4,27 +4,33 @@
  */
 package Views;
 
+import DomainModel.KhachHang;
 import DomainModel.SanPhamChiTiet;
 import Repository.Impl.HDCTCTRepos;
 import Service.Impl.HoaDonService;
 import ViewModel.HoaDonDTO;
+import ViewModel.HoaDonVM;
+import ViewModel.KhachHangVM;
 import ViewModel.SPCTVM;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import oracle.sql.DATE;
 
 /**
  *
  * @author Admin
  */
 public class LichSuJPanel extends javax.swing.JPanel {
+
     private HDCTCTRepos hDCTCTRepos = new HDCTCTRepos();
-       DefaultTableModel dtmsp = new DefaultTableModel();
+    DefaultTableModel dtmsp = new DefaultTableModel();
     DefaultTableModel dtmgh = new DefaultTableModel();
     DefaultTableModel dtmhd = new DefaultTableModel();
-        private ArrayList<SPCTVM> listSPCT = new ArrayList<>();
-        private HoaDonService hoaDonService = new HoaDonService();
-
+    private HoaDonService hoaDonService = new HoaDonService();
+    private ArrayList<SPCTVM> listSPCT = new ArrayList<>();
 
     /**
      * Creates new form HoaDonJPanel
@@ -32,40 +38,24 @@ public class LichSuJPanel extends javax.swing.JPanel {
     public LichSuJPanel() {
         initComponents();
         LoadTable();
-        LoadTableGioHang();
     }
 
-    private void LoadTable(){
+    private void LoadTable() {
         DefaultTableModel dtm = (DefaultTableModel) tblHoaDon.getModel();
         dtm.setRowCount(0);
-        
+
         ArrayList<HoaDonDTO> listDTO = hDCTCTRepos.getListFormDB();
-        
-        for(HoaDonDTO hdct : listDTO){
+
+        for (HoaDonDTO hdct : listDTO) {
             dtm.addRow(new Object[]{
                 hdct.getMaHD(),
                 hdct.getTenNV(),
-                hdct.getTenKH(),
-                hdct.getTrangThai() == 1 ? "Đã thanh toán" : "Hủy",
-            });
+                hdct.getTenKH() == "khách hàng vãng lai",
+                hdct.getTrangThai() == 1 ? "Đã thanh toán" : "Hủy",});
         }
     }
-      private void LoadTableGioHang() {
-        dtmgh = (DefaultTableModel) tblTTSP.getModel();
-        dtmgh.setRowCount(0);
 
-        ArrayList<SPCTVM> listSPCTVM = listSPCT;
-
-        for (SPCTVM ctspvm : listSPCTVM) {
-            dtmgh.addRow(new Object[]{
-                ctspvm.getMaSPCT(),
-                ctspvm.getTenSP(),
-                ctspvm.getSoLuongTon(),
-                ctspvm.getDonGia(),
-                new BigDecimal(ctspvm.getSoLuongTon() * ctspvm.getDonGia()),});
-        }
-    }
-      private void LoadHoaDonCho(String MaHD) {
+    private void LoadHoaDonCho(String MaHD) {
         dtmgh = (DefaultTableModel) tblTTSP.getModel();
         dtmgh.setRowCount(0);
 
@@ -78,8 +68,53 @@ public class LichSuJPanel extends javax.swing.JPanel {
                 spct.getDonGia(),
                 new BigDecimal(spct.getDonGia() * spct.getSoLuongTon()),});
         }
-//        TinhTien();
+        TinhTien();
     }
+
+    public void TinhTien() {
+
+        float CanThanhToan = 0;
+        float ThanhTien = 0;
+        double Khuyenmai = 0;
+        int Tienkhachdua = 0;
+        float Tienthua = 0;
+        for (int i = 0; i < tblTTSP.getRowCount(); i++) {
+            ThanhTien += Float.valueOf(tblTTSP.getValueAt(i, 4).toString());
+            CanThanhToan = (float) (ThanhTien - Khuyenmai);
+            Tienthua = Tienkhachdua - CanThanhToan;
+        }
+
+        txtTongTien.setText(String.valueOf(CanThanhToan));
+
+    }
+
+    private void showTable(int row) {
+        HoaDonDTO kh = hDCTCTRepos.getListFormDB().get(row);
+        txtMa.setText(kh.getMaHD());
+        txtTenNV.setText(kh.getTenNV());
+        txtTenKH.setText(kh.getTenKH());
+        txtSDT.setText(kh.getSDT());
+        txtDiaChi.setText(kh.getDiaChi());
+        int trangThai = kh.getTrangThai();
+        String trangThaiStr = (trangThai == 1) ? "Đã thanh toán" : "Hủy";
+        txtTrangThai.setText(trangThaiStr);
+        txtNgayThanhToan.setText(kh.getNgayThanhToan());
+//        txtNgayThanhToan.setText(DATE.toString(kh.getNgayThanhToan()));
+
+//       txtTrangThai.setText(Integer.toString(kh.getTrangThai())== 1 ? "Đã thanh toán" : "Hủy") ;
+//         txtTrangThai.setText(Integer.valueOf(kh.getTrangThai()));
+//        txtTenKH.setText(kh.getTenKH());
+//        txtNgaySinh.setText(kh.getNgaySinh());
+//         System.out.println("GioiTinh: " + kh.getGioiTinh());
+//        if (kh.getGioiTinh().equals(1)){
+//            rdoNam.setSelected(true);
+//        }else{
+//            rdoNu.setSelected(true);
+//        }
+//        txtSdt.setText(kh.getSdt());
+//        taDiaChi.setText(kh.getDiaChi());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,16 +181,14 @@ public class LichSuJPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(17, 17, 17))
         );
 
         jPanel3.setBackground(new java.awt.Color(222, 231, 227));
@@ -389,9 +422,10 @@ public class LichSuJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-//LoadTable();
-listSPCT.clear();
-int row = tblHoaDon.getSelectedRow();
+
+        listSPCT.clear();
+
+        int row = tblHoaDon.getSelectedRow();
         if (row == -1) {
             return;
         }
@@ -400,14 +434,42 @@ int row = tblHoaDon.getSelectedRow();
 
         hoaDonService.HoaDonCho(MaHD);
         LoadHoaDonCho(MaHD);
+        showTable(row);
+
+        LoadTable();
+
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-
+        String keyword = txtTimKiem.getText().trim();
+        if (keyword != null) {
+            DefaultTableModel tableModel = (DefaultTableModel) tblHoaDon.getModel();
+            tableModel.setRowCount(0);
+            ArrayList<HoaDonDTO> list = hDCTCTRepos.search(keyword);
+            for (HoaDonDTO kh : list) {
+                tableModel.addRow(new Object[]{
+                    kh.getMaHD(),
+                    kh.getTenKH(),
+                    kh.getTenNV(),
+                    kh.getTrangThai() == 1 ? "Đã thanh toán" : "Hủy",});
+            }
+        }
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
     private void cboTrangThaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTrangThaiActionPerformed
-
+        String keyword = cboTrangThai.getActionCommand().trim();
+        if (keyword != null) {
+            DefaultTableModel tableModel = (DefaultTableModel) tblHoaDon.getModel();
+            tableModel.setRowCount(0);
+            ArrayList<HoaDonDTO> list = hDCTCTRepos.search(keyword);
+            for (HoaDonDTO kh : list) {
+                tableModel.addRow(new Object[]{
+                    kh.getMaHD(),
+                    kh.getTenKH(),
+                    kh.getTenNV(),
+                    kh.getTrangThai() == 1 ? "Đã thanh toán" : "Hủy",});
+            }
+        }
     }//GEN-LAST:event_cboTrangThaiActionPerformed
 
 

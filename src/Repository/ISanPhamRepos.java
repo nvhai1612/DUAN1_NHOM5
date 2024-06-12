@@ -16,4 +16,5 @@ public interface ISanPhamRepos {
     public ArrayList<SanPham> getListFormDB();
     public UUID add(SanPham sp);
     public Boolean update(SanPham sp);
+    public ArrayList<SanPham> search();
 }

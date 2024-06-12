@@ -4,9 +4,9 @@
  */
 package View;
 
-import DomainModel.ChatLieu;
-import Service.Impl.ChatLieuService;
-import ViewModel.ChatLieuVM;
+import DomainModel.ChucVu;
+import Service.Impl.ChucVuService;
+import ViewModel.ChucVuVM;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,39 +15,39 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class ChatLieuJDialog extends javax.swing.JDialog {
-    private ChatLieuService chatLieuService = new ChatLieuService();
+public class ChucVuJDialog extends javax.swing.JDialog {
+    public ChucVuService chucVuService = new ChucVuService();
 
     /**
-     * Creates new form ChatLieu
+     * Creates new form ChucVuJDialog
      */
-    public ChatLieuJDialog(java.awt.Frame parent, boolean modal) {
+    public ChucVuJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
         LoadTable();
     }
     
-     public void LoadTable(){
-        DefaultTableModel dtm = (DefaultTableModel) tblChatLieu.getModel();
+    public void LoadTable(){
+        DefaultTableModel dtm = (DefaultTableModel) tblChucVu.getModel();
         dtm.setRowCount(0);
-        ArrayList<ChatLieuVM> ListSP = chatLieuService.getAll();
         
-        for(ChatLieuVM clvm : ListSP){
+        ArrayList<ChucVuVM> listVM = chucVuService.getAll();
+        
+        for(ChucVuVM cvvm : listVM){
             dtm.addRow(new Object[]{
-            clvm.getId(),
-            clvm.getMaCL(),
-            clvm.getTenCL(),
-            clvm.getTrangThaiCL()== 1 ? "Đang hoạt động" : "Dừng hoạt động"
+                cvvm.getId(),
+                cvvm.getMaCV(),
+                cvvm.getTenCV(),
             });
         }
     }
-     
-    public void LamMoi(){
-        txtMaCL.setText("");
-        txtTenCL.setText("");
-        rdoHoatDong.setSelected(true);
-    }
 
+    public void LamMoi(){
+        txtMaCV.setText("");
+        txtTenCV.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,28 +57,20 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtMaCL = new javax.swing.JTextField();
+        txtMaCV = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtTenCL = new javax.swing.JTextField();
+        txtTenCV = new javax.swing.JTextField();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        rdoHoatDong = new javax.swing.JRadioButton();
-        rdoDHoatDong = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblChatLieu = new javax.swing.JTable();
+        tblChucVu = new javax.swing.JTable();
         txtTim = new javax.swing.JTextField();
-        btnTimCL = new javax.swing.JButton();
-        rdohd = new javax.swing.JRadioButton();
-        rdodhd = new javax.swing.JRadioButton();
-        btnMoi = new javax.swing.JButton();
+        btnTimCV = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,11 +79,11 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Quản Lý Chất Liệu");
+        jLabel1.setText("Quản Lý Chức Vụ");
 
-        jLabel2.setText("Mã CL :");
+        jLabel2.setText("Mã CV :");
 
-        jLabel3.setText("Tên CL :");
+        jLabel3.setText("Tên CV :");
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -114,113 +106,79 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel4.setText("Trạng thái :");
-
-        buttonGroup1.add(rdoHoatDong);
-        rdoHoatDong.setText("Hoạt động");
-
-        buttonGroup1.add(rdoDHoatDong);
-        rdoDHoatDong.setText("Dừng hoạt động");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMaCL)
-                            .addComponent(txtTenCL))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(txtMaCV)
+                            .addComponent(txtTenCV)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
                         .addComponent(jLabel1)
-                        .addGap(154, 154, 154))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(rdoHoatDong))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(btnThem)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(rdoDHoatDong)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(btnSua)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnLamMoi)
-                        .addContainerGap(64, Short.MAX_VALUE))))
+                .addGap(51, 51, 51)
+                .addComponent(btnThem)
+                .addGap(40, 40, 40)
+                .addComponent(btnSua)
+                .addGap(42, 42, 42)
+                .addComponent(btnLamMoi)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtMaCL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMaCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtTenCL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(rdoHoatDong)
-                    .addComponent(rdoDHoatDong))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTenCV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
                     .addComponent(btnLamMoi))
-                .addGap(151, 151, 151))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(222, 229, 226));
 
-        tblChatLieu.setModel(new javax.swing.table.DefaultTableModel(
+        tblChucVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Mã CL", "Tên CL", "Trạng thái"
+                "ID", "Mã CV", "Tên CV"
             }
         ));
-        tblChatLieu.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblChucVu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblChatLieuMouseClicked(evt);
+                tblChucVuMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(tblChatLieu);
+        jScrollPane4.setViewportView(tblChucVu);
 
-        btnTimCL.setText("Tìm");
-        btnTimCL.addActionListener(new java.awt.event.ActionListener() {
+        btnTimCV.setText("Tìm");
+        btnTimCV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimCLActionPerformed(evt);
+                btnTimCVActionPerformed(evt);
             }
         });
-
-        buttonGroup2.add(rdohd);
-        rdohd.setText("Đang hoạt động");
-
-        buttonGroup2.add(rdodhd);
-        rdodhd.setText("Dừng hoạt động");
-
-        btnMoi.setText("Mới");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -231,17 +189,10 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(rdohd)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdodhd)))
+                        .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTimCL))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnTimCV)
+                        .addGap(0, 69, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -250,14 +201,9 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimCL))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdohd)
-                    .addComponent(rdodhd)
-                    .addComponent(btnMoi))
+                    .addComponent(btnTimCV))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -271,44 +217,64 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        String MaCV = txtMaCV.getText();
+        String TenCV = txtMaCV.getText();
+        
+        ChucVu chucVu = new ChucVu();
+        chucVu.setMaCV(MaCV);
+        chucVu.setTenCV(TenCV);
+        
+        chucVuService.add(chucVu);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        String MaCV = txtMaCV.getText();
+        String TenCV = txtMaCV.getText();
+        
+        ChucVu chucVu = new ChucVu();
+        chucVu.setMaCV(MaCV);
+        chucVu.setTenCV(TenCV);
+        
+        chucVuService.update(chucVu);
+        LamMoi();
+        LoadTable();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         LamMoi();
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
-    private void tblChatLieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChatLieuMouseClicked
-        int row = tblChatLieu.getSelectedRow();
+    private void tblChucVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblChucVuMouseClicked
+        int row = tblChucVu.getSelectedRow();
         if(row == -1){
             return;
         }
 
-        String MaSP = tblChatLieu.getValueAt(row, 1).toString();
-        String TenSP = tblChatLieu.getValueAt(row, 2).toString();
-        String TrangThai = tblChatLieu.getValueAt(row, 3).toString();
+        String MaCV = tblChucVu.getValueAt(row, 1).toString();
+        String TenCV = tblChucVu.getValueAt(row, 2).toString();
 
-        txtMaCL.setText(MaSP);
-        txtTenCL.setText(TenSP);
-        if(TrangThai.equalsIgnoreCase("Đang Hoạt Động")){
-            this.rdoHoatDong.setSelected(true);
-        }else{
-            this.rdoDHoatDong.setSelected(true);
-        }
-    }//GEN-LAST:event_tblChatLieuMouseClicked
+        txtMaCV.setText(MaCV);
+        txtTenCV.setText(TenCV);
+    }//GEN-LAST:event_tblChucVuMouseClicked
 
-    private void btnTimCLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimCLActionPerformed
-        ArrayList<ChatLieuVM> listCLVM = chatLieuService.getAll();
+    private void btnTimCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimCVActionPerformed
+        ArrayList<ChucVuVM> listCVVM = chucVuService.getAll();
         String TimKiem = this.txtTim.getText();
         int index = -1;
-        for (ChatLieuVM clvm : listCLVM) {
-            if (TimKiem.equalsIgnoreCase(clvm.getMaCL())) {
-                index = listCLVM.indexOf(clvm);
+        for (ChucVuVM cvvm : listCVVM) {
+            if (TimKiem.equalsIgnoreCase(cvvm.getMaCV())) {
+                index = listCVVM.indexOf(cvvm);
             }
         }
         
@@ -316,36 +282,10 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Không tìm thấy !");
             return;
         }
-        txtMaCL.setText(listCLVM.get(index).getMaCL());
-        txtTenCL.setText(listCLVM.get(index).getTenCL());
-        rdoHoatDong.setSelected(true);
-    }//GEN-LAST:event_btnTimCLActionPerformed
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String MaCL = txtMaCL.getText();
-        String TenCL = txtMaCL.getText();
-        
-        ChatLieu cl = new ChatLieu();
-        cl.setMaCL(MaCL);
-        cl.setTenCL(TenCL);
-        
-        chatLieuService.add(cl);
-        LamMoi();
-        LoadTable();
-    }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        String MaCL = txtMaCL.getText();
-        String TenCL = txtMaCL.getText();
-        
-        ChatLieu cl = new ChatLieu();
-        cl.setMaCL(MaCL);
-        cl.setTenCL(TenCL);
-        
-        chatLieuService.update(cl);
-        LamMoi();
-        LoadTable();
-    }//GEN-LAST:event_btnSuaActionPerformed
+        txtMaCV.setText(listCVVM.get(index).getMaCV());
+        txtTenCV.setText(listCVVM.get(index).getTenCV());
+//        rdoNam.setSelected(true);
+    }//GEN-LAST:event_btnTimCVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,21 +304,20 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChucVuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChucVuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChucVuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChatLieuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChucVuJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ChatLieuJDialog dialog = new ChatLieuJDialog(new javax.swing.JFrame(), true);
+                ChucVuJDialog dialog = new ChucVuJDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -392,26 +331,18 @@ public class ChatLieuJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLamMoi;
-    private javax.swing.JButton btnMoi;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTimCL;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton btnTimCV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JRadioButton rdoDHoatDong;
-    private javax.swing.JRadioButton rdoHoatDong;
-    private javax.swing.JRadioButton rdodhd;
-    private javax.swing.JRadioButton rdohd;
-    private javax.swing.JTable tblChatLieu;
-    private javax.swing.JTextField txtMaCL;
-    private javax.swing.JTextField txtTenCL;
+    private javax.swing.JTable tblChucVu;
+    private javax.swing.JTextField txtMaCV;
+    private javax.swing.JTextField txtTenCV;
     private javax.swing.JTextField txtTim;
     // End of variables declaration//GEN-END:variables
 }

@@ -97,4 +97,27 @@ public class SanPhamRepos implements ISanPhamRepos {
         return null;
     }
 
+    @Override
+    public ArrayList<SanPham> search() {
+        ArrayList<SanPham> listSP = new ArrayList<>();
+        try (Connection con = connection.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM SANPHAM WHERE MASP = ?");){
+            ps.executeUpdate();
+            
+            SanPham sp = new SanPham();
+            ps.setObject(1, sp.getMaSP());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                sp.setId((UUID) rs.getObject(1));
+                sp.setMaSP(rs.getString(2));
+                listSP.add(sp);
+            } 
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return listSP;
+    }
+
 }

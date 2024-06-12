@@ -42,5 +42,10 @@ public class ThuongHieuService implements IThuongHieuService{
     public void update(ThuongHieu th) {
         thuongHieuRepos.update(th);
     }
+
+    @Override
+    public ArrayList<ThuongHieu> search(String MaTH) {
+        return thuongHieuRepos.search();
+    }
     
 }

@@ -14,12 +14,12 @@ public class SanPhamChiTiet {
     private UUID id, IdSP, IdCL, IdKC, IdMS, IdTH;
     private String MaSPCT, MoTa, TenMS, TenCL, TenTH, TenKC, TenSP, NguoiTao,TenKM;
     private int SoLuongTon, TrangThaiSPCT;
-    private float DonGia;
+    private float DonGia,MucGiamGia;
 
     public SanPhamChiTiet() {
     }
 
-    public SanPhamChiTiet(UUID id, UUID IdSP, UUID IdCL, UUID IdKC, UUID IdMS, UUID IdTH, String MaSPCT, String MoTa, String TenMS, String TenCL, String TenTH, String TenKC, String TenSP, String NguoiTao, int SoLuongTon, int TrangThaiSPCT, float DonGia) {
+    public SanPhamChiTiet(UUID id, UUID IdSP, UUID IdCL, UUID IdKC, UUID IdMS, UUID IdTH, String MaSPCT, String MoTa, String TenMS, String TenCL, String TenTH, String TenKC, String TenSP, String NguoiTao, String TenKM, int SoLuongTon, int TrangThaiSPCT, float DonGia, float MucGiamGia) {
         this.id = id;
         this.IdSP = IdSP;
         this.IdCL = IdCL;
@@ -34,23 +34,12 @@ public class SanPhamChiTiet {
         this.TenKC = TenKC;
         this.TenSP = TenSP;
         this.NguoiTao = NguoiTao;
+        this.TenKM = TenKM;
         this.SoLuongTon = SoLuongTon;
         this.TrangThaiSPCT = TrangThaiSPCT;
         this.DonGia = DonGia;
+        this.MucGiamGia = MucGiamGia;
     }
-
-    public SanPhamChiTiet(String TenKM) {
-        this.TenKM = TenKM;
-    }
-
-    public String getTenKM() {
-        return TenKM;
-    }
-
-    public void setTenKM(String TenKM) {
-        this.TenKM = TenKM;
-    }
-    
 
     public UUID getId() {
         return id;
@@ -164,6 +153,14 @@ public class SanPhamChiTiet {
         this.NguoiTao = NguoiTao;
     }
 
+    public String getTenKM() {
+        return TenKM;
+    }
+
+    public void setTenKM(String TenKM) {
+        this.TenKM = TenKM;
+    }
+
     public int getSoLuongTon() {
         return SoLuongTon;
     }
@@ -188,8 +185,15 @@ public class SanPhamChiTiet {
         this.DonGia = DonGia;
     }
 
-    @Override
-    public String toString() {
-        return "SanPhamChiTiet{" + "id=" + id + ", IdSP=" + IdSP + ", IdCL=" + IdCL + ", IdKC=" + IdKC + ", IdMS=" + IdMS + ", IdTH=" + IdTH + ", MaSPCT=" + MaSPCT + ", MoTa=" + MoTa + ", TenMS=" + TenMS + ", TenCL=" + TenCL + ", TenTH=" + TenTH + ", TenKC=" + TenKC + ", TenSP=" + TenSP + ", NguoiTao=" + NguoiTao + ", SoLuongTon=" + SoLuongTon + ", TrangThaiSPCT=" + TrangThaiSPCT + ", DonGia=" + DonGia + '}';
+    public float getMucGiamGia() {
+        return MucGiamGia;
     }
+
+    public void setMucGiamGia(float MucGiamGia) {
+        this.MucGiamGia = MucGiamGia;
+    }
+
+ 
+
+   
 }

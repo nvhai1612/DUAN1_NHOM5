@@ -33,7 +33,7 @@ public class KhuyenMaiJPanel extends javax.swing.JPanel {
     ArrayList<KhuyenMai> list = new ArrayList<>();
     SPCTService seviec2 = new SPCTService();
     khuyenmaiseviec seviec = new khuyenmaiseviec();
-   
+    
     DefaultTableModel dtm;
 
     public KhuyenMaiJPanel() {
