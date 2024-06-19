@@ -25,6 +25,7 @@ public class HDCTCTRepos implements IHDCTRepos {
     private DBConnection connection;
 
     private SPCTRepos SPCTRepos = new SPCTRepos();
+    private HoaDonRepos HoaDonRepos = new HoaDonRepos();
 
     @Override
     public ArrayList<HoaDonDTO> getListFormDB() {
@@ -89,7 +90,7 @@ public class HDCTCTRepos implements IHDCTRepos {
 
                 ps.setObject(1, hd.getId());
                 ps.setObject(2, SPCTRepos.searchbyMaSp(maSp).getId());
-                ps.setObject(3, searchbyMaHDCT(maSp));
+                ps.setObject(3, HoaDonRepos.searchbyMaHDCT(maSp));
                 ps.setObject(4, SPCTRepos.searchbyMaSp(maSp).getDonGia());
                 ps.setObject(5, ctsps.get(maSp));
 

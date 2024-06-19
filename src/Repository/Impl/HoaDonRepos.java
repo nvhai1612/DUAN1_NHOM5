@@ -58,7 +58,7 @@ public class HoaDonRepos implements IHoaDonRepos {
                 HoaDon hd = new HoaDon();
                 hd.setMaHD(rs.getString(4));
                 hd.setTenNV(rs.getString(11));
-                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(5)));
+                hd.setNgayTao(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(rs.getString(4)));
                 hd.setTrangThaiHD(rs.getInt(8));
                 listHD.add(hd);
             }
@@ -242,7 +242,7 @@ public class HoaDonRepos implements IHoaDonRepos {
     public void updateTrangThaiHoaDon(String maHDCT, Integer TrangThaiHD, Float TongTien, String mahd) {
         String mahdct = findMaaHDCtBySpct(maHDCT, mahd);
         try (Connection con = connection.getConnection(); 
-                PreparedStatement ps = con.prepareStatement("update hoadon set TrangThaiHD = 0, TongTien = ? where mahd = ?")) {
+                PreparedStatement ps = con.prepareStatement("UPDATE HOADON SET TRANGTHAIHD = 0, TONGTIEN = ? WHERE MAHD = ?")) {
 
             ps.setObject(1, TongTien);
             ps.setObject(2, mahd);

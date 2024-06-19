@@ -48,7 +48,7 @@ public class ThuongHieuRepos implements IThuongHieuRepos {
     public Boolean add(ThuongHieu th) {
         int check;
 
-        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("INSERT INTO THUONGHIEU(MATH,TENTH,TRANGTHAITH) Values(?,?,?,?)")) {
+        try (Connection con = connection.getConnection(); PreparedStatement ps = con.prepareStatement("INSERT INTO THUONGHIEU(MATH,TENTH,TRANGTHAITH) Values(?,?,?)")) {
 
             ps.setObject(1, th.getMaTH());
             ps.setObject(2, th.getTenTH());

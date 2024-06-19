@@ -184,11 +184,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoHoatDongCL">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoDHoatDongCL">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -290,11 +296,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdohd">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup2"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;ang hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdodhd">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup2"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -480,11 +492,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoHoatDongKC">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoDHoatDongKC">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -586,11 +604,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="LOCHDKC">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup4"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;ang hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="LocDHDKC">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup4"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -783,11 +807,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoHDMS">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup5"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoDHDMS">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup5"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -889,11 +919,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoLocHDMS">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup6"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;ang hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoLocDHDMS">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup6"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -1085,11 +1121,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoHoatDongTH">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup7"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoDHoatDongTH">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup7"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -1191,11 +1233,17 @@
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoHDTH2">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup8"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="&#x110;ang hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdoDHDTH2">
               <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup8"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="D&#x1b0;&#x300;ng hoa&#x323;t &#x111;&#xf4;&#x323;ng"/>
               </Properties>
             </Component>
@@ -1208,6 +1256,20 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup3">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup4">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup5">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup6">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup7">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup8">
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -1315,7 +1377,7 @@
                                                   <Component id="btnLamMoi" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="txtTenSP1" pref="310" max="32767" attributes="0"/>
+                                              <Component id="txtTenSP" pref="310" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1348,7 +1410,7 @@
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtMaSP" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTenSP1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTenSP" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1396,7 +1458,7 @@
                     <Property name="text" type="java.lang.String" value="T&#xea;n SP :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtTenSP1">
+                <Component class="javax.swing.JTextField" name="txtTenSP">
                 </Component>
                 <Component class="javax.swing.JButton" name="btnThemSP">
                   <Properties>
@@ -1772,7 +1834,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbTHActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbTHActionPerformed4"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

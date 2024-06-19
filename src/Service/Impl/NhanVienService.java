@@ -40,11 +40,6 @@ public class NhanVienService implements INhanVienService {
     public void add(NhanVien nv) {
     nvRepo.add(nv);
     }
-    public String capNhatMatKhau(String matKhauMoi, String Email){
-        
-        return nvRepo.capNhatMatKhau(matKhauMoi, Email);
-        
-    }
     @Override
     public void update(NhanVien nv) {
     nvRepo.update(nv);}
